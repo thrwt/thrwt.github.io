@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">https://livehdcams.com/?AFNO=1-60000
+  <meta charset="UTF-8">
   <title>About Me</title>
   <link rel="stylesheet" href="css/style.css">
 </head>

@@ -3,7 +3,7 @@ title: "Home"
 layout: default
 ---
 
-# 🧩 CTF Writeups
+# CTF Writeups
 
 Welcome to my CTF writeups hub.  
 Below you can find all writeups I published.

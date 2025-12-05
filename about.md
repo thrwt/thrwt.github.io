@@ -7,19 +7,12 @@
 </head>
 <body>
   <header>
-    <h1>About Me</h1>
+    <h1>Thrwt</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
     </nav>
   </header>
-
-  <main>
-    <h2>My Links</h2>
-    <ul>
-      <li><a href="https://medium.com/@mohamedtharwat_67874">Medium</a></li>
-      <li><a href="linkedin.com/in/mohamed-tharwat1">LinkedIn</a></li>
-    </ul>
-  </main>
+  
 </body>
 </html>

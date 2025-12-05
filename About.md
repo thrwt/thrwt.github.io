@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">https://livehdcams.com/?AFNO=1-60000
   <title>About Me</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -17,9 +17,8 @@
   <main>
     <h2>My Links</h2>
     <ul>
-      <li><a href="https://medium.com/">Medium</a></li>
-      <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
-      <li><a href="https://discord.com/">Discord</a></li>
+      <li><a href="https://medium.com/@mohamedtharwat_67874">Medium</a></li>
+      <li><a href="linkedin.com/in/mohamed-tharwat1">LinkedIn</a></li>
     </ul>
   </main>
 </body>

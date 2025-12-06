@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Advanced Frida Detection Bypass",
+    "date": "2025-11-28",
+    "tags": ["android","reverse-engineering","frida"],
+    "excerpt": "A guide to bypassing advanced Frida detection mechanisms.",
+    "thumb": "/images/thumb-frida.jpg",
+    "url": "/posts/frida-detection.html",
+    "read_time": "15 min"
+  },
+  {
+    "title": "8kSec.io iOS Challenges Writeups",
+    "date": "2025-11-13",
+    "tags": ["ios","exploitation"],
+    "excerpt": "Looking back at iOS challenge writeups.",
+    "thumb": "/images/thumb-ios.jpg",
+    "url": "/posts/8ksec-ios.html",
+    "read_time": "10 min"
+  }
+]

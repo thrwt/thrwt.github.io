@@ -162,5 +162,30 @@ body {
     margin-bottom: 20px;
 }
 
+/* استايل البوستس */
+
+/* ** الكود الجديد لحاوية البوستات (Posts Wrapper) ** */
+.posts-wrapper {
+    /* جعل العناصر تترتب عمودياً (فوق لتحت) */
+    display: flex;
+    flex-direction: column;
+    /* تحديد مسافة بين كل بوست والآخر (اختياري) */
+    gap: 30px; 
+}
+
+.post-card {
+    /* تم تعديل هذا الكلاس لحذف margin-bottom القديم */
+    display: flex;
+    align-items: center;
+    background: #0F172A;
+    padding: 20px;
+    border-radius: 12px;
+    /* تم حذف margin-bottom: 20px; لأنه سيتم التحكم في المسافات الآن بواسطة gap في .posts-wrapper */
+    border: 1px solid #1E293B;
+    transition: 0.3s;
+}
+
+/* باقي الكود يظل كما هو... */
+
 
 

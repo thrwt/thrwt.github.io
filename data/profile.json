@@ -1,0 +1,10 @@
+{
+  "name": "Mohamed Tharwat",
+  "bio": "Security researcher, DFIR & malware analysis. Sharing writeups and notes.",
+  "avatar": "/images/profile.png",
+  "links": [
+    { "label":"LinkedIn", "url":"https://www.linkedin.com/in/your", "icon":"<!--🔗--> LN" },
+    { "label":"X", "url":"https://x.com/your", "icon":"<!--🐦--> X" },
+    { "label":"Medium", "url":"https://medium.com/@your", "icon":"<!--✍️--> MD" }
+  ]
+}

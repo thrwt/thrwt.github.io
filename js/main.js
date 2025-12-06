@@ -8,7 +8,7 @@
 */
 
 // --------- Config ----------
-const PROFILE_JSON = '/data/profile.json'; // profile info (sidebar)
+const PROFILE_JSON = '/data/Image .jpg'; // profile info (sidebar)
 const POSTS_JSON   = '/data/posts.json';   // array of posts metadata
 const POSTS_CONTAINER_SELECTOR = '.content'; // where posts will be injected (adjust if needed)
 const SIDEBAR_SELECTOR = '.sidebar';        // sidebar container selector
@@ -80,7 +80,7 @@ function renderProfile(p){
   // clear existing minimal content (if any)
   sidebar.innerHTML = '';
 
-  const img = create('img', { src: p.avatar || '/images/profile.png', alt: p.name || 'profile' });
+  const img = create('img', { src: p.avatar || '/images/Image .jpg', alt: p.name || 'profile' });
   img.classList.add('profile-pic');
   sidebar.appendChild(img);
 

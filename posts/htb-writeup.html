@@ -33,13 +33,66 @@
     </div>
 
     <div class="post-content">
-        <p>اكتب هنا محتوى الريتاب...</p>
+        <p>Defense</p>
 
-        <img src="../images/step1.png" class="wide-img">
+ Introduction
+In this noob writeup we will explore the world of activities and intents, we will solve 7 challenges with 7 different flags and 7 different topics. We will be focusing on activities from Flag1 to Flag7. Enjoy!
 
-        <p>شرح خطوة 2...</p>
+WARNING
+I am a noob android guy, if you find any mistake pls ignore, or maybe report it?
 
-        <img src="../images/step2.png" class="wide-img">
+Some Definitions Before We Start
+What is an Activity?
+“An activity is a single, focused thing that the user can do. Almost all activities interact with the user, so the Activity class takes care of creating a window for you in which you can place your UI.”
+
+So an activity is what you mostly see on your screen, it can be the main app activity, a login activity, a note taking activity.
+
+What is an Intent?
+“Declaring an intention to do something, and letting Android figure out the app that can handle it.”
+
+So to start an activity, you need to create an intent.
+
+Our Attack Surface?
+The primary attack surface in this context is the getIntent() method. This feature is used to pass data to other apps, making it a major attack surface for potential vulnerabilities.
+
+with that being said, lets start!
+
+The first thing to notice is that the activity is set to exported="true", which means it can be called from outside the app.
+
+protected void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    this.f = new LogHelper(this);
+    this.f.addTag("basic-main-activity-avd2");
+    success(this);
+}
+
+This is a simple activity. When created (or called), it will add a tag and invoke the success() method.
+
+Since this does not require a Proof of Concept (POC) app, I will keep it simple and use adb am to trigger the activity.
+
+Run the following command to check the logcat:
+
+adb logcat --pid=$(adb shell pidof -s io.hextree.attacksurface)
+
+Now, execute this command to start the activity:
+
+adb shell am start -n io.hextree.attacksurface/.activities.Flag1Activity
+
+start: Starts the activity.
+n: Specifies the component name.
+io.hextree.attacksurface: Package name.
+.activities.Flag1Activity: Component name.
+You can also write it like this:
+
+io.hextree.attacksurface/io.hextree.attacksurface.activities.Flag1Activity
+
+However, I prefer to keep it concise. Now, check your app or logcat to see if the success() method was called, and you should receive the flag!
+
+03-01 15:00:31.749  3417  3417 I Flag1   : success() called!
+03-01 15:00:31.766  3417  3417 I Flag1   : HXT{xxxxxxx}
+
+Flag2Activity
+
     </div>
 </div>
 

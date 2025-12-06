@@ -110,3 +110,47 @@ body {
   font-size: 15px;
   color: #b4c2d6;
 }
+
+
+
+.post-card {
+    display: flex;
+    align-items: center;
+    background: #0F172A;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #1E293B;
+    transition: 0.3s;
+}
+
+.post-card:hover {
+    transform: scale(1.02);
+    background: #1E293B;
+}
+
+.post-card a {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
+
+.post-thumb {
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.post-info h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.post-info p {
+    margin-top: 8px;
+    color: #9CA3AF;
+}
+

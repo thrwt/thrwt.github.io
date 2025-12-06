@@ -111,7 +111,7 @@ body {
   color: #b4c2d6;
 }
 
-
+/* استايل البوستس */
 
 .post-card {
     display: flex;
@@ -153,4 +153,14 @@ body {
     margin-top: 8px;
     color: #9CA3AF;
 }
+
+/* ستايل صورة صفحة الرايتاب */
+.writeup-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
 

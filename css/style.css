@@ -5,9 +5,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* يمنع الاسكرول الشمال/يمين نهائي */
+  overflow-x: hidden;
 }
-
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
@@ -46,7 +45,6 @@ body {
 }
 
 /* LEFT SIDEBAR */
-
 .sidebar {
   width: 260px;
   background: #111b26;
@@ -89,7 +87,6 @@ body {
 }
 
 /* MAIN CONTENT */
-
 .content {
   flex: 1;
 }
@@ -111,7 +108,13 @@ body {
   color: #b4c2d6;
 }
 
-/* استايل البوستس */
+/* استايل البوستس - الحل هنا */
+.posts-grid {
+    display: flex;
+    flex-direction: column;  /* ده المهم - عمود واحد */
+    gap: 20px;
+    width: 100%;
+}
 
 .post-card {
     display: flex;
@@ -119,7 +122,6 @@ body {
     background: #0F172A;
     padding: 20px;
     border-radius: 12px;
-    margin-bottom: 20px;
     border: 1px solid #1E293B;
     transition: 0.3s;
 }
@@ -134,14 +136,16 @@ body {
     color: white;
     text-decoration: none;
     width: 100%;
+    align-items: center;
 }
 
 .post-thumb {
     width: 130px;
     height: 130px;
     border-radius: 10px;
-    margin-right: 20px;
+    margin-left: 20px;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .post-info h2 {
@@ -161,7 +165,4 @@ body {
     border-radius: 10px;
     margin-bottom: 20px;
 }
-
-/* استايل البوستس */
-
 

@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writeup Title</title>
-
-    <!-- رابط css الرئيسي -->
+    <title>Notes</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- ========= NAVBAR ========== -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../about.html">About</a></li>
-        </ul>
-    </nav>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Notes.html">Notes</a>
+    <a href="about.html">About</a>
+</div>
 
-    <!-- ========= PAGE WRAPPER ========== -->
-    <div class="page-container">
+<div class="container">
+    <div class="sidebar">
+        <img src="images/Image .jpg">
+        <h2>Your Name</h2>
+        <p>Your short bio.</p>
 
-        <!-- ========= WRITEUP CONTAINER ========== -->
-        <div class="writeup-box">
-
-            <h1 class="writeup-title">Writeup Title Here</h1>
-
-            <p class="introduction">
-                اكتب هنا مقدمة الريتاب… زي ما الموقع اللي وريتهولي عامل.
-            </p>
-
-            <img src="../images/example.png" class="writeup-img">
-
-            <h2>Section Title</h2>
-            <p>اكتب شرح هنا…</p>
-
+        <div class="icons">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-medium"></ion-icon></a>
         </div>
     </div>
 
+   <div class="post-container">
+    <div class="post-header">
+        <img src="../images/htb.png" class="post-image" />
+        <h1>Writeup Title Here</h1>
+    </div>
+
+    <div class="post-content">
+        <p>اكتب هنا محتوى الريتاب...</p>
+
+        <img src="../images/step1.png" class="wide-img">
+
+        <p>شرح خطوة 2...</p>
+
+        <img src="../images/step2.png" class="wide-img">
+    </div>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>

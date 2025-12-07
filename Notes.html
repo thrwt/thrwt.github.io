@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Notes</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Notes - thrwt</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
 <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="Notes.html">Notes</a>
-    <a href="about.html">About</a>
+    <div class="logo"><a href="index.html">THRWT</a></div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="Notes.html">Notes</a>
+        <a href="about.html">About</a>
+    </div>
 </div>
 
 <div class="container">
+    <!-- LEFT SIDEBAR -->
     <div class="sidebar">
-        <img src="images/Image .jpg">
-        <h2>Your Name</h2>
-        <p>Your short bio.</p>
-
+        <img src="images/Image .jpg" alt="Profile">
+        <h2>Mohamed Tharwat</h2>
+        <p>small bio about</p>
         <div class="icons">
             <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
             <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
@@ -26,10 +27,147 @@
         </div>
     </div>
 
-    <div class="content">
-        <div class="post">
-            <h1>All Posts</h1>
-            <p>List your writeups here.</p>
+    <!-- MAIN CONTENT -->
+    <div class="posts-grid">
+        <!-- Note 1 -->
+        <div class="post-card">
+            <a href="notes/linux-commands.html">
+                <div class="post-info">
+                    <h2>Essential Linux Commands Cheat Sheet</h2>
+                    <p>A comprehensive guide to the most commonly used Linux commands for cybersecurity.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>Dec 05, 2025</span>
+                        </div>
+                        <div class="post-meta-item">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>3 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/writeup1.jpg" class="post-thumb" alt="Linux Commands">
+            </a>
+        </div>
+
+        <!-- Note 2 -->
+        <div class="post-card">
+            <a href="notes/networking-basics.html">
+                <div class="post-info">
+                    <h2>Networking Fundamentals</h2>
+                    <p>Understanding TCP/IP, OSI model, and network protocols.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>Dec 03, 2025</span>
+                        </div>
+                        <div class="post-meta-item">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/hackthebox.jpg" class="post-thumb" alt="Networking">
+            </a>
+        </div>
+
+        <!-- Note 3 -->
+        <div class="post-card">
+            <a href="notes/sql-injection.html">
+                <div class="post-info">
+                    <h2>SQL Injection Study Notes</h2>
+                    <p>Types of SQL injection attacks and how to prevent them.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>Dec 01, 2025</span>
+                        </div>
+                        <div class="post-meta-item">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/writeup1.jpg" class="post-thumb" alt="SQL Injection">
+            </a>
+        </div>
+
+        <!-- Note 4 -->
+        <div class="post-card">
+            <a href="notes/python-scripting.html">
+                <div class="post-info">
+                    <h2>Python for Security Automation</h2>
+                    <p>Essential Python scripts and libraries for penetration testing.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>Nov 28, 2025</span>
+                        </div>
+                        <div class="post-meta-item">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/hackthebox.jpg" class="post-thumb" alt="Python">
+            </a>
+        </div>
+
+        <!-- Note 5 -->
+        <div class="post-card">
+            <a href="notes/web-vulnerabilities.html">
+                <div class="post-info">
+                    <h2>OWASP Top 10 Explained</h2>
+                    <p>Detailed breakdown of the most critical web application security risks.</p>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>Nov 25, 2025</span>
+                        </div>
+                        <div class="post-meta-item">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>12 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/writeup1.jpg" class="post-thumb" alt="OWASP">
+            </a>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="active">1</span>
+            <a href="notes2.html">2</a>
+            <a href="notes2.html">Next →</a>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR - Categories -->
+    <div class="right-sidebar">
+        <div class="categories-box">
+            <h3>Categories</h3>
+            
+            <a href="Notes.html" class="category-item">
+                <div class="category-icon">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                </div>
+                <div class="category-text">
+                    <h4>Notes</h4>
+                    <p>Study notes & guides</p>
+                </div>
+                <span class="category-count">12</span>
+            </a>
+
+            <a href="index.html" class="category-item">
+                <div class="category-icon">
+                    <ion-icon name="terminal-outline"></ion-icon>
+                </div>
+                <div class="category-text">
+                    <h4>Writeups</h4>
+                    <p>CTF & Lab solutions</p>
+                </div>
+                <span class="category-count">24</span>
+            </a>
         </div>
     </div>
 </div>

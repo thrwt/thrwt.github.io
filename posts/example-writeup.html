@@ -1,19 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Example Writeup</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Example Writeup Title - thrwt</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<div class="navbar">
+    <div class="logo"><a href="../index.html">THRWT</a></div>
+    <div>
+        <a href="../index.html">Home</a>
+        <a href="../Notes.html">Notes</a>
+        <a href="../about.html">About</a>
+    </div>
+</div>
 
-<h1>Example Writeup Title</h1>
+<div class="container">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <img src="../images/Image .jpg" alt="Profile">
+        <h2>Mohamed Tharwat</h2>
+        <p>small bio about</p>
+        <div class="icons">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-medium"></ion-icon></a>
+        </div>
+    </div>
 
-<img src="../images/writeup1.jpg" class="writeup-image">
+    <!-- MAIN CONTENT - بدون Categories على اليمين -->
+    <div class="content">
+        <!-- معلومات الـ Writeup -->
+        <div class="post">
+            <h1>Example Writeup Title</h1>
+            
+            <!-- Meta Info -->
+            <div class="post-meta" style="margin-bottom: 20px;">
+                <div class="post-meta-item">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    <span>Dec 07, 2025</span>
+                </div>
+                <div class="post-meta-item">
+                    <ion-icon name="time-outline"></ion-icon>
+                    <span>5 min read</span>
+                </div>
+                <div class="post-meta-item">
+                    <ion-icon name="pricetag-outline"></ion-icon>
+                    <span>HackTheBox</span>
+                </div>
+                <div class="post-meta-item">
+                    <ion-icon name="speedometer-outline"></ion-icon>
+                    <span>Medium</span>
+                </div>
+            </div>
 
-<p>
-This is the full writeup content...
-</p>
+            <!-- صورة رئيسية -->
+            <img src="../images/writeup1.jpg" class="writeup-image" alt="Writeup Image">
 
+            <!-- المحتوى -->
+            <h2>Overview</h2>
+            <p>
+                This writeup covers the exploitation of the Example machine on HackTheBox. 
+                The machine involves web application vulnerabilities, privilege escalation, and more.
+            </p>
+
+            <h2>Enumeration</h2>
+            <p>
+                First, we start with an Nmap scan to identify open ports and services:
+            </p>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+nmap -sC -sV -oN nmap.txt 10.10.10.123
+            </pre>
+
+            <p>The scan reveals the following open ports:</p>
+            <ul>
+                <li>Port 22 - SSH</li>
+                <li>Port 80 - HTTP (Apache 2.4.41)</li>
+                <li>Port 3306 - MySQL</li>
+            </ul>
+
+            <h2>Initial Access</h2>
+            <p>
+                Navigating to the web server, we find a login page. After testing for SQL injection, 
+                we discover the following payload works:
+            </p>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+' OR 1=1 -- -
+            </pre>
+
+            <h2>Privilege Escalation</h2>
+            <p>
+                After gaining initial access, we need to escalate privileges. 
+                Checking for SUID binaries:
+            </p>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+find / -perm -u=s -type f 2>/dev/null
+            </pre>
+
+            <h2>Flags</h2>
+            <ul>
+                <li><strong>User Flag:</strong> <code>a1b2c3d4e5f6g7h8i9j0</code></li>
+                <li><strong>Root Flag:</strong> <code>z9y8x7w6v5u4t3s2r1q0</code></li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                This machine was a great practice for web exploitation and basic privilege escalation techniques. 
+                Key takeaways include checking for SQL injection vulnerabilities and always enumerating SUID binaries.
+            </p>
+
+            <!-- Back Button -->
+            <div style="margin-top: 40px;">
+                <a href="../index.html" style="display: inline-block; padding: 12px 24px; background: #8ab4f8; color: #0e141b; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>

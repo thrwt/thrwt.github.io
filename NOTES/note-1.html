@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux Commands Cheat Sheet - thrwt</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="logo"><a href="../index.html">THRWT</a></div>
+    <div>
+        <a href="../index.html">Home</a>
+        <a href="../Notes.html">Notes</a>
+        <a href="../about.html">About</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <img src="../images/Image .jpg" alt="Profile">
+        <h2>Mohamed Tharwat</h2>
+        <p>small bio about</p>
+        <div class="icons">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-medium"></ion-icon></a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - بدون Categories -->
+    <div class="content">
+        <div class="post">
+            <h1>Essential Linux Commands Cheat Sheet</h1>
+            
+            <!-- Meta Info -->
+            <div class="post-meta" style="margin-bottom: 20px;">
+                <div class="post-meta-item">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    <span>Dec 05, 2025</span>
+                </div>
+                <div class="post-meta-item">
+                    <ion-icon name="time-outline"></ion-icon>
+                    <span>3 min read</span>
+                </div>
+                <div class="post-meta-item">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                    <span>Study Notes</span>
+                </div>
+            </div>
+
+            <!-- صورة رئيسية -->
+            <img src="../images/writeup1.jpg" class="writeup-image" alt="Linux Commands">
+
+            <!-- المحتوى -->
+            <h2>File Operations</h2>
+            <p>Essential commands for working with files and directories:</p>
+            
+            <h3>Listing Files</h3>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# List files in current directory
+ls
+
+# List with details
+ls -la
+
+# List sorted by modification time
+ls -lt
+            </pre>
+
+            <h3>File Manipulation</h3>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# Copy file
+cp source.txt destination.txt
+
+# Move/rename file
+mv oldname.txt newname.txt
+
+# Delete file
+rm file.txt
+
+# Delete directory recursively
+rm -rf directory/
+            </pre>
+
+            <h2>Text Processing</h2>
+            <p>Commands for searching and manipulating text:</p>
+            
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# Search for pattern in file
+grep "pattern" file.txt
+
+# Search recursively in directory
+grep -r "pattern" /path/
+
+# Count lines in file
+wc -l file.txt
+
+# Display first 10 lines
+head file.txt
+
+# Display last 10 lines
+tail file.txt
+
+# Follow file updates in real-time
+tail -f logfile.log
+            </pre>
+
+            <h2>Network Commands</h2>
+            <p>Useful networking commands for security testing:</p>
+            
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# Check network connectivity
+ping 8.8.8.8
+
+# Show network interfaces
+ifconfig
+# or
+ip addr show
+
+# Display routing table
+route -n
+# or
+ip route
+
+# Check open ports
+netstat -tulpn
+
+# DNS lookup
+nslookup domain.com
+dig domain.com
+            </pre>
+
+            <h2>User & Permissions</h2>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# Change file permissions
+chmod 755 file.sh
+
+# Change file owner
+chown user:group file.txt
+
+# Switch user
+su - username
+
+# Run command as root
+sudo command
+
+# Add user to group
+usermod -aG groupname username
+            </pre>
+
+            <h2>Process Management</h2>
+            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
+# List running processes
+ps aux
+
+# Display processes tree
+pstree
+
+# Kill process by PID
+kill 1234
+
+# Kill process by name
+pkill process_name
+
+# Monitor system resources
+top
+# or
+htop
+            </pre>
+
+            <h2>Quick Tips</h2>
+            <ul>
+                <li>Use <code>man command</code> to read manual pages</li>
+                <li>Press <code>Tab</code> for auto-completion</li>
+                <li>Use <code>history</code> to view previous commands</li>
+                <li><code>Ctrl + R</code> to search command history</li>
+                <li><code>Ctrl + C</code> to cancel running command</li>
+                <li><code>Ctrl + Z</code> to suspend process</li>
+            </ul>
+
+            <!-- Back Button -->
+            <div style="margin-top: 40px;">
+                <a href="../Notes.html" style="display: inline-block; padding: 12px 24px; background: #8ab4f8; color: #0e141b; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                    ← Back to Notes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</body>
+</html>

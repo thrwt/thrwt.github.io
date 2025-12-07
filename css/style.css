@@ -42,16 +42,19 @@ body {
   display: flex;
   padding: 30px;
   gap: 30px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-/* LEFT SIDEBAR */
+/* LEFT SIDEBAR - أصغر شوية */
 .sidebar {
-  width: 260px;
+  width: 240px;
   background: #111b26;
   padding: 20px;
   border-radius: 12px;
   height: fit-content;
   border: 1px solid #1f2a37;
+  flex-shrink: 0;
 }
 
 .sidebar img {
@@ -86,9 +89,10 @@ body {
   color: #4da3ff;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT - أكبر */
 .content {
   flex: 1;
+  min-width: 0;
 }
 
 .post {
@@ -108,10 +112,10 @@ body {
   color: #b4c2d6;
 }
 
-/* استايل البوستس - الحل هنا */
+/* استايل البوستس */
 .posts-grid {
     display: flex;
-    flex-direction: column;  /* ده المهم - عمود واحد */
+    flex-direction: column;
     gap: 20px;
     width: 100%;
 }
@@ -127,7 +131,7 @@ body {
 }
 
 .post-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     background: #1E293B;
 }
 
@@ -140,12 +144,16 @@ body {
 }
 
 .post-thumb {
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
     margin-left: 20px;
     object-fit: cover;
     flex-shrink: 0;
+}
+
+.post-info {
+    flex: 1;
 }
 
 .post-info h2 {
@@ -156,13 +164,119 @@ body {
 .post-info p {
     margin-top: 8px;
     color: #9CA3AF;
+    font-size: 15px;
+}
+
+/* RIGHT SIDEBAR - Categories */
+.right-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.categories-box {
+  background: #111b26;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #1f2a37;
+}
+
+.categories-box h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #8ab4f8;
+  border-bottom: 2px solid #1f2a37;
+  padding-bottom: 10px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #0F172A;
+  border-radius: 8px;
+  border: 1px solid #1E293B;
+  text-decoration: none;
+  color: #d8e2f0;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #8ab4f8;
+  transform: scaleY(0);
+  transition: transform 0.3s;
+}
+
+.category-item:hover::before {
+  transform: scaleY(1);
+}
+
+.category-item:hover {
+  background: #1E293B;
+  transform: translateX(5px);
+  border-color: #8ab4f8;
+}
+
+.category-icon {
+  font-size: 24px;
+  margin-left: 15px;
+  color: #8ab4f8;
+}
+
+.category-text {
+  flex: 1;
+}
+
+.category-text h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.category-text p {
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  color: #9fb3c8;
+}
+
+.category-count {
+  background: #1E293B;
+  color: #8ab4f8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* ستايل صورة صفحة الرايتاب */
 .writeup-image {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
+/* Responsive */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar,
+  .right-sidebar {
+    width: 100%;
+  }
+  
+  .post-thumb {
+    width: 120px;
+    height: 120px;
+  }
+}

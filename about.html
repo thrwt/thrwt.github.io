@@ -1,39 +1,397 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About</title>
+    <title>About - thrwt</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-header img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #8ab4f8;
+            object-fit: cover;
+        }
+
+        .about-header h1 {
+            font-size: 42px;
+            margin: 10px 0;
+            background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-header p {
+            font-size: 18px;
+            color: #9fb3c8;
+            margin-top: 10px;
+        }
+
+        .about-section {
+            background: #111b26;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #1f2a37;
+        }
+
+        .about-section h2 {
+            color: #8ab4f8;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1f2a37;
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #d8e2f0;
+            margin-bottom: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #0F172A;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #1E293B;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #8ab4f8;
+        }
+
+        .skill-card h3 {
+            color: #8ab4f8;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-card li {
+            padding: 5px 0;
+            color: #9fb3c8;
+            font-size: 15px;
+        }
+
+        .skill-card li:before {
+            content: "▹ ";
+            color: #8ab4f8;
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #8ab4f8;
+            border-radius: 50%;
+            border: 3px solid #111b26;
+        }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 18px);
+            background: #1f2a37;
+        }
+
+        .timeline-item:last-child:after {
+            display: none;
+        }
+
+        .timeline-item h3 {
+            color: #8ab4f8;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #9fb3c8;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #0F172A;
+            border: 1px solid #1E293B;
+            border-radius: 8px;
+            color: #8ab4f8;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            background: #1E293B;
+            border-color: #8ab4f8;
+            transform: translateY(-3px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: #0F172A;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #1E293B;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #8ab4f8;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #9fb3c8;
+            font-size: 14px;
+        }
+    </style>
 </head>
-<script src="js/main.js"></script>
-
 <body>
-
 <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <div class="logo"><a href="index.html">THRWT</a></div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="Notes.html">Notes</a>
+        <a href="about.html">About</a>
+    </div>
 </div>
 
 <div class="container">
-    <div class="sidebar">
-        <img src="images/Image .jpg">
-        <h2>Your Name</h2>
-        <p>Your bio here.</p>
+    <div class="about-container">
+        <!-- Header Section -->
+        <div class="about-header">
+            <img src="images/Image .jpg" alt="Mohamed Tharwat">
+            <h1>Mohamed Tharwat</h1>
+            <p>Cybersecurity Enthusiast | Penetration Tester | CTF Player</p>
+        </div>
 
-        <div class="icons">
-            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-medium"></ion-icon></a>
+        <!-- About Me Section -->
+        <div class="about-section">
+            <h2><ion-icon name="person-outline"></ion-icon> About Me</h2>
+            <p>
+                Hello! I'm Mohamed Tharwat, a passionate cybersecurity enthusiast dedicated to exploring 
+                the world of information security. I specialize in penetration testing, vulnerability 
+                assessment, and security research.
+            </p>
+            <p>
+                Through this blog, I share my journey in cybersecurity, including writeups from various 
+                Capture The Flag (CTF) competitions, lab walkthroughs, and educational content to help 
+                others learn and grow in this exciting field.
+            </p>
+            <p>
+                I believe in continuous learning and contributing to the security community. Whether it's 
+                solving challenges on HackTheBox, TryHackMe, or participating in bug bounty programs, 
+                I'm always seeking new ways to improve my skills.
+            </p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="about-section">
+            <h2><ion-icon name="bar-chart-outline"></ion-icon> Stats & Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Writeups Published</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Study Notes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">CTF Challenges Solved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="about-section">
+            <h2><ion-icon name="code-slash-outline"></ion-icon> Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><ion-icon name="shield-checkmark-outline"></ion-icon> Penetration Testing</h3>
+                    <ul>
+                        <li>Web Application Testing</li>
+                        <li>Network Security Assessment</li>
+                        <li>Vulnerability Analysis</li>
+                        <li>Social Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><ion-icon name="terminal-outline"></ion-icon> Tools & Technologies</h3>
+                    <ul>
+                        <li>Burp Suite, OWASP ZAP</li>
+                        <li>Metasploit, Nmap</li>
+                        <li>Wireshark, tcpdump</li>
+                        <li>Python, Bash Scripting</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><ion-icon name="bug-outline"></ion-icon> Security Research</h3>
+                    <ul>
+                        <li>OWASP Top 10</li>
+                        <li>CVE Analysis</li>
+                        <li>Exploit Development</li>
+                        <li>Reverse Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><ion-icon name="server-outline"></ion-icon> Systems</h3>
+                    <ul>
+                        <li>Linux Administration</li>
+                        <li>Windows Security</li>
+                        <li>Active Directory</li>
+                        <li>Cloud Security (AWS)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div class="about-section">
+            <h2><ion-icon name="briefcase-outline"></ion-icon> Journey & Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Freelance Security Researcher</h3>
+                    <div class="date">2023 - Present</div>
+                    <p>Conducting security assessments, participating in bug bounty programs, and contributing to open-source security projects.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>CTF Competitor</h3>
+                    <div class="date">2022 - Present</div>
+                    <p>Active participant in Capture The Flag competitions on HackTheBox, TryHackMe, and various online platforms.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Started Cybersecurity Journey</h3>
+                    <div class="date">2021</div>
+                    <p>Began learning cybersecurity fundamentals, networking, and ethical hacking through online courses and certifications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="about-section">
+            <h2><ion-icon name="ribbon-outline"></ion-icon> Certifications</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #1f2a37; color: #d8e2f0;">
+                    <strong style="color: #8ab4f8;">▹ Certified Ethical Hacker (CEH)</strong> - EC-Council
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #1f2a37; color: #d8e2f0;">
+                    <strong style="color: #8ab4f8;">▹ CompTIA Security+</strong> - CompTIA
+                </li>
+                <li style="padding: 10px 0; color: #d8e2f0;">
+                    <strong style="color: #8ab4f8;">▹ eJPT (Junior Penetration Tester)</strong> - eLearnSecurity
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="about-section">
+            <h2><ion-icon name="mail-outline"></ion-icon> Get In Touch</h2>
+            <p>
+                I'm always open to connecting with fellow security enthusiasts, discussing new opportunities, 
+                or collaborating on interesting projects. Feel free to reach out!
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/thrwt" target="_blank">
+                    <ion-icon name="logo-github"></ion-icon>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/thrwt" target="_blank">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                    LinkedIn
+                </a>
+                <a href="mailto:contact@thrwt.com">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Email
+                </a>
+                <a href="https://twitter.com/thrwt" target="_blank">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                    Twitter
+                </a>
+            </div>
         </div>
     </div>
-
-    <div class="content">
-        <div class="post">
-            <h1>About Me</h1>
-            <p>Write a detailed bio here.</p>
-        </div>
-    </div>
-
 </div>
 
 <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>

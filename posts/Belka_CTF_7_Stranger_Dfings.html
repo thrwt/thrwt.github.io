@@ -65,36 +65,99 @@ So, I decided to share my own writeup for it.
 I hope you enjoy it.
             </p>
 
-            <h2>What is the username and hostname of the imaged machine?</h2>
-            <p>
-                
-In this case I will Use MemProcFS , it will make the investigation is easier 
-run in cmd
+                     <h2>What is the username and hostname of the imaged machine?</h2>
+            
+                <p>
+    In this case I will Use MemProcFS , it will make the investigation is easier 
+                 run in cmd
                 <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-                    MemProcFS.exe -device path to /BelkaCTF_7_CASE250722_KTSOAERO.mem -forensic 1
-            </pre>
-                     will appear a new partition in Ur PC
+                    MemProcFS.exe -device path to /BelkaCTF_7_CASE250722_KTSOAERO.mem -forensic 1  </pre>
+      Will appear a new partition in Ur PC
             <img src="/images/Stranger_Dfings/1.png" alt="M partition" width="800">
+                </p>
 
 
                 
-                      For username, just check the users 
-                
-    <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
-        M:\forensic\files\ROOT\Users
-    </code>
+                 <p>              
+    For the username, just check the users
+            <span class="path">M:\forensic\files\ROOT\Users</span>
+                </p>
 
-                For hostname, you can find it in Registry 
-                <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
-                  M:\registry\HKLM\SYSTEM\ControlSet001\Control\ComputerName\ComputerName    </code>
-                
-                                <img src="/images/Stranger_Dfings/2.png" alt="M partition" width="800">
-
-                OR in 
+                             
+                <p>For hostname, you can find it in Registry </p>
+            <span class="path">M:\registry\HKLM\SYSTEM\ControlSet001\Control\ComputerName\ComputerName </span>
+              <img src="/images/Stranger_Dfings/2.png" alt="M partition" width="800">
+                                 
+              <p>
+                 OR in 
                 Environment Variables,You can check any process under user mode processes then navigate to win-environment.txt
                 and grep to ComputerName
                 <img src="/images/Stranger_Dfings/3.png" alt="M partition" width="800">
+              </p>
+
+
+                        <h2>There is something rogue running on this machine. What is the malware executable file name?</h2>
+            <p>
+                If you check the process from pslist or findevil you will see the *epxlorer* It’s so clear 
+                <img src="/images/Stranger_Dfings/4.png" alt="M partition" width="800">
+
             </p>
+
+
+                       <h2>What is the MD5 hash of the malware running on the machine?</h2>
+            <p>
+                you will find the process in Downloads 
+                            <span class="path">M:\forensic\files\ROOT\Users\award\Downloads</span>
+                <img src="/images/Stranger_Dfings/5.png" alt="M partition" width="800">
+                <P> Then calc the md5</P>
+            <img src="/images/Stranger_Dfings/6.png" alt="M partition" width="800">
+        
+            </p>
+
+
+                     <h2>What was the email address of the person spreading the malware?</h2>
+            <p> let’s check the inbox </p>
+            
+                <span> class="path">M:\forensic\files\ROOT\Users\award\AppData\Local\Microsoft\Windows Live Mail\Posteo (ale 254\Inbox</span>
+             
+                  <p> already you will get the mail spreading the malware</p>
+            <img src="/images/Stranger_Dfings/7.png" alt="M partition" width="800">
+            <p> Then get the email sender </p>
+            <img src="/images/Stranger_Dfings/8.png" alt="M partition" width="800">
+
+                       <h2>What is the intruder-hosted Telegram API server used by the malware?</h2>
+            <p> Let’s go with Some reversing 
+        First you need to identify about this process , you can use Detect It Easy</p>
+
+            <img src="/images/Stranger_Dfings/9.png" alt="M partition" width="800">
+            <p> This process written by C# , .NET frame work
+         You can use Tools like dnSpy  (debugger and assembly editor built for .NET files C# ) </p>
+            <img src="/images/Stranger_Dfings/10.png" alt="M partition" width="800">
+            <P> You will notice the origin process is locker.exe then open the form1, and you will get the hosted Telegram API server </P>
+
+                    <h2>What is the Telegram Bot API key hard-coded into the malware executable?</h2>
+         <p>
+            in the same form1 , I found the Telegram  API key and** see the array of numbers apply on it XOR string deobfuscation
+            with XOR key  <strong> (&^%4&^%$*&6 </strong>
+           </p>
+            <img src="/images/Stranger_Dfings/11.png" alt="M partition" width="800">
+            <p>
+                you can generate script to decrypt it in any AI model and you will get the T**elegram Bot API key
+               <strong>8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT9HdJdU</strong>
+                
+            </p>
+
+                              <h2>What is the phone number of the malware operator?</h2>
+                
+            
+
+
+
+        
+                
+            
+
+            
 
             
                 
@@ -109,7 +172,6 @@ run in cmd
 
                 
 
-            <h2>Initial Access</h2>
             <p>
                 Navigating to the web server, we find a login page. After testing for SQL injection, 
                 we discover the following payload works:

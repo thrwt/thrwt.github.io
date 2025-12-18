@@ -207,6 +207,175 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
                   <img src="/images/Stranger_Dfings/14.png" alt="M partition" width="800">
       <p> OMG, already have a Username, just open the telegram and search for user ,you will get the number</p>
 
+
+
+                   <h2>What is the Google account this phone is set up with?</h2>
+            <p> Just go on in this Path , you will find it </p>
+            <span class="path">\data\data\com.google.android.gm\databases\user_accounts</span>
+            
+                        <img src="/images/Stranger_Dfings/15.0.png" alt="M partition" width="800">
+            <p> Or Using ALEAPP Open source forensic analysis tool for Android mobile devices, That’s will Help us in mission</p>
+                                    <img src="/images/Stranger_Dfings/15.png" alt="M partition" width="800">
+
+
+
+
+
+
+                                       <h2> Where does the phone owner work and what’s his position?</h2>
+
+          <p> I think most of this Questions Solved by check usual places. like Gmail, WhatsApp and Browser artifacts  </p>
+
+<P> -lets check gmail </p>
+
+                        <span class="path">\data\data\[com.google.android.gm](http://com.google.android.gm/)\databases\EmailProvider.db</span>
+            <p>open it in DB Browser (SQLite)</p>
+                                      <img src="/images/Stranger_Dfings/16.png" alt="M partition" width="800">
+            <p>OR</p>
+                         
+            <span class="path">\data\data\com.google.android.gm\files\body\0\9</span>
+            <img src="/images/Stranger_Dfings/17.png" alt="M partition" width="800">
+
+
+            
+
+            <h2>What are the last 4 digits of the suspect’s bank card, and the contact phone number of his bank?</h2>
+            
+            <p>After Some digging , I found this receipt in mail files</p>
+            <span class="path">\data\data\com.google.android.gm\files\downloads\f41908c5a393c34716efca9d14a6bb31\attachments\d_0_0_48a5ba16_06f62849_a1b53c5a_9ad8ef0f_ba2faf66\b1b4700f-188f-4932-a919-5f9a1228a4ad.pdf</span>
+            <img src="/images/Stranger_Dfings/18.png" alt="M partition" width="800">
+
+            <p>We got the last 4 digits , let’s find contact phone of this bank,I’ve checked the Contact, WhatsApp, mail and Spotify App, but didn’t find anything</p>
+
+            <p>When checked chrome browser history</p> 
+<span class="path">\data\data\com.android.chrome\app_chrome\Default\History</span>
+            <img src="/images/Stranger_Dfings/19.png" alt="M partition" width="800">
+            <p>We found the URL of this bank , just open the URL and go to contact info </p>
+            <img src="/images/Stranger_Dfings/20.png" alt="M partition" width="800">
+            
+
+
+
+
+            
+            <h2>Which dependency-causing substance is mentioned in the chat logs on the phone?</h2>
+            
+            <p>let’s go to the WhatsApp chat logs and you got the, substance It’s Caffeine , leave the Writeup and go to drink this drug</p>
+            <img src="/images/Stranger_Dfings/21.png" alt="M partition" width="800">
+
+
+
+
+
+
+
+            
+            <h2>Where the two missing people—an activist and a teenager—can be retrieved?</h2>
+            
+            <p>After Some search , didn’t found anything, but when read the story , I noticed that</p>
+            <img src="/images/Stranger_Dfings/22.png" alt="M partition" width="800">
+            
+            <p>So , lets check chat’s again </p>
+
+<P>already found the chats, a lot of coordinates, and try a lot to understand the scenario but didn’t found any trace about of two missing people
+    <P>I have a skill issues or Something is wrong</p>
+
+            
+
+            
+            <h2>What is the password of the suspect’s home Wi-Fi network?</h2>
+    
+            <P> Reminder geeks, Still in android challenge, you will find the password of this Network In </P>
+            <span class="path">\data\misc\apexdata\com.android.wifi\WifiConfigStore.xml</span>
+            <img src="/images/Stranger_Dfings/23.png" alt="M partition" width="800">
+
+            <P>OR Open ALEAPP and check the Wi-Fi Profile</P>
+             <img src="/images/Stranger_Dfings/24.png" alt="M partition" width="800">
+            
+
+            
+
+
+            
+            <h2>What does the suspect call himself since recently? Decrypt the traffic.</h2>
+                <p>to decrypt the traffic you need the password or key of this traffic</p>
+                 <p> we got it in previous Q `G0P1n3APL!` </p>
+                 <p>demo to Decrypt the traffic</p>
+
+              <a href=https://www.wireshark.org/docs/wsug_html_chunked/Ch80211Keys.html" target="_blank">
+            WLAN Decryption Keys
+        </a>
+            <p>After that you need the Expert the file in WireShark </p>
+             <img src="/images/Stranger_Dfings/25.png" alt="M partition" width="800">
+            <p>Then , you will find some pictures and found the suspect call himself</p>
+             <img src="/images/Stranger_Dfings/26.png" alt="M partition" width="800">
+            
+            
+
+
+
+
+
+            
+            <h2>Figure out the moment when the suspect’s body started acting weird as precisely as you can?</h2>
+            
+            <p>let’s check any health app in our image, get xiaomi.hm.health in  </p>
+
+             <span class="path"> \data\data\com.xiaomi.hm.health\databases</span>
+<p>and there are a lot of databases, but find the <storng>origin_db_ef2042f8ec65801481fb688859d4e279</storng></p>
+<p>we found the table named Heart_rate let’s check it </p>
+            <p>let’s know what is the normal range</p>
+            
+                <img src="/images/Stranger_Dfings/27.png" alt="M partition" width="800">
+            <p>we found the very low heart rate , this is indictor of Start acting weird </p>
+                            <img src="/images/Stranger_Dfings/28.png" alt="M partition" width="800">
+            <p>The time in Unix epoch format Convert it using [epochconverter]</p>
+                                <img src="/images/Stranger_Dfings/28.1.png" alt="M partition" width="800">
+        
+
+
+
+            <h2>What is the car the jour… alien drives?</h2>
+<p>After Some digging in the usual places in image , didn’t find anything </p> 
+<p> let’s check the folders and try to find any traces </p>
+<P> -when open database of this folder</P>
+            <span class="path">\data\data\com.google.android.projection.gearhead</span>
+<p>OMG, let’s check that </p>
+               <img src="/images/Stranger_Dfings/29.png" alt="M partition" width="800">
+            <p>broo, we got it</p>
+                                            <img src="/images/Stranger_Dfings/30.png" alt="M partition" width="800">
+
+
+            
+
+
+
+
+            
+            <h2>Mine the ATC software logs for serial numbers of the radars that spotted a UFO flying by.?</h2>
+
+ <p>let’s go back in memory dump and using MemProcFS</p>
+ <p>and going to the ATC software (Air Traffic Control) </p>
+ <p>then program data of this application to see the logs </p>
+
+            <span class="path">M:\forensic\files\ROOT\Users\award\AppData\Local\Programs\ATC_RADAR\resources\app\radar_data.db</span>
+<p>already found the UFO (Unidentified Flying Object) with call sign UFO137</p>
+               <img src="/images/Stranger_Dfings/31.png" alt="M partition" width="800">
+            <p>you will get the serial in the radar serial table , but i faced the problem when submit the serial</p>
+            <img src="/images/Stranger_Dfings/32.png" alt="M partition" width="800">
+            
+        <p>  Back to the official writeup the, just submit all expect the last one, When check the files find this radar station in `renderer.js` </p>  
+<p> That’s  like a group of radar stations with different Geo  </p>  
+            <img src="/images/Stranger_Dfings/33.png" alt="M partition" width="800">
+            <p><strong>I think the last one didn’t send the sign to the UFO137 call sign , but tbh didn’t find any trace to prove that , good lock geeks.</strong></p>
+
+            
+          
+            
+
+            
+
+
       
 
 

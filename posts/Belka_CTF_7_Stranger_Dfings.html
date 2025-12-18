@@ -57,15 +57,26 @@
 
             <!-- المحتوى -->
             <h2>Overview</h2>
-            <p>
-                This writeup covers the exploitation of the Example machine on HackTheBox. 
-                The machine involves web application vulnerabilities, privilege escalation, and more.
+            <p> 
+  Hi Geeks
+Here is my writeup for Stranger Dfings, The forensics challenges in this walkthrough are awesome, and I learned a lot from them.
+I know the official writeup has already been published, but there are some steps that were skipped or not clearly explained.
+So, I decided to share my own writeup for it.
+I hope you enjoy it.
             </p>
 
-            <h2>Enumeration</h2>
+            <h2>What is the username and hostname of the imaged machine?</h2>
             <p>
-                First, we start with an Nmap scan to identify open ports and services:
+                
+In this case I will Use MemProcFS , it will make the investigation is easier 
+run in cmd
+
+`MemProcFS.exe -device path to /BelkaCTF_7_CASE250722_KTSOAERO.mem -forensic 1`
+will appear a new partition in Ur PC
             </p>
+            <img src="/images/Stranger_Dfings/1.png" alt="M partition" width="800">
+
+    
             <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
 nmap -sC -sV -oN nmap.txt 10.10.10.123
             </pre>

@@ -187,75 +187,15 @@ So, I decided to share my own writeup for it. </strong>
       <p> open the blog then go to the Available Methods , you will get the method Name getChat , that’s return username </p>
 
                   <img src="/images/Stranger_Dfings/13.png" alt="M partition" width="800">
-         <p> 
-             Use curl to make requests and get the data
+         <p> Use curl to make requests and get the data </p>
       <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
 curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT9HdJdU/getChat?chat_id=7474460026  </code>
-          </p>
+         
                   <img src="/images/Stranger_Dfings/14.png" alt="M partition" width="800">
       <p> OMG, already have a Username, just open the telegram and search for user ,you will get the number</p>
 
-
-
-
       
 
-
-      
-    
-    
-                
-            
-
-
-
-        
-                
-            
-
-            
-
-            
-                
-                
-
-                
-                
-
-
-
-
-
-                
-
-            <p>
-                Navigating to the web server, we find a login page. After testing for SQL injection, 
-                we discover the following payload works:
-            </p>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-' OR 1=1 -- -
-            </pre>
-
-            <h2>Privilege Escalation</h2>
-            <p>
-                After gaining initial access, we need to escalate privileges. 
-                Checking for SUID binaries:
-            </p>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-find / -perm -u=s -type f 2>/dev/null
-            </pre>
-
-            <h2>Flags</h2>
-            <ul>
-                <li><strong>User Flag:</strong> <code>a1b2c3d4e5f6g7h8i9j0</code></li>
-                <li><strong>Root Flag:</strong> <code>z9y8x7w6v5u4t3s2r1q0</code></li>
-            </ul>
-
-            <h2>Conclusion</h2>
-            <p>
-                This machine was a great practice for web exploitation and basic privilege escalation techniques. 
-                Key takeaways include checking for SQL injection vulnerabilities and always enumerating SUID binaries.
-            </p>
 
             <!-- Back Button -->
             <div style="margin-top: 40px;">

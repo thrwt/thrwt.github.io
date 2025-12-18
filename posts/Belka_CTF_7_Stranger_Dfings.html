@@ -73,17 +73,41 @@ run in cmd
                 <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
                     MemProcFS.exe -device path to /BelkaCTF_7_CASE250722_KTSOAERO.mem -forensic 1
             </pre>
-will appear a new partition in Ur PC
-            
+                     will appear a new partition in Ur PC
             <img src="/images/Stranger_Dfings/1.png" alt="M partition" width="800">
 
 
                 
-    For username, just check the users
+                      For username, just check the users 
+                
     <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
         M:\forensic\files\ROOT\Users
     </code>
 
+                For hostname, you can find it in Registry 
+                <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
+                  M:\registry\HKLM\SYSTEM\ControlSet001\Control\ComputerName\ComputerName    </code>
+                
+                                <img src="/images/Stranger_Dfings/2.png" alt="M partition" width="800">
+
+                OR in 
+                Environment Variables,You can check any process under user mode processes then navigate to win-environment.txt
+                and grep to ComputerName
+                <img src="/images/Stranger_Dfings/3.png" alt="M partition" width="800">
+            </p>
+
+            
+                
+                
+
+                
+                
+
+
+
+
+
+                
 
             <h2>Initial Access</h2>
             <p>

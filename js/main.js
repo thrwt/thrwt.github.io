@@ -5,10 +5,12 @@
  - Dark mode toggle (localStorage)
  - Mobile nav toggle
  - Small fade-in animation
+ - Reading time calculator
+ - Auto stats counter (Writeups & Notes)
 */
 
 // --------- Config ----------
-const PROFILE_JSON = '/data/Image .jpg'; // profile info (sidebar)
+const PROFILE_JSON = '/data/profile.json'; // profile info (sidebar)
 const POSTS_JSON   = '/data/posts.json';   // array of posts metadata
 const POSTS_CONTAINER_SELECTOR = '.content'; // where posts will be injected (adjust if needed)
 const SIDEBAR_SELECTOR = '.sidebar';        // sidebar container selector
@@ -30,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
   loadProfile();
   loadPosts();
   setupSearch();
+  
+  // الإضافات الجديدة
+  calculateReadingTime();
+  updateStats();
+  activateCurrentNavLink();
+  setupSmoothScroll();
 });
 
 // --------- Dark mode ----------
@@ -141,7 +149,7 @@ function renderPosts(posts){
     const title = create('h2', {}, p.title);
     metaWrap.appendChild(title);
 
-    const metaLine = create('div', { class: 'meta' }, `${p.date || ''} • ${ (p.read_time || '')}`);
+    const metaLine = create('div', { class: 'meta' }, `${p.date || ''} • ${(p.read_time || '')}`);
     metaWrap.appendChild(metaLine);
 
     const ex = create('p', { class: 'excerpt' }, p.excerpt || '');
@@ -181,4 +189,138 @@ function setupSearch(){
     });
     renderPosts(results);
   });
+}
+
+// ==========================================
+// الإضافات الجديدة
+// ==========================================
+
+// --------- حساب وقت القراءة تلقائياً ----------
+function calculateReadingTime() {
+    // جيب كل عناصر وقت القراءة
+    const readingTimeElements = document.querySelectorAll('.reading-time');
+    
+    readingTimeElements.forEach(element => {
+        // جيب الـ post أو content اللي فيه العنصر ده
+        const container = element.closest('.post') || element.closest('.content');
+        
+        if (!container) return;
+        
+        // جيب كل النص
+        const text = container.innerText || container.textContent;
+        
+        // احسب عدد الكلمات
+        const wordCount = text.trim().split(/\s+/).length;
+        
+        // متوسط سرعة القراءة: 200 كلمة في الدقيقة
+        const wordsPerMinute = 200;
+        const readingTime = Math.ceil(wordCount / wordsPerMinute);
+        
+        // حط الوقت في العنصر
+        element.textContent = `${readingTime} min read`;
+    });
+}
+
+// --------- حساب عدد الـ Writeups والـ Notes تلقائياً ----------
+
+// دالة لعد البوستات في صفحة معينة
+async function countPosts(urls) {
+    let totalCount = 0;
+    
+    for (const url of urls) {
+        try {
+            const response = await fetch(url);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // عد الـ post-card elements
+            const posts = doc.querySelectorAll('.post-card');
+            totalCount += posts.length;
+        } catch (error) {
+            console.log(`Could not load ${url}`);
+        }
+    }
+    
+    return totalCount;
+}
+
+// دالة لتحديث الأرقام في الصفحة
+async function updateStats() {
+    // عد الـ Writeups من كل صفحات index
+    const writeupPages = [
+        'index.html',
+        'index2.html', 
+        'index3.html'
+    ];
+    
+    const writeupCount = await countPosts(writeupPages);
+    
+    // عد الـ Notes من صفحات Notes
+    const notePages = [
+        'Notes.html',
+        'notes2.html'
+    ];
+    
+    const noteCount = await countPosts(notePages);
+    
+    // حدّث الأرقام في الصفحة
+    
+    // في صفحة About
+    const writeupStatElements = document.querySelectorAll('[data-stat="writeups"]');
+    writeupStatElements.forEach(el => {
+        el.textContent = writeupCount;
+    });
+    
+    const noteStatElements = document.querySelectorAll('[data-stat="notes"]');
+    noteStatElements.forEach(el => {
+        el.textContent = noteCount;
+    });
+    
+    // في Categories sidebar
+    const writeupCategoryCount = document.querySelectorAll('[data-category="writeups"]');
+    writeupCategoryCount.forEach(el => {
+        el.textContent = writeupCount;
+    });
+    
+    const noteCategoryCount = document.querySelectorAll('[data-category="notes"]');
+    noteCategoryCount.forEach(el => {
+        el.textContent = noteCount;
+    });
+}
+
+// --------- تفعيل الـ active state للـ navbar ----------
+function activateCurrentNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.navbar a');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage) {
+            link.style.color = '#4da3ff';
+            link.style.fontWeight = '600';
+        }
+    });
+}
+
+// --------- Smooth scroll للينكات الداخلية ----------
+function setupSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 }

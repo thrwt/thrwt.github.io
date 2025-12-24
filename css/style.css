@@ -125,30 +125,33 @@ body {
 }
 
 .post h1 {
-  font-size: 32px;
+  font-size: 28px;  /* صغرت من 32px */
   line-height: 1.4;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #d8e2f0;
 }
 
 .post h2 {
-  font-size: 26px;
+  font-size: 24px;  /* صغرت من 26px */
   color: #8ab4f8;
-  margin-top: 30px;
-  margin-bottom: 15px;
+  margin-top: 35px;
+  margin-bottom: 18px;
+  line-height: 1.3;
 }
 
 .post h3 {
-  font-size: 22px;
+  font-size: 20px;  /* صغرت من 22px */
   color: #9fb3c8;
-  margin-top: 25px;
-  margin-bottom: 12px;
+  margin-top: 28px;
+  margin-bottom: 14px;
+  line-height: 1.3;
 }
 
 .post p {
-  font-size: 18px;
+  font-size: 17px;  /* صغرت من 18px */
   color: #b4c2d6;
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .post ul, .post ol {
@@ -156,19 +159,21 @@ body {
   line-height: 1.8;
   color: #d8e2f0;
   margin-bottom: 20px;
+  padding-right: 25px;
 }
 
 .post li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .post code {
   background: #1a1a1a;
-  padding: 3px 8px;
-  border-radius: 4px;
+  padding: 4px 10px;
+  border-radius: 5px;
   font-size: 16px;
   color: #8ab4f8;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', Monaco, monospace;
+  border: 1px solid #1f2a37;
 }
 
 .post pre {
@@ -177,16 +182,18 @@ body {
   border-radius: 8px;
   overflow-x: auto;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #00ff00;
   border: 1px solid #1f2a37;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .post pre code {
   background: transparent;
   padding: 0;
   color: inherit;
+  border: none;
+  font-size: 15px;
 }
 
 /* استايل البوستس */

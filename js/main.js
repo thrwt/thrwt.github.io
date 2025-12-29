@@ -130,8 +130,8 @@ async function updateStats() {
     const writeupCount = await countPosts(writeupPages);
     
     const notePages = [
-        'Notes.html',
-        'notes2.html'
+        'Notes.html'
+   
     ];
     
     const noteCount = await countPosts(notePages);

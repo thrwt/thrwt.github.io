@@ -100,7 +100,7 @@ So, I decided to share my own writeup for it. </strong>
                         <h2>There is something rogue running on this machine. What is the malware executable file name?</h2>
             <p>
                 If you check the process from pslist or findevil you will see the *epxlorer* It’s so clear 
-                <img src="/images/Stranger_Dfings/4.png" alt="M partition" width="800">
+                <img src="/images/Stranger_Dfings/4.png" alt="M" width="800">
 
             </p>
 
@@ -110,9 +110,9 @@ So, I decided to share my own writeup for it. </strong>
             <p> You will find the process in Downloads </p>
             
                             <span class="path">M:\forensic\files\ROOT\Users\award\Downloads</span>
-                <img src="/images/Stranger_Dfings/5.png" alt="M partition" width="800">
+                <img src="/images/Stranger_Dfings/5.png" alt="M " width="800">
                 <P> Then calc the md5</P>
-            <img src="/images/Stranger_Dfings/6.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/6.png" alt="M " width="800">
         
             </p>
 
@@ -194,17 +194,17 @@ So, I decided to share my own writeup for it. </strong>
 </ul>   
       <P> But , just focus in official telegram blog </P>
 
-                  <img src="/images/Stranger_Dfings/12.png" alt="M partition" width="800">
+                  <img src="/images/Stranger_Dfings/12.png" alt="M " width="800">
       <p> let’s construct URl, but i need method to return a data about Malware Operator </p>
       <p> let’s find this method </p> 
       <p> open the blog then go to the Available Methods , you will get the method Name getChat , that’s return username </p>
 
-                  <img src="/images/Stranger_Dfings/13.png" alt="M partition" width="800">
+                  <img src="/images/Stranger_Dfings/13.png" alt="M " width="800">
          <p> Use curl to make requests and get the data </p>
       <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
 curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT9HdJdU/getChat?chat_id=7474460026  </code>
          
-                  <img src="/images/Stranger_Dfings/14.png" alt="M partition" width="800">
+                  <img src="/images/Stranger_Dfings/14.png" alt="M " width="800">
       <p> OMG, already have a Username, just open the telegram and search for user ,you will get the number</p>
 
 
@@ -213,7 +213,7 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
             <p> Just go on in this Path , you will find it </p>
             <span class="path">\data\data\com.google.android.gm\databases\user_accounts</span>
             
-                        <img src="/images/Stranger_Dfings/15.0.png" alt="M partition" width="800">
+                        <img src="/images/Stranger_Dfings/15.0.png" alt="M" width="800">
             <p> Or Using ALEAPP Open source forensic analysis tool for Android mobile devices, That’s will Help us in mission</p>
                                     <img src="/images/Stranger_Dfings/15.png" alt="M partition" width="800">
 
@@ -230,7 +230,7 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
 
                         <span class="path">\data\data\[com.google.android.gm](http://com.google.android.gm/)\databases\EmailProvider.db</span>
             <p>open it in DB Browser (SQLite)</p>
-                                      <img src="/images/Stranger_Dfings/16.png" alt="M partition" width="800">
+                                      <img src="/images/Stranger_Dfings/16.png" alt="M " width="800">
             <p>OR</p>
                          
             <span class="path">\data\data\com.google.android.gm\files\body\0\9</span>
@@ -244,15 +244,15 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
             <p>After Some digging , I found this receipt in mail files</p>
             <p> 
             <span class="path">\data\data\com.google.android.gm\files\downloads\f41908c5a393c34716efca9d14a6bb31\attachments\b1b4700f-188f-4932-a919-5f9a1228a4ad.pdf</span> </p>
-            <img src="/images/Stranger_Dfings/18.png" alt="M partition" width="600">
+            <img src="/images/Stranger_Dfings/18.png" alt="M " width="600">
 
             <p>We got the last 4 digits , let’s find contact phone of this bank,I’ve checked the Contact, WhatsApp, mail and Spotify App, but didn’t find anything</p>
 
             <p>When checked chrome browser history</p> 
 <span class="path">\data\data\com.android.chrome\app_chrome\Default\History</span>
-            <img src="/images/Stranger_Dfings/19.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/19.png" alt="M" width="800">
             <p>We found the URL of this bank , just open the URL and go to contact info </p>
-            <img src="/images/Stranger_Dfings/20.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/20.png" alt="M" width="800">
             
 
 
@@ -262,7 +262,7 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
             <h2>Which dependency-causing substance is mentioned in the chat logs on the phone?</h2>
             
             <p>let’s go to the WhatsApp chat logs and you got the, substance It’s Caffeine , leave the Writeup and go to drink this drug</p>
-            <img src="/images/Stranger_Dfings/21.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/21.png" alt="M" width="800">
 
 
 
@@ -274,7 +274,7 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
             <h2>Where the two missing people—an activist and a teenager—can be retrieved?</h2>
             
             <p>After Some search , didn’t found anything, but when read the story , I noticed that</p>
-            <img src="/images/Stranger_Dfings/22.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/22.png" alt="M " width="800">
             
             <p>So , lets check chat’s again </p>
 
@@ -288,10 +288,10 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
     
             <P> Reminder geeks, Still in android challenge, you will find the password of this Network In </P>
             <span class="path">\data\misc\apexdata\com.android.wifi\WifiConfigStore.xml</span>
-            <img src="/images/Stranger_Dfings/23.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/23.png" alt="M " width="800">
 
             <P>OR Open ALEAPP and check the Wi-Fi Profile</P>
-             <img src="/images/Stranger_Dfings/24.png" alt="M partition" width="800">
+             <img src="/images/Stranger_Dfings/24.png" alt="M " width="800">
             
 
             
@@ -307,9 +307,9 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
             WLAN Decryption Keys
         </a>
             <p>After that you need the Expert the file in WireShark </p>
-             <img src="/images/Stranger_Dfings/25.png" alt="M partition" width="800">
+             <img src="/images/Stranger_Dfings/25.png" alt="M " width="800">
             <p>Then , you will find some pictures and found the suspect call himself</p>
-             <img src="/images/Stranger_Dfings/26.png" alt="M partition" width="800">
+             <img src="/images/Stranger_Dfings/26.png" alt="M " width="800">
             
             
 
@@ -327,11 +327,11 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
 <p>we found the table named Heart_rate let’s check it </p>
             <p>let’s know what is the normal range</p>
             
-                <img src="/images/Stranger_Dfings/27.png" alt="M partition" width="800">
+                <img src="/images/Stranger_Dfings/27.png" alt="M " width="800">
             <p>we found the very low heart rate , this is indictor of Start acting weird </p>
-                            <img src="/images/Stranger_Dfings/28.png" alt="M partition" width="800">
+                            <img src="/images/Stranger_Dfings/28.png" alt="M " width="800">
             <p>The time in Unix epoch format Convert it using [epochconverter]</p>
-                                <img src="/images/Stranger_Dfings/28.1.png" alt="M partition" width="800">
+                                <img src="/images/Stranger_Dfings/28.1.png" alt="M " width="800">
         
 
 
@@ -342,9 +342,9 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
 <P> -when open database of this folder</P>
             <span class="path">\data\data\com.google.android.projection.gearhead</span>
 <p>OMG, let’s check that </p>
-               <img src="/images/Stranger_Dfings/29.png" alt="M partition" width="800">
+               <img src="/images/Stranger_Dfings/29.png" alt="M " width="800">
             <p>broo, we got it</p>
-                                            <img src="/images/Stranger_Dfings/30.png" alt="M partition" width="800">
+                                            <img src="/images/Stranger_Dfings/30.png" alt="M " width="800">
 
 
             
@@ -361,13 +361,13 @@ curl https://api-telegram-org.ctf.do/bot8169267144:AAFwkhmXh71SMVcvFLantjTlwlRbT
 
             <span class="path">M:\forensic\files\ROOT\Users\award\AppData\Local\Programs\ATC_RADAR\resources\app\radar_data.db</span>
 <p>already found the UFO (Unidentified Flying Object) with call sign UFO137</p>
-               <img src="/images/Stranger_Dfings/31.png" alt="M partition" width="800">
+               <img src="/images/Stranger_Dfings/31.png" alt="M " width="800">
             <p>you will get the serial in the radar serial table , but i faced the problem when submit the serial</p>
-            <img src="/images/Stranger_Dfings/32.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/32.png" alt="M " width="800">
             
         <p>  Back to the official writeup the, just submit all expect the last one, When check the files find this radar station in `renderer.js` </p>  
 <p> That’s  like a group of radar stations with different Geo  </p>  
-            <img src="/images/Stranger_Dfings/33.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/33.png" alt="M " width="800">
             <p><strong>I think the last one didn’t send the sign to the UFO137 call sign , but tbh didn’t find any trace to prove that</strong></p>
 
             <h2>Pull the full UFO label reported by the radars, as it was shown on the ATC software display
@@ -377,7 +377,7 @@ Format: UFO137-XXXX-XXXX-X</h2>
             <p> This Q is so tricky,focous in description</p>
             
                 <p>In the Description. tell a screenshot left it hanging unsaved in Paint</p>
-            <img src="/images/Stranger_Dfings/34.png" alt="M partition" width="800">
+            <img src="/images/Stranger_Dfings/34.png" alt="M " width="800">
          <p> let's do some search in google, will notice if you open a file in paint or any app,
              the file is uploaded to your RAM memory and all changes are made to the copy in RAM.</p>   
         but
@@ -386,16 +386,16 @@ Format: UFO137-XXXX-XXXX-X</h2>
             
            <p> so let's check paint in memory dump .<p/
             <p> I will use vol2 to dump the process, the process name mspaint.exe </p>
-                        <img src="/images/Stranger_Dfings/36.png" alt="M partition" width="800">
+                        <img src="/images/Stranger_Dfings/36.png" alt="M " width="800">
   
         <p> you will get the dump of this process 8508.dmp </p>
-                        <img src="/images/Stranger_Dfings/37.png" alt="M partition" width="800">
+                        <img src="/images/Stranger_Dfings/37.png" alt="M " width="800">
 
 
             <p>to the retraive the data in this process dump , you need to carve it , you can use the foremost to carve it </p>
             
-        <p>  will appear some folders, just lock into ,you will find the UFO label reported by the radars </p>
-                        <img src="/images/Stranger_Dfings/35.png" alt="M partition" width="800">
+        <p>  will appear some folders, just lock into ,you will get the UFO label reported by the radars </p>
+                        <img src="/images/Stranger_Dfings/35.png" alt="M " width="800">
         </P>
             <P>I think the last 3 questions need a reel investigator XD ,I have skill issues 😂 </P>
 

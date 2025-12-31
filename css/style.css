@@ -422,141 +422,63 @@ body {
     transform: translateX(-5px);
 }
 
-/* Responsive - Mobile Only */
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
+/* Responsive */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
   }
   
-  .navbar {
-    padding: 12px 15px;
+  .sidebar,
+  .right-sidebar {
+    width: 100%;
+  }
+  
+  .post-thumb {
+    width: 150px;
+    height: 120px;
+  }
+  
+  .post-info h2 {
+    font-size: 22px;
+  }
+  
+  .post-info p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
   }
   
   .navbar .logo a {
     font-size: 24px;
   }
   
-  .navbar a {
-    font-size: 15px;
-    margin-left: 15px;
+  .post h1 {
+    font-size: 28px;
   }
   
-  .container {
-    flex-direction: column;
-    padding: 15px;
-    gap: 20px;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 100%;
-    text-align: center;
-    padding: 20px 15px;
-  }
-  
-  .sidebar img {
-    width: 120px !important;
-    height: 120px !important;
-    border-radius: 12px !important;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-  
-  .sidebar h2 {
-    font-size: 20px;
-    margin: 12px 0 8px 0;
-  }
-  
-  .sidebar p {
-    font-size: 14px;
-    margin: 8px 0;
-    color: #9fb3c8;
-  }
-  
-  .icons {
-    justify-content: center;
-    margin-top: 15px;
-  }
-  
-  .icons a {
-    font-size: 20px;
-  }
-  
-  /* البوستات - صورة فوق */
-  .posts-grid {
-    width: 100%;
+  .post h2 {
+    font-size: 22px;
   }
   
   .post-card {
-    flex-direction: column !important;
-    padding: 0;
-    overflow: hidden;
+    flex-direction: column;
   }
   
   .post-card a {
-    flex-direction: column !important;
-    gap: 0;
+    flex-direction: column;
   }
   
   .post-thumb {
-    width: 100% !important;
-    height: 180px !important;
-    border-radius: 0 !important;
+    width: 100%;
+    height: 200px;
     order: 1;
-    margin: 0 !important;
   }
   
   .post-info {
     order: 2;
-    padding: 15px;
-  }
-  
-  .post-info h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  
-  .post-info p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  
-  .post-meta {
-    gap: 12px;
-    font-size: 13px;
-    margin-top: 10px;
-  }
-  
-  /* Categories */
-  .right-sidebar {
-    width: 100%;
-  }
-  
-  .categories-box {
-    padding: 18px;
-  }
-  
-  .category-item {
-    padding: 14px;
-  }
-  
-  .category-text h4 {
-    font-size: 17px;
-  }
-  
-  .category-text p {
-    font-size: 13px;
-  }
-  
-  /* Pagination */
-  .pagination {
-    gap: 8px;
-  }
-  
-  .pagination a,
-  .pagination span {
-    padding: 10px 14px;
-    font-size: 14px;
   }
 }

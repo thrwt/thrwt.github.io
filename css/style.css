@@ -422,157 +422,129 @@ body {
     transform: translateX(-5px);
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .container {
-    flex-direction: column;
-  }
-  
-  .sidebar,
-  .right-sidebar {
-    width: 100%;
-  }
-  
-  .post-thumb {
-    width: 150px;
-    height: 120px;
-  }
-  
-  .post-info h2 {
-    font-size: 22px;
-  }
-  
-  .post-info p {
-    font-size: 16px;
-  }
-}
-
+/* Responsive - Mobile Only */
 @media (max-width: 768px) {
   body {
-    font-size: 16px;
-  }
-  
-  .navbar {
-    padding: 12px 15px;
-    flex-wrap: wrap;
-  }
-  
-  .navbar .logo a {
-    font-size: 24px;
-  }
-  
-  .navbar a {
-    font-size: 16px;
-    margin-left: 15px;
-  }
-  
-  .container {
-    padding: 15px;
-    gap: 20px;
-  }
-  
-  .sidebar {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .sidebar img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  .post h1 {
-    font-size: 24px;
-  }
-  
-  .post h2 {
-    font-size: 20px;
-  }
-  
-  .post-card {
-    flex-direction: column;
-    padding: 15px;
-  }
-  
-  .post-card a {
-    flex-direction: column;
-  }
-  
-  .post-thumb {
-    width: 100%;
-    height: 200px;
-    order: 1;
-    margin: 0 0 15px 0;
-  }
-  
-  .post-info {
-    order: 2;
-    width: 100%;
-  }
-  
-  .post-info h2 {
-    font-size: 20px;
-  }
-  
-  .post-info p {
     font-size: 15px;
   }
   
-  .post-meta {
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 14px;
+  .navbar {
+    padding: 10px 15px;
   }
   
-  .pagination {
-    gap: 5px;
-  }
-  
-  .pagination a,
-  .pagination span {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
   .navbar .logo a {
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 1px;
   }
   
   .navbar a {
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 12px;
+  }
+  
+  .container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+  
+  /* Sidebar مدمج في النص */
+  .sidebar {
+    width: 100%;
+    text-align: center;
+    padding: 20px 15px;
   }
   
   .sidebar img {
-    width: 120px;
-    height: 120px;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 3px solid #8ab4f8;
   }
   
   .sidebar h2 {
     font-size: 20px;
+    margin: 10px 0 5px 0;
   }
   
   .sidebar p {
     font-size: 13px;
+    margin: 5px 0;
+    color: #9fb3c8;
   }
   
-  .post-info h2 {
-    font-size: 18px;
+  .icons {
+    justify-content: center;
+    margin-top: 12px;
   }
   
-  .post-info p {
-    font-size: 14px;
+  .icons a {
+    font-size: 20px;
+  }
+  
+  /* البوستات - صورة صغيرة على اليمين */
+  .posts-grid {
+    width: 100%;
+  }
+  
+  .post-card {
+    flex-direction: row !important;
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .post-card a {
+    flex-direction: row !important;
+    gap: 12px;
   }
   
   .post-thumb {
-    height: 180px;
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 8px;
+    order: 2;
+    margin: 0 !important;
+  }
+  
+  .post-info {
+    flex: 1;
+    order: 1;
+  }
+  
+  .post-info h2 {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  
+  .post-info p {
+    font-size: 13px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .post-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  
+  /* Categories */
+  .right-sidebar {
+    width: 100%;
+  }
+  
+  .categories-box {
+    padding: 15px;
+  }
+  
+  .category-item {
+    padding: 12px;
   }
   
   .category-text h4 {
@@ -581,5 +553,12 @@ body {
   
   .category-text p {
     font-size: 12px;
+  }
+  
+  /* Pagination */
+  .pagination a,
+  .pagination span {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 }

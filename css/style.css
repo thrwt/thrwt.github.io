@@ -733,7 +733,7 @@ body {
   }
 }
 
-
+/* ===== FIX CROPPED */
 @media (max-width: 768px) {
   .container {
     width: 100%;
@@ -745,6 +745,26 @@ body {
   .sidebar,
   .right-sidebar {
     max-width: 100%;
+  }
+}
+
+/* ===== FIX CROPPED IMAGES IN WRITEUPS (MOBILE ONLY) ===== */
+@media (max-width: 768px) {
+
+  .post img,
+  .content img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    display: block;
+  }
+
+  /* لو الصورة جوه div عليه overflow */
+  .post,
+  .post-card,
+  .content {
+    overflow: visible;
   }
 }
 

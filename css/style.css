@@ -732,3 +732,19 @@ body {
     border-radius: 12px;
   }
 }
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sidebar,
+  .right-sidebar {
+    max-width: 100%;
+  }
+}
+

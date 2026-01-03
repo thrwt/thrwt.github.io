@@ -483,39 +483,3 @@ body {
   }
 }
 
-/* ===== MOBILE FIX ONLY (NO DESKTOP CHANGES) ===== */
-@media (max-width: 768px) {
-
-  /* خلي صورة البروفايل معقولة */
-  .sidebar img {
-    max-height: 220px;
-    object-fit: cover;
-  }
-
-  /* وسّع كارت البوست وخليه مريح */
-  .post-card {
-    padding: 0;
-  }
-
-  .post-card a {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  /* صغر الصورة اللي جوه البوست */
-  .post-thumb {
-    width: 100%;
-    height: 160px;
-    border-radius: 10px;
-  }
-
-  /* خلي النص أكبر وواضح */
-  .post-info h2 {
-    font-size: 22px;
-  }
-
-  .post-info p {
-    font-size: 16px;
-  }
-}
-

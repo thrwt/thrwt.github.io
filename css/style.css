@@ -768,3 +768,29 @@ body {
   }
 }
 
+/* ===== TEXT OVERFLOW FIX (MOBILE SAFE) ===== */
+@media (max-width: 768px) {
+
+  body,
+  .post,
+  .content {
+    overflow-x: hidden;
+  }
+
+  p, li, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  code {
+    word-break: break-all;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+

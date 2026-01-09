@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=0.5">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
     <title>About - thrwt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -13,6 +12,8 @@
             color: #e1e8f0;
             overflow-x: hidden;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
 
         /* Video Background */
         .animated-bg {
@@ -36,14 +37,7 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             filter: brightness(0.4) contrast(1.2) saturate(1.3);
-            will-change: filter;
-        }
-
-        /* Lighter animation on mobile */
-        @media (min-width: 769px) {
-            #bgVideo {
-                animation: videoGlow 4s ease-in-out infinite;
-            }
+            animation: videoGlow 4s ease-in-out infinite;
         }
 
         @keyframes videoGlow {
@@ -88,7 +82,6 @@
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(138, 180, 248, 0.8);
             animation: particleDrift linear infinite;
-            will-change: transform, opacity;
         }
 
         @keyframes particleDrift {
@@ -119,13 +112,6 @@
             z-index: 1;
             pointer-events: none;
             opacity: 0.15;
-        }
-
-        @media (max-width: 768px) {
-            .kurapika-container {
-                width: 250px;
-                height: 350px;
-            }
         }
 
         .kurapika-silhouette {
@@ -271,48 +257,63 @@
         }
 
         /* Navbar */
-        .navbar {
-            position: relative;
-            z-index: 100;
-            width: 100%;
-            background: #111b26;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #1f2a37;
-        }
+       /* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  background: #111b26;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1f2a37;
+}
 
-        .logo a {
-            color: #8ab4f8;
-            text-decoration: none;
-            font-size: 32px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: 0.3s;
-        }
+.navbar .logo a {
+  color: #8ab4f8;
+  text-decoration: none;
+  font-size: 32px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: 0.3s;
+}
 
-        .logo a:hover {
-            letter-spacing: 4px;
-        }
+.navbar .logo a:hover {
+  letter-spacing: 4px;
+}
 
-        .navbar a {
-            color: #8ab4f8;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 18px;
-            transition: 0.3s;
-        }
+.navbar a {
+  color: #8ab4f8;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 18px;
+  position: relative;
+}
 
-        .navbar a:hover {
-            color: #4da3ff;
-        }
+.navbar a:hover {
+  color: #4da3ff;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #8ab4f8;
+  transition: 0.3s;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
 
         /* Container */
         .container {
@@ -497,39 +498,23 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar { 
-                padding: 15px 20px; 
-            }
-            .logo a {
-                font-size: 24px;
-            }
-            .navbar a {
-                font-size: 16px;
-                margin-left: 15px;
-            }
-            .about-header h1 { 
-                font-size: 32px; 
-            }
-            .kurapika-container { 
-                width: 250px; 
-                height: 350px; 
-            }
+            .navbar { padding: 15px 20px; }
+            .about-header h1 { font-size: 32px; }
+            .kurapika-container { width: 250px; height: 350px; }
             .mute-btn { 
                 width: 45px; 
                 height: 45px; 
                 bottom: 20px; 
                 right: 20px; 
             }
-            .mute-btn ion-icon { 
-                font-size: 20px; 
-            }
+            .mute-btn ion-icon { font-size: 20px; }
         }
     </style>
 </head>
 <body>
     <!-- Video Background -->
     <div class="animated-bg" id="animatedBg">
-        <video id="bgVideo" autoplay loop muted playsinline preload="auto" poster="">
+        <video id="bgVideo" autoplay loop muted playsinline>
             <source src="images/kurapika.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
@@ -553,11 +538,9 @@
     </div>
 
     <div class="navbar">
-        <div class="logo"><a href="index.html">THRWT</a></div>
+    <div class="logo"><a href="about.html">thrwt</a></div>
         <div>
-            <a href="about.html">About</a>
             <a href="index.html">Home</a>
-            <a href="Notes.html">Notes</a>
         </div>
     </div>
 
@@ -608,12 +591,7 @@
     <script>
         // Video Particles Effect
         const particlesContainer = document.getElementById('videoParticles');
-        const isMobile = window.innerWidth <= 768;
-        
-        // Much fewer particles on mobile for better performance
-        const particleCount = isMobile ? 8 : 40;
-        
-        for(let i = 0; i < particleCount; i++) {
+        for(let i = 0; i < 40; i++) {
             const particle = document.createElement('div');
             particle.className = 'video-particle';
             particle.style.left = Math.random() * 100 + '%';
@@ -630,41 +608,18 @@
         const muteBtn = document.getElementById('muteBtn');
         const volumeIcon = document.getElementById('volumeIcon');
         
-        // Optimize video playback for mobile
-        if (isMobile) {
-            // Reduce video quality on mobile
-            video.playbackRate = 1.0;
+        // Auto-play with sound on load
+        video.muted = false;
+        video.volume = 0.3; // Set volume to 30%
+        
+        // Try to play with sound (some browsers may block this)
+        video.play().catch(() => {
+            // If autoplay with sound is blocked, mute it
             video.muted = true;
             muteBtn.classList.add('muted');
             volumeIcon.setAttribute('name', 'volume-mute-outline');
-            
-            // Wait for video to be ready before playing
-            video.addEventListener('loadeddata', () => {
-                video.play().catch(e => console.log('Autoplay prevented:', e));
-            }, { once: true });
-            
-            // Pause video when page is not visible to save resources
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    video.pause();
-                } else {
-                    video.play();
-                }
-            });
-        } else {
-            // Desktop - normal playback with sound
-            video.volume = 0.4;
-            video.muted = false;
-            
-            video.play().catch(() => {
-                document.body.addEventListener('click', () => {
-                    video.muted = false;
-                    video.play();
-                }, { once: true });
-            });
-        }
+        });
 
-        // Mute/Unmute toggle
         muteBtn.addEventListener('click', () => {
             video.muted = !video.muted;
             muteBtn.classList.toggle('muted');
@@ -673,17 +628,12 @@
                 volumeIcon.setAttribute('name', 'volume-mute-outline');
             } else {
                 volumeIcon.setAttribute('name', 'volume-high-outline');
-                if (video.paused) {
-                    video.play();
-                }
             }
         });
 
         // Energy Particles
         const kurapika = document.querySelector('.kurapika-container');
-        const energyParticleCount = isMobile ? 10 : 30;
-        
-        for(let i = 0; i < energyParticleCount; i++) {
+        for(let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
@@ -727,3 +677,4 @@
     </script>
 </body>
 </html>
+

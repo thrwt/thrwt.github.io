@@ -1,3 +1,82 @@
+
+// ===== ANIMATED PARTICLES BACKGROUND =====
+// Add this to your existing js/main.js file
+
+// Function to initialize particles (only on pages that need them)
+function initParticles() {
+    // Check if we're on about.html (which has video background)
+    const isAboutPage = window.location.pathname.includes('about.html');
+    
+    // Don't add particles on about.html (it has video)
+    if (isAboutPage) {
+        console.log('About page detected - skipping particles (video background active)');
+        return;
+    }
+    
+    console.log('Initializing particle background...');
+    
+    // Create particles container
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'bg-particles';
+    document.body.prepend(particlesContainer);
+    
+    // Generate 50 floating particles
+    const particleCount = 50; // Change this number to add more or fewer particles
+    
+    for(let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'bg-particle';
+        
+        // Random starting position
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        // Random drift direction
+        const driftX = (Math.random() - 0.5) * 500; // -250 to +250 pixels
+        const driftY = (Math.random() - 0.5) * 500; // -250 to +250 pixels
+        particle.style.setProperty('--drift-x', driftX + 'px');
+        particle.style.setProperty('--drift-y', driftY + 'px');
+        
+        // Random animation timing
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (Math.random() * 6 + 8) + 's'; // 8-14 seconds
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    console.log(`✨ ${particleCount} particles created!`);
+}
+
+// Initialize particles when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initParticles);
+} else {
+    // DOM already loaded
+    initParticles();
+}
+
+// Optional: Add subtle glow effect that follows mouse
+function initMouseGlow() {
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        
+        document.body.style.setProperty('--mouse-x', x + '%');
+        document.body.style.setProperty('--mouse-y', y + '%');
+    });
+}
+
+// Uncomment the line below if you want mouse glow effect
+// initMouseGlow();
+
+
+// ===== YOUR EXISTING CODE BELOW THIS LINE =====
+// (Keep any existing code in your main.js file)
+
+
+
+
+
 /* main.js
  - Search
  - Dark mode toggle (localStorage)

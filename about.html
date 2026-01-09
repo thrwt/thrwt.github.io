@@ -12,6 +12,8 @@
             color: #e1e8f0;
             overflow-x: hidden;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
 
         /* Video Background */
         .animated-bg {
@@ -255,40 +257,46 @@
         }
 
         /* Navbar */
-        .navbar {
-            position: relative;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(17, 27, 38, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #1f2a37;
-        }
+       /* Navbar Styles */
+.navbar {
+  width: 100%;
+  background: #111b26;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1f2a37;
+}
 
-        .logo a {
-            font-size: 28px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
+.navbar .logo a {
+  color: #8ab4f8;
+  text-decoration: none;
+  font-size: 32px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: 0.3s;
+}
 
-        .navbar a {
-            color: #9fb3c8;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 600;
-            transition: 0.3s;
-            position: relative;
-        }
+.navbar .logo a:hover {
+  letter-spacing: 4px;
+}
 
-        .navbar a:hover {
-            color: #8ab4f8;
-        }
+.navbar a {
+  color: #8ab4f8;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 18px;
+}
+
+.navbar a:hover {
+  color: #4da3ff;
+}
 
         .navbar a::after {
             content: '';

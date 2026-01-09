@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=0.8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
     <title>About - thrwt</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,41 +40,7 @@
             animation: videoGlow 4s ease-in-out infinite;
         }
 
-        /* Mobile Background Image */
-        #bgImage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            filter: brightness(0.4) contrast(1.2) saturate(1.3);
-            animation: imageFloat 6s ease-in-out infinite, imageGlow 4s ease-in-out infinite;
-            display: none;
-        }
-
         @keyframes videoGlow {
-            0%, 100% { 
-                filter: brightness(0.4) contrast(1.2) saturate(1.3) hue-rotate(0deg);
-            }
-            50% { 
-                filter: brightness(0.5) contrast(1.3) saturate(1.5) hue-rotate(10deg);
-            }
-        }
-
-        @keyframes imageFloat {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% { 
-                transform: translate(-50%, -48%) scale(1.05);
-            }
-        }
-
-        @keyframes imageGlow {
             0%, 100% { 
                 filter: brightness(0.4) contrast(1.2) saturate(1.3) hue-rotate(0deg);
             }
@@ -291,6 +257,8 @@
         }
 
         /* Navbar */
+       /* Navbar Styles */
+/* Navbar Styles */
 .navbar {
   width: 100%;
   background: #111b26;
@@ -540,20 +508,6 @@
                 right: 20px; 
             }
             .mute-btn ion-icon { font-size: 20px; }
-            
-            /* Hide video and show image on mobile */
-            #bgVideo {
-                display: none !important;
-            }
-            
-            #bgImage {
-                display: block !important;
-            }
-            
-            /* Hide mute button on mobile since we're using image */
-            .mute-btn {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -563,7 +517,8 @@
         <video id="bgVideo" autoplay loop muted playsinline>
             <source src="images/kurapika.mp4" type="video/mp4">
         </video>
-        <!-- Mobile Background Image -->
+        <div class="video-overlay"></div>
+        <div class="video-particles" id="videoParticles"></div>
     </div>
 
     <!-- Mute Button -->
@@ -722,3 +677,4 @@
     </script>
 </body>
 </html>
+

@@ -36,7 +36,14 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             filter: brightness(0.4) contrast(1.2) saturate(1.3);
-            animation: videoGlow 4s ease-in-out infinite;
+            will-change: filter;
+        }
+
+        /* Lighter animation on mobile */
+        @media (min-width: 769px) {
+            #bgVideo {
+                animation: videoGlow 4s ease-in-out infinite;
+            }
         }
 
         @keyframes videoGlow {
@@ -81,6 +88,7 @@
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(138, 180, 248, 0.8);
             animation: particleDrift linear infinite;
+            will-change: transform, opacity;
         }
 
         @keyframes particleDrift {
@@ -521,7 +529,7 @@
 <body>
     <!-- Video Background -->
     <div class="animated-bg" id="animatedBg">
-        <video id="bgVideo" autoplay loop muted playsinline>
+        <video id="bgVideo" autoplay loop muted playsinline preload="auto" poster="">
             <source src="images/kurapika.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
@@ -584,7 +592,7 @@
                 <h2>Stats</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number" data-stat="writeups">0</div>
+                        <div class="stat-number" data-stat="writeups">1</div>
                         <div class="stat-label">Writeups Published</div>
                     </div>
                     <div class="stat-card">
@@ -602,8 +610,8 @@
         const particlesContainer = document.getElementById('videoParticles');
         const isMobile = window.innerWidth <= 768;
         
-        // Reduce particles on mobile, full on desktop
-        const particleCount = isMobile ? 15 : 40;
+        // Much fewer particles on mobile for better performance
+        const particleCount = isMobile ? 8 : 40;
         
         for(let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -622,28 +630,33 @@
         const muteBtn = document.getElementById('muteBtn');
         const volumeIcon = document.getElementById('volumeIcon');
         
-        // Set initial volume
-        video.volume = 0.4;
-        
-        // Handle autoplay for both mobile and desktop
+        // Optimize video playback for mobile
         if (isMobile) {
-            // On mobile, start muted and play on first touch
+            // Reduce video quality on mobile
+            video.playbackRate = 1.0;
             video.muted = true;
             muteBtn.classList.add('muted');
             volumeIcon.setAttribute('name', 'volume-mute-outline');
             
-            video.play().catch(() => {
-                // If video doesn't play, try on user interaction
-                document.body.addEventListener('touchstart', () => {
+            // Wait for video to be ready before playing
+            video.addEventListener('loadeddata', () => {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+            }, { once: true });
+            
+            // Pause video when page is not visible to save resources
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    video.pause();
+                } else {
                     video.play();
-                }, { once: true });
+                }
             });
         } else {
-            // On desktop, try to play with sound
+            // Desktop - normal playback with sound
+            video.volume = 0.4;
             video.muted = false;
             
             video.play().catch(() => {
-                // If autoplay with sound is blocked, wait for user interaction
                 document.body.addEventListener('click', () => {
                     video.muted = false;
                     video.play();
@@ -660,13 +673,15 @@
                 volumeIcon.setAttribute('name', 'volume-mute-outline');
             } else {
                 volumeIcon.setAttribute('name', 'volume-high-outline');
-                video.play();
+                if (video.paused) {
+                    video.play();
+                }
             }
         });
 
         // Energy Particles
         const kurapika = document.querySelector('.kurapika-container');
-        const energyParticleCount = isMobile ? 15 : 30;
+        const energyParticleCount = isMobile ? 10 : 30;
         
         for(let i = 0; i < energyParticleCount; i++) {
             const particle = document.createElement('div');

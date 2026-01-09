@@ -258,6 +258,7 @@
 
         /* Navbar */
        /* Navbar Styles */
+/* Navbar Styles */
 .navbar {
   width: 100%;
   background: #111b26;
@@ -292,26 +293,27 @@
   text-decoration: none;
   margin-left: 25px;
   font-size: 18px;
+  position: relative;
 }
 
 .navbar a:hover {
   color: #4da3ff;
 }
 
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #8ab4f8;
-            transition: 0.3s;
-        }
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #8ab4f8;
+  transition: 0.3s;
+}
 
-        .navbar a:hover::after {
-            width: 100%;
-        }
+.navbar a:hover::after {
+  width: 100%;
+}
 
         /* Container */
         .container {
@@ -573,7 +575,7 @@
                 <h2>Stats</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number" data-stat="writeups">0</div>
+                        <div class="stat-number" data-stat="writeups">1</div>
                         <div class="stat-label">Writeups Published</div>
                     </div>
                     <div class="stat-card">

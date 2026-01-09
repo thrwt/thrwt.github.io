@@ -3,7 +3,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>About - thrwt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -259,44 +258,51 @@
         .navbar {
             position: relative;
             z-index: 100;
-            width: 100%;
-            background: #111b26;
-            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 27, 38, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid #1f2a37;
         }
 
         .logo a {
-            color: #8ab4f8;
-            text-decoration: none;
-            font-size: 32px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 28px;
+            font-weight: bold;
             background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: 0.3s;
-        }
-
-        .logo a:hover {
-            letter-spacing: 4px;
+            text-decoration: none;
+            letter-spacing: 2px;
         }
 
         .navbar a {
-            color: #8ab4f8;
+            color: #9fb3c8;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 18px;
+            margin-left: 30px;
+            font-weight: 600;
             transition: 0.3s;
+            position: relative;
         }
 
         .navbar a:hover {
-            color: #4da3ff;
+            color: #8ab4f8;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8ab4f8;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
         }
 
         /* Container */
@@ -482,32 +488,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar { 
-                padding: 15px 20px; 
-            }
-            .logo a {
-                font-size: 24px;
-            }
-            .navbar a {
-                font-size: 16px;
-                margin-left: 15px;
-            }
-            .about-header h1 { 
-                font-size: 32px; 
-            }
-            .kurapika-container { 
-                width: 250px; 
-                height: 350px; 
-            }
+            .navbar { padding: 15px 20px; }
+            .about-header h1 { font-size: 32px; }
+            .kurapika-container { width: 250px; height: 350px; }
             .mute-btn { 
                 width: 45px; 
                 height: 45px; 
                 bottom: 20px; 
                 right: 20px; 
             }
-            .mute-btn ion-icon { 
-                font-size: 20px; 
-            }
+            .mute-btn ion-icon { font-size: 20px; }
         }
     </style>
 </head>
@@ -610,24 +600,18 @@
         const muteBtn = document.getElementById('muteBtn');
         const volumeIcon = document.getElementById('volumeIcon');
         
-        // Enable sound from the start
+        // Auto-play with sound on load
         video.muted = false;
-        video.volume = 0.4; // Set volume to 40%
+        video.volume = 0.3; // Set volume to 30%
         
-        // Force play with sound
-        const playVideo = () => {
-            video.play().catch(() => {
-                // If browser blocks autoplay with sound, try on user interaction
-                document.body.addEventListener('click', () => {
-                    video.muted = false;
-                    video.play();
-                }, { once: true });
-            });
-        };
-        
-        playVideo();
+        // Try to play with sound (some browsers may block this)
+        video.play().catch(() => {
+            // If autoplay with sound is blocked, mute it
+            video.muted = true;
+            muteBtn.classList.add('muted');
+            volumeIcon.setAttribute('name', 'volume-mute-outline');
+        });
 
-        // Mute/Unmute toggle
         muteBtn.addEventListener('click', () => {
             video.muted = !video.muted;
             muteBtn.classList.toggle('muted');

@@ -36,14 +36,7 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             filter: brightness(0.4) contrast(1.2) saturate(1.3);
-        }
-
-        /* Disable heavy animations on mobile */
-        @media (max-width: 768px) {
-            #bgVideo {
-                filter: brightness(0.4);
-                animation: none;
-            }
+            animation: videoGlow 4s ease-in-out infinite;
         }
 
         @keyframes videoGlow {
@@ -52,13 +45,6 @@
             }
             50% { 
                 filter: brightness(0.5) contrast(1.3) saturate(1.5) hue-rotate(10deg);
-            }
-        }
-
-        /* Apply animation only on desktop */
-        @media (min-width: 769px) {
-            #bgVideo {
-                animation: videoGlow 4s ease-in-out infinite;
             }
         }
 
@@ -127,10 +113,10 @@
             opacity: 0.15;
         }
 
-        /* Hide Kurapika animation on mobile for better performance */
         @media (max-width: 768px) {
             .kurapika-container {
-                display: none;
+                width: 250px;
+                height: 350px;
             }
         }
 
@@ -277,62 +263,48 @@
         }
 
         /* Navbar */
-    /* Navbar Styles */
-.navbar {
-  width: 100%;
-  background: #111b26;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #1f2a37;
-}
+        .navbar {
+            position: relative;
+            z-index: 100;
+            width: 100%;
+            background: #111b26;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f2a37;
+        }
 
-.navbar .logo a {
-  color: #8ab4f8;
-  text-decoration: none;
-  font-size: 32px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: 0.3s;
-}
+        .logo a {
+            color: #8ab4f8;
+            text-decoration: none;
+            font-size: 32px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #8ab4f8 0%, #4da3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: 0.3s;
+        }
 
-.navbar .logo a:hover {
-  letter-spacing: 4px;
-}
+        .logo a:hover {
+            letter-spacing: 4px;
+        }
 
-.navbar a {
-  color: #8ab4f8;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 18px;
-  position: relative;
-}
+        .navbar a {
+            color: #8ab4f8;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
 
-.navbar a:hover {
-  color: #4da3ff;
-}
-
-.navbar a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #8ab4f8;
-  transition: 0.3s;
-}
-
-.navbar a:hover::after {
-  width: 100%;
-}
+        .navbar a:hover {
+            color: #4da3ff;
+        }
 
         /* Container */
         .container {
@@ -626,22 +598,23 @@
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script>
-        // Video Particles Effect - Only on Desktop
+        // Video Particles Effect
         const particlesContainer = document.getElementById('videoParticles');
         const isMobile = window.innerWidth <= 768;
         
-        if (!isMobile) {
-            for(let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'video-particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 400 + 'px');
-                particle.style.setProperty('--drift-y', (Math.random() - 0.5) * 400 + 'px');
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                particlesContainer.appendChild(particle);
-            }
+        // Reduce particles on mobile, full on desktop
+        const particleCount = isMobile ? 15 : 40;
+        
+        for(let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'video-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 400 + 'px');
+            particle.style.setProperty('--drift-y', (Math.random() - 0.5) * 400 + 'px');
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            particlesContainer.appendChild(particle);
         }
 
         // Mute Button Functionality
@@ -649,33 +622,33 @@
         const muteBtn = document.getElementById('muteBtn');
         const volumeIcon = document.getElementById('volumeIcon');
         
-        // Optimize video for mobile
+        // Set initial volume
+        video.volume = 0.4;
+        
+        // Handle autoplay for both mobile and desktop
         if (isMobile) {
-            video.removeAttribute('autoplay');
+            // On mobile, start muted and play on first touch
             video.muted = true;
             muteBtn.classList.add('muted');
             volumeIcon.setAttribute('name', 'volume-mute-outline');
             
-            // Play video on user interaction for mobile
-            document.body.addEventListener('click', () => {
-                video.play().catch(() => {});
-            }, { once: true });
+            video.play().catch(() => {
+                // If video doesn't play, try on user interaction
+                document.body.addEventListener('touchstart', () => {
+                    video.play();
+                }, { once: true });
+            });
         } else {
-            // Enable sound from the start for desktop
+            // On desktop, try to play with sound
             video.muted = false;
-            video.volume = 0.4;
             
-            // Force play with sound
-            const playVideo = () => {
-                video.play().catch(() => {
-                    document.body.addEventListener('click', () => {
-                        video.muted = false;
-                        video.play();
-                    }, { once: true });
-                });
-            };
-            
-            playVideo();
+            video.play().catch(() => {
+                // If autoplay with sound is blocked, wait for user interaction
+                document.body.addEventListener('click', () => {
+                    video.muted = false;
+                    video.play();
+                }, { once: true });
+            });
         }
 
         // Mute/Unmute toggle
@@ -691,20 +664,20 @@
             }
         });
 
-        // Energy Particles - Only on Desktop
-        if (!isMobile) {
-            const kurapika = document.querySelector('.kurapika-container');
-            for(let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
-                particle.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
-                particle.style.animationDelay = Math.random() * 3 + 's';
-                particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                kurapika.appendChild(particle);
-            }
+        // Energy Particles
+        const kurapika = document.querySelector('.kurapika-container');
+        const energyParticleCount = isMobile ? 15 : 30;
+        
+        for(let i = 0; i < energyParticleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
+            particle.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            kurapika.appendChild(particle);
         }
 
         // Counter Animation for Stats

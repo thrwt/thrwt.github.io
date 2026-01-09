@@ -13,7 +13,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Video Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -24,19 +24,79 @@
             overflow: hidden;
         }
 
-        .chain {
+        #bgVideo {
             position: absolute;
-            width: 2px;
-            background: linear-gradient(180deg, transparent, #ff4444, transparent);
-            animation: chainFall linear infinite;
-            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4) contrast(1.2) saturate(1.3);
+            animation: videoGlow 4s ease-in-out infinite;
         }
 
-        @keyframes chainFall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        @keyframes videoGlow {
+            0%, 100% { 
+                filter: brightness(0.4) contrast(1.2) saturate(1.3) hue-rotate(0deg);
+            }
+            50% { 
+                filter: brightness(0.5) contrast(1.3) saturate(1.5) hue-rotate(10deg);
+            }
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(10, 14, 26, 0.4) 100%);
+            pointer-events: none;
+            animation: overlayPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes overlayPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .video-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .video-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(138, 180, 248, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(138, 180, 248, 0.8);
+            animation: particleDrift linear infinite;
+        }
+
+        @keyframes particleDrift {
+            0% { 
+                transform: translate(0, 0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(var(--drift-x), var(--drift-y)) scale(1);
+                opacity: 0;
+            }
         }
 
         /* Kurapika Character Animation */
@@ -153,6 +213,45 @@
         @keyframes particleFloat {
             0%, 100% { transform: translate(0, 0) scale(0); opacity: 0; }
             50% { transform: translate(var(--x), var(--y)) scale(1); opacity: 1; }
+        }
+
+        /* Mute Button */
+        .mute-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(17, 27, 38, 0.9);
+            border: 2px solid #8ab4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(138, 180, 248, 0.3);
+        }
+
+        .mute-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(138, 180, 248, 0.5);
+            background: rgba(138, 180, 248, 0.2);
+        }
+
+        .mute-btn ion-icon {
+            font-size: 24px;
+            color: #8ab4f8;
+        }
+
+        .mute-btn.muted {
+            border-color: #ff6b6b;
+        }
+
+        .mute-btn.muted ion-icon {
+            color: #ff6b6b;
         }
 
         /* Navbar */
@@ -392,12 +491,30 @@
             .navbar { padding: 15px 20px; }
             .about-header h1 { font-size: 32px; }
             .kurapika-container { width: 250px; height: 350px; }
+            .mute-btn { 
+                width: 45px; 
+                height: 45px; 
+                bottom: 20px; 
+                right: 20px; 
+            }
+            .mute-btn ion-icon { font-size: 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg" id="animatedBg"></div>
+    <!-- Video Background -->
+    <div class="animated-bg" id="animatedBg">
+        <video id="bgVideo" autoplay loop muted playsinline>
+            <source src="images/kurapika.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="video-particles" id="videoParticles"></div>
+    </div>
+
+    <!-- Mute Button -->
+    <button class="mute-btn" id="muteBtn" title="Toggle Sound">
+        <ion-icon name="volume-high-outline" id="volumeIcon"></ion-icon>
+    </button>
 
     <!-- Kurapika Animation -->
     <div class="kurapika-container">
@@ -464,17 +581,47 @@
 
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script>
-        // Falling Chains Background
-        const bg = document.getElementById('animatedBg');
-        for(let i = 0; i < 15; i++) {
-            const chain = document.createElement('div');
-            chain.className = 'chain';
-            chain.style.left = Math.random() * 100 + '%';
-            chain.style.height = Math.random() * 200 + 100 + 'px';
-            chain.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            chain.style.animationDelay = Math.random() * 5 + 's';
-            bg.appendChild(chain);
+        // Video Particles Effect
+        const particlesContainer = document.getElementById('videoParticles');
+        for(let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'video-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 400 + 'px');
+            particle.style.setProperty('--drift-y', (Math.random() - 0.5) * 400 + 'px');
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            particlesContainer.appendChild(particle);
         }
+
+        // Mute Button Functionality
+        const video = document.getElementById('bgVideo');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeIcon = document.getElementById('volumeIcon');
+        
+        // Auto-play with sound on load
+        video.muted = false;
+        video.volume = 0.3; // Set volume to 30%
+        
+        // Try to play with sound (some browsers may block this)
+        video.play().catch(() => {
+            // If autoplay with sound is blocked, mute it
+            video.muted = true;
+            muteBtn.classList.add('muted');
+            volumeIcon.setAttribute('name', 'volume-mute-outline');
+        });
+
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteBtn.classList.toggle('muted');
+            
+            if(video.muted) {
+                volumeIcon.setAttribute('name', 'volume-mute-outline');
+            } else {
+                volumeIcon.setAttribute('name', 'volume-high-outline');
+            }
+        });
 
         // Energy Particles
         const kurapika = document.querySelector('.kurapika-container');

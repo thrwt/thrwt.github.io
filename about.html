@@ -832,18 +832,29 @@
         }
 
         // ===== MUTE BUTTON =====
-        muteBtn.addEventListener('click', () => {
-            if (!videoCanPlay) return;
-            
-            video.muted = !video.muted;
-            muteBtn.classList.toggle('muted');
-            
-            if(video.muted) {
-                volumeIcon.setAttribute('name', 'volume-mute-outline');
-            } else {
-                volumeIcon.setAttribute('name', 'volume-high-outline');
-            }
-        });
+       // ===== MUTE BUTTON FUNCTIONALITY =====
+video.muted = false;
+video.volume = 0.3;
+
+// انتظر الفيديو يتحمل الأول
+video.addEventListener('loadeddata', () => {
+    video.play().catch(() => {
+        video.muted = true;
+        muteBtn.classList.add('muted');
+        volumeIcon.setAttribute('name', 'volume-mute-outline');
+    });
+});
+
+muteBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    muteBtn.classList.toggle('muted');
+    
+    if(video.muted) {
+        volumeIcon.setAttribute('name', 'volume-mute-outline');
+    } else {
+        volumeIcon.setAttribute('name', 'volume-high-outline');
+    }
+});
         // ===== KURAPIKA PARTICLES =====
         const kurapika = document.querySelector('.kurapika-container');
         for(let i = 0; i < 30; i++) {

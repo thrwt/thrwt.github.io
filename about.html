@@ -837,13 +837,9 @@
             if (!videoCanPlay) return;
             
             video.muted = !video.muted;
+             video.volume = 0.5;
             muteBtn.classList.toggle('muted');
             
-            if(video.muted) {
-                volumeIcon.setAttribute('name', 'volume-mute-outline');
-            } else {
-                volumeIcon.setAttribute('name', 'volume-high-outline');
-            }
         });
 
         // ===== KURAPIKA PARTICLES =====

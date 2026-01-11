@@ -682,7 +682,7 @@
                     <h2>Stats</h2>
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-number" data-stat="writeups">0</div>
+                            <div class="stat-number" data-stat="writeups">1</div>
                             <div class="stat-label">Writeups Published</div>
                         </div>
                         <div class="stat-card">
@@ -832,7 +832,15 @@
         }
 
         // ===== MUTE BUTTON =====
-     // ===== MUTE BUTTON (SAME AS BEFORE) =====
+    video.muted = false;
+        video.volume = 0.3;
+        
+        video.play().catch(() => {
+            video.muted = true;
+            muteBtn.classList.add('muted');
+            volumeIcon.setAttribute('name', 'volume-mute-outline');
+        });
+
         muteBtn.addEventListener('click', () => {
             video.muted = !video.muted;
             muteBtn.classList.toggle('muted');
@@ -842,18 +850,6 @@
             } else {
                 volumeIcon.setAttribute('name', 'volume-high-outline');
             }
-        });
-
-        // Try to play with sound (same as your original code)
-        video.addEventListener('canplay', () => {
-            video.muted = false;
-            video.volume = 0.3;
-            
-            video.play().catch(() => {
-                video.muted = true;
-                muteBtn.classList.add('muted');
-                volumeIcon.setAttribute('name', 'volume-mute-outline');
-            });
         });
         // ===== KURAPIKA PARTICLES =====
         const kurapika = document.querySelector('.kurapika-container');

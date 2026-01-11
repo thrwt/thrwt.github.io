@@ -832,10 +832,8 @@
         }
 
         // ===== MUTE BUTTON =====
-         // ===== MUTE BUTTON WITH SOUND ON DESKTOP =====
+     // ===== MUTE BUTTON (SAME AS BEFORE) =====
         muteBtn.addEventListener('click', () => {
-            if (!videoCanPlay) return;
-            
             video.muted = !video.muted;
             muteBtn.classList.toggle('muted');
             
@@ -843,27 +841,19 @@
                 volumeIcon.setAttribute('name', 'volume-mute-outline');
             } else {
                 volumeIcon.setAttribute('name', 'volume-high-outline');
-                video.volume = 0.3; // Set volume to 30% when unmuted
             }
         });
 
-        // Try to unmute after video starts playing (Desktop only)
-        video.addEventListener('playing', () => {
-            // Check if it's likely a desktop (not mobile)
-            const isDesktop = !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        // Try to play with sound (same as your original code)
+        video.addEventListener('canplay', () => {
+            video.muted = false;
+            video.volume = 0.3;
             
-            if (isDesktop) {
-                // Try to play with sound on desktop
-                video.muted = false;
-                video.volume = 0.3;
-                
-                // If browser blocks unmuted autoplay, mute it again
-                video.play().catch(() => {
-                    video.muted = true;
-                    muteBtn.classList.add('muted');
-                    volumeIcon.setAttribute('name', 'volume-mute-outline');
-                });
-            }
+            video.play().catch(() => {
+                video.muted = true;
+                muteBtn.classList.add('muted');
+                volumeIcon.setAttribute('name', 'volume-mute-outline');
+            });
         });
         // ===== KURAPIKA PARTICLES =====
         const kurapika = document.querySelector('.kurapika-container');

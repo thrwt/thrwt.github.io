@@ -832,16 +832,9 @@
         }
 
         // ===== MUTE BUTTON =====
-    video.muted = false;
-        video.volume = 0.3;
-        
-        video.play().catch(() => {
-            video.muted = true;
-            muteBtn.classList.add('muted');
-            volumeIcon.setAttribute('name', 'volume-mute-outline');
-        });
-
         muteBtn.addEventListener('click', () => {
+            if (!videoCanPlay) return;
+            
             video.muted = !video.muted;
             muteBtn.classList.toggle('muted');
             

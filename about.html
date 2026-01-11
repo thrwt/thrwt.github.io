@@ -716,6 +716,17 @@
         const video = document.getElementById('bgVideo');
         const muteBtn = document.getElementById('muteBtn');
         const volumeIcon = document.getElementById('volumeIcon');
+//syncMuteUI start
+        function syncMuteUI() {
+    if (video.muted) {
+        muteBtn.classList.add('muted');
+        volumeIcon.setAttribute('name', 'volume-mute-outline');
+    } else {
+        muteBtn.classList.remove('muted');
+        volumeIcon.setAttribute('name', 'volume-high-outline');
+    }
+}
+//syncMuteUI end
         
         let videoLoaded = false;
         let minTimeElapsed = false;
@@ -805,6 +816,8 @@
                             console.log('Video playing successfully');
                             video.classList.add('loaded');
                             muteBtn.classList.remove('hidden'); // Show mute button
+                                syncMuteUI();
+
                         }).catch((error) => {
                             console.log('Video play failed:', error);
                             // Fallback background is already visible
@@ -836,13 +849,8 @@
             if (!videoCanPlay) return;
             
             video.muted = !video.muted;
-            
-            if(video.muted) {
-                volumeIcon.setAttribute('name', 'volume-mute-outline');
-                
-            } else {
-                volumeIcon.setAttribute('name', 'volume-high-outline');
-            }
+               syncMuteUI();
+
         });
 
         // ===== KURAPIKA PARTICLES =====

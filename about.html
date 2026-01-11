@@ -832,15 +832,13 @@
         }
 
         // ===== MUTE BUTTON =====
-  // ===== MUTE BUTTON =====
-        muteBtn.addEventListener('click', () => {
-            if (!videoCanPlay) return;
-            
-            video.muted = !video.muted;
-             video.volume = 0.5;
-            muteBtn.classList.toggle('muted');
-            
-        });
+.catch((error) => {
+    console.log('Video play failed:', error);
+    video.muted = true;
+    video.volume = 0.6;
+    muteBtn.classList.add('muted');
+    volumeIcon.setAttribute('name', 'volume-mute-outline');
+});
 
         // ===== KURAPIKA PARTICLES =====
         const kurapika = document.querySelector('.kurapika-container');

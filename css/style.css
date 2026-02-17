@@ -819,3 +819,8 @@ footer {
     color: #8ab4f8; /* نفس الأزرق اللي ظاهر */
     font-weight: bold;
 }
+
+.container {
+    flex: 1;   /* ده اللي بيزق الفوتر لتحت */
+}
+

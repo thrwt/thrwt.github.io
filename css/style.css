@@ -805,13 +805,11 @@ body {
     flex: 1;
 }
 
+
+
 /* Footer */
 .footer {
     position: relative;
-    z-index: 10;
-    width: 100%;
-    background: #111b26;
-    border-top: 1px solid #1f2a37;
     padding: 25px 20px;
     margin-top: auto;
 }

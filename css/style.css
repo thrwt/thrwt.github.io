@@ -813,6 +813,7 @@ footer {
     padding: 20px 0;
     font-size: 14px;
     background: transparent;
+    border: none;
 }
 .brand {
     color: #8ab4f8; /* نفس الأزرق اللي ظاهر */

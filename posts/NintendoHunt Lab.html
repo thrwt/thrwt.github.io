@@ -116,7 +116,6 @@ Public hotspot
 Each network gets a unique signature stored in the registry.
 SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures
 Inside Signatures there are usually two folders:
-
 Managed
 Unmanaged
 -----------
@@ -125,7 +124,21 @@ Networks not controlled by Active Directory
 Managed
 Networks controlled by domain infrastructure (corporate networks)  </pre>
                 
+                <p>so let’s using volatility to get the Unmanaged to get the machine default gateway</p>
+                                            <img src="/images/NintendoHunt LAB/cd10.png" class="writeup-image" alt="Writeup Image">
+              <p> I found one subkey, let’s check it, yahh U will get the MAC address</p> 
                 
+                                            <img src="/images/NintendoHunt LAB/cd11.png" class="writeup-image" alt="Writeup Image">
+                <p>OR using MemProcFS to get it </p>
+                
+<code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
+             M:\registry\HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged\010103000F0000F0080000000F0000F0E3E937A4D0CD0A314266D2986CB7DED5D8B43B828FEEDCEFFD6DE7141DC1D15D  </code>
+                                            <img src="/images/NintendoHunt LAB/cd12.png" class="writeup-image" alt="Writeup Image">
+                                                            <img src="/images/NintendoHunt LAB/cd13.png" class="writeup-image" alt="Writeup Image">
+
+                
+        
+
 
 
 

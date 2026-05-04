@@ -60,12 +60,35 @@
             <!-- المحتوى -->
             <h2>Overview</h2>
             <p> 
- <strong> Hi Geeks,  Here is my writeup for NintendoHunt LAB. My approach is a bit different,  I focus on how to think through the lab, not just how to solve the Qs. </strong>
+ <strong> Hi Geeks,  Here is my writeup for NintendoHunt LAB. My approach is a bit different, I focus on how to think through the lab, not just how to solve the Qs.
+</strong>
   <p> hope you enjoy it. </p>
             </p>
 
-          
-            
+          <p>First I started with vol3</p>
+                <p>started with usual steps to with volatility, like pslist and pscan but i notice something is stranger
+the svchosts.exe is repeat a lot!!!, I think is so stranger so let’s digging</p>
+            <img src="/images/NintendoHunt LAB/cd1.png" class="writeup-image" alt="Writeup Image">
+
+                <p>In the order I found this malicious process, I think will help us later</p>
+                            <img src="/images/NintendoHunt LAB/cd2.png" class="writeup-image" alt="Writeup Image">
+                            <img src="/images/NintendoHunt LAB/cd3.png" class="writeup-image" alt="Writeup Image">
+                
+<p>when I  started with cmdline, i notice the same things with repeat of svchost.exe so let’s more focus</p>
+                            <img src="/images/NintendoHunt LAB/cd5.png" class="writeup-image" alt="Writeup Image">
+                <p>wait a minute, I think this abnormal cuz <strong>svchost.exe</strong> - is not in correct path should be in </p>
+                                     <span class="path">C:\Windows\System32\svchost.exe </span>
+
+                <p>and there are is abnormal thing, I notice that <p/>
+                        <p>so let’s investigate in it</p>
+                            <img src="/images/NintendoHunt LAB/cd6.png" class="writeup-image" alt="Writeup Image">
+
+
+
+
+
+
+                
 
 
             

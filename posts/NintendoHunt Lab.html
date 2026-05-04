@@ -77,11 +77,28 @@ the svchosts.exe is repeat a lot!!!, I think is so stranger so let’s digging</
 <p>when I  started with cmdline, i notice the same things with repeat of svchost.exe so let’s more focus</p>
                             <img src="/images/NintendoHunt LAB/cd5.png" class="writeup-image" alt="Writeup Image">
                 <p>wait a minute, I think this abnormal cuz <strong>svchost.exe</strong> - is not in correct path should be in </p>
-                                     <span class="path">C:\Windows\System32\svchost.exe </span>
+                <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
+                                          C:\Windows\System32\svchost.exe </code>
+                                     
 
                 <p>and there are is abnormal thing, I notice that <p/>
                         <p>so let’s investigate in it</p>
                             <img src="/images/NintendoHunt LAB/cd6.png" class="writeup-image" alt="Writeup Image">
+                <p>when investigating in <strong>svchost.exe PID 8560</strong> </p>
+                                            <img src="/images/NintendoHunt LAB/cd7.png" class="writeup-image" alt="Writeup Image">
+                <p>I notice the parent process of the <strong>svchost.exe</strong> is 4824 this is <strong>explorer.exe</strong> and this is abnormal </p>
+                            <img src="/images/NintendoHunt LAB/cd8.png" class="writeup-image" alt="Writeup Image">
+                <p>in the Q</p>
+                                            <img src="/images/NintendoHunt LAB/cd9.png" class="writeup-image" alt="Writeup Image">
+                <p>I will try a lot to get the MAC from netscan and didin’t got it</p>
+                <P>when i searched to that’s should in this path </P>
+                <code style="background:#1e1e1e; color:#ff5555; padding:4px 8px; border-radius:6px;">
+             HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{Interface-GUID}  </code>
+                
+
+
+                
+                
 
 
 

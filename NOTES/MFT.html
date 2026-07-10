@@ -106,6 +106,17 @@
             color: inherit;
             font-weight: 700;
         }
+
+        /* Cover image styling for post header */
+        .post-cover {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1em 0;
+            border: 1px solid rgba(138, 180, 248, 0.2);
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -130,7 +141,7 @@
 </div>
 <!-- MAIN CONTENT -->
 <div class="content">
-<article class="post"><header class="post-header"><h1>MFT - Master File Table</h1><div class="post-meta" style="margin-bottom: 20px;">
+<article class="post"><header class="post-header"><h1>MFT - Master File Table</h1><img alt="NTFS Master File Table" class="post-cover" src="../images/MFT/cover.png"/><div class="post-meta" style="margin-bottom: 20px;">
 <div class="post-meta-item">
 <ion-icon name="calendar-outline"></ion-icon>
 <span>July 08, 2026</span>
@@ -144,9 +155,7 @@
 <span>Study Notes</span>
 </div>
 </div><p class="post-description">A practical guide to understanding the NTFS Master File Table (MFT), its record structure, attributes, and forensic significance.</p></header><nav class="table-of-contents"><h2>Contents</h2><ol><li><a href="#overview">Overview</a></li><li><a href="#record-header">FILE Record Header</a></li><li><a href="#attribute-header">Attribute Header</a></li><li><a href="#resident">Resident Attributes</a></li><li><a href="#nonresident">Non-Resident Attributes</a></li><li><a href="#si">$STANDARD_INFORMATION</a></li><li><a href="#fn">$FILE_NAME</a></li><li><a href="#data">$DATA</a></li></ol></nav>
-<figure class="hero-image">
-    <img src="../images/MFT/cover.png"
-         alt="NTFS Master File Table Overview">
+
 <!-- Meta Info -->
 
 <main class="post-body">

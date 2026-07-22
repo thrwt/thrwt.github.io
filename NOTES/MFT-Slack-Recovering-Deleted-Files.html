@@ -144,7 +144,7 @@
 <article class="post"><header class="post-header"><h1>MFT Slack Space &amp; Recovering Deleted Files</h1><img alt="MFT Slack Space and Recovering Deleted Files" class="post-cover" src="../images/MFT-Slack/cover.jpg"/><div class="post-meta" style="margin-bottom: 20px;">
 <div class="post-meta-item">
 <ion-icon name="calendar-outline"></ion-icon>
-<span>July 21, 2026</span>
+<span>July 22, 2026</span>
 </div>
 <div class="post-meta-item">
 <ion-icon name="time-outline"></ion-icon>
@@ -154,12 +154,12 @@
 <ion-icon name="bookmark-outline"></ion-icon>
 <span>Study Notes</span>
 </div>
-</div><p class="post-description">A hex-level walkthrough of MFT slack space, what actually changes in a record when a file is deleted, and how to manually recover resident, non-resident, and fragmented files from raw MFT bytes.</p></header><nav class="table-of-contents"><h2>Contents</h2><ol><li><a href="#state-check">Deleted vs Active: The First Check</a></li><li><a href="#slack-space">MFT Slack Space, In Close</a></li><li><a href="#slack-vs-attribute">Record Slack vs Attribute Slack</a></li><li><a href="#deleted-changes">Deleted Files in NTFS &#8211; What Actually Changes</a></li><li><a href="#when-deleted">When a File Is Deleted</a></li><li><a href="#remain-in-slack">What Can Remain in Slack</a></li><li><a href="#after-reuse">After Record Reuse</a></li><li><a href="#recovering-deleted-files">Recovering Deleted Files</a></li><li><a href="#resident-recovery">Recovering Resident Files</a></li><li><a href="#nonresident-recovery">Recovering Non-Resident Files</a></li><li><a href="#fragmented-recovery">Recovering Fragmented Files</a></li></ol></nav>
+</div><p class="post-description"><strong>Can you recover a deleted file using nothing but its MFT record?</strong> Most forensic tools do it for you. But understanding how it actually works is what separates using a tool from understanding the filesystem. </p></header><nav class="table-of-contents"><h2>Contents</h2><ol><li><a href="#state-check">Deleted vs Active</a></li><li><a href="#slack-space">MFT Slack Space, In Close</a></li><li><a href="#deleted-changes">Deleted Files in NTFS &#8211; What Actually Changes</a></li><li><a href="#when-deleted">When a File Is Deleted</a></li><li><a href="#remain-in-slack">What Can Remain in Slack</a></li><li><a href="#after-reuse">After Record Reuse</a></li><li><a href="#recovering-deleted-files">Recovering Deleted Files</a></li></ol></nav>
 
 <!-- Meta Info -->
 
 <main class="post-body">
-<p><strong>Can you recover a deleted file using nothing but its MFT record?</strong> Most forensic tools do it for you. But understanding how it actually works is what separates using a tool from understanding the filesystem.</p>
+<p>.</p>
 <p>I've been researching NTFS internals and documenting the complete process of analyzing MFT records at the hex level, with a focus on <strong>manual deleted file recovery</strong>.</p>
 
 <section id="state-check"><h2>Deleted vs Active: The First Check</h2></section>

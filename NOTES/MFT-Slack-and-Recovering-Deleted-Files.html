@@ -168,26 +168,12 @@
 <nav class="table-of-contents">
 <h2>Contents</h2>
 <ol>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#active-or-deleted">Active or Deleted? Checking the Record</a></li>
+
 <li><a href="#mft-slack">MFT Slack Space, in Close</a>
-<ol>
-<li><a href="#record-vs-attribute-slack">Record Slack vs Attribute Slack</a></li>
-</ol>
 </li>
 <li><a href="#what-changes">Deleted Files in NTFS — What Actually Changes</a>
-<ol>
-<li><a href="#when-deleted">When a File Is Deleted</a></li>
-<li><a href="#what-remains">What Can Remain in Slack</a></li>
-<li><a href="#after-reuse">After Record Reuse</a></li>
-</ol>
 </li>
 <li><a href="#recovering-deleted-files">Recovering Deleted Files</a>
-<ol>
-<li><a href="#recovering-resident">Recovering Resident Files</a></li>
-<li><a href="#recovering-non-resident">Recovering Non-Resident Files</a></li>
-<li><a href="#recovering-fragmented">Recovering Fragmented Files</a></li>
-</ol>
 </li>
 </ol>
 </nav>
@@ -197,7 +183,6 @@
 <h2 id="overview">Overview</h2>
 <p>Recovering deleted files requires more than simply scanning a disk for missing data — it requires understanding how NTFS manages file metadata. Every file stored on an NTFS volume leaves traces within the Master File Table (MFT), and even after deletion, portions of this metadata may remain intact. This article explores the internal structure of the MFT, the organization of its records and attributes, the file deletion process, and how MFT Slack can be analyzed to recover valuable forensic evidence.</p>
 
-<h2 id="active-or-deleted">Active or Deleted? Checking the Record</h2>
 <p>Before examining MFT Slack or attempting to recover deleted data, the first step is determining whether an MFT record is currently active or has been marked as deleted.</p>
 <p>This is the <strong>first check</strong> in any deleted-record scan: read 2 bytes at offset <code>0x16</code>.</p>
 <p>Offset <code>0x16</code> (2 bytes, little-endian)<br/>
@@ -219,7 +204,7 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 <p>When you look at offset <code>0x16</code>, you'll get it — in this case, this is an active file.</p>
 
 <figure>
-<img alt="MFT record flags at offset 0x16" src="../images/MFT slack and Recovering Deleted Files/image.png"/>
+<img alt="MFT record flags at offset 0x16" src="../images/MFT slack and Recovering Deleted Files/state-deleted-vs-active.png"/>
 </figure>
 
 <h2 id="mft-slack">MFT Slack Space, in Close</h2>
@@ -238,7 +223,7 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 </ul>
 
 <figure>
-<img alt="Record slack bytes after the $END marker" src="../images/MFT slack and Recovering Deleted Files/image%201.png"/>
+<img alt="Record slack bytes after the $END marker" src="../images/MFT slack and Recovering Deleted Files/record-slack-hex.png"/>
 </figure>
 
 <p><mark><strong>Attribute Slack:</strong></mark> unused bytes between the <strong>logical end of the attribute's content</strong> and the <strong>allocated space</strong> for that attribute — <strong>inside an attribute</strong>. <strong>Contains:</strong> leftover bytes from older content within the same attribute (a longer filename or resident DATA).</p>
@@ -327,7 +312,7 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 </table>
 
 <figure>
-<img alt="Resident $DATA attribute and Zone.Identifier ADS" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_134017.png"/>
+<img alt="Resident $DATA attribute and Zone.Identifier ADS" src="../images/MFT slack and Recovering Deleted Files/resident-ads-recovery.png"/>
 </figure>
 
 <hr/>
@@ -386,7 +371,7 @@ LCN 5309
 +----------------------+</code></pre>
 
 <figure>
-<img alt="Non-resident data run pointing to LCN 5309" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_165511.png"/>
+<img alt="Non-resident data run pointing to LCN 5309" src="../images/MFT slack and Recovering Deleted Files/nonresident-runlist.png"/>
 </figure>
 
 <hr/>
@@ -438,11 +423,12 @@ Run List, Run 1, Run 2, Run 3</code></pre>
 <p>So: read <strong>1 cluster</strong> starting at <strong>LCN 5271</strong>, then <strong>40 clusters</strong> starting at <strong>LCN 786392</strong>, then <strong>15,541 clusters</strong> starting at <strong>LCN 11667</strong>, and concatenate them in this order to reconstruct <code>thrwt.exe</code> — and that's the end.</p>
 
 <figure>
-<img alt="Fragmented file data runs across three LCN ranges" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_180150.png"/>
+<img alt="Fragmented file data runs across three LCN ranges" src="../images/MFT slack and Recovering Deleted Files/fragmented-runlist.png"/>
 </figure>
 
 <p><strong>Yeah — this is the story. You're the one able to recover data without any tool.</strong></p>
 <p>If you feel distracted, you can read this first: <a href="https://thrwt.ninja/NOTES/MFT.html">https://thrwt.ninja/NOTES/MFT.html</a></p>
+  <p>Thx for reading geeks </p>
 
 </div>
 

@@ -1,0 +1,459 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MFT Slack and Recovering Deleted Files | thrwt</title>
+<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<script src="../js/main.js"></script>
+<style>
+/* Scoped styles for MFT Slack article content - complements site theme */
+.post-body {
+  color: inherit;
+  line-height: 1.7;
+}
+.post-body h2 {
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  color: #8ab4f8;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(138, 180, 248, 0.2);
+  padding-bottom: 0.4em;
+}
+.post-body h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  color: #8ab4f8;
+  font-size: 1.2rem;
+}
+.post-body h4 {
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+  color: #8ab4f8;
+  font-size: 1.05rem;
+}
+.post-body p {
+  margin: 0.9em 0;
+}
+.post-body ol, .post-body ul {
+  margin: 0.6em 0;
+  padding-left: 1.6em;
+}
+.post-body li {
+  margin: 0.4em 0;
+}
+.post-body code {
+  background: rgba(138, 180, 248, 0.12);
+  color: #8ab4f8;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+.post-body pre {
+  background: #0e141b;
+  border: 1px solid rgba(138, 180, 248, 0.2);
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  margin: 1.2em 0;
+}
+.post-body pre code {
+  background: none;
+  color: #d7e3f0;
+  padding: 0;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+.post-body mark {
+  background-color: rgba(138, 180, 248, 0.25);
+  color: inherit;
+  padding: 0.05em 0.2em;
+  border-radius: 3px;
+}
+.post-body hr {
+  border: none;
+  border-top: 1px solid rgba(138, 180, 248, 0.2);
+  margin: 2.2em 0;
+}
+.post-body figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+.post-body figure img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 180, 248, 0.2);
+}
+.post-body .table-wrapper,
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.92em;
+  display: block;
+  overflow-x: auto;
+}
+.post-body th, .post-body td {
+  border: 1px solid rgba(138, 180, 248, 0.15);
+  padding: 0.5em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+.post-body th {
+  background: rgba(138, 180, 248, 0.1);
+  color: #8ab4f8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.post-body strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+/* Cover image styling for post header */
+.post-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 1em 0;
+    border: 1px solid rgba(138, 180, 248, 0.2);
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo"><a href="../index.html">THRWT</a></div>
+<div>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+</div>
+</div>
+<div class="container">
+<!-- LEFT SIDEBAR -->
+<div class="sidebar">
+<img alt="Profile" src="../images/Image .jpg"/>
+<h2>thrwt</h2>
+<p>OMG</p>
+<div class="icons">
+<a href="https://www.linkedin.com/in/mohamed-tharwat1/"><ion-icon name="logo-linkedin"></ion-icon></a>
+<a href="https://medium.com/@mohamedtharwat_67874"><ion-icon name="logo-medium"></ion-icon></a>
+<a href="https://discord.com/users/1210726491088887838"><ion-icon name="logo-discord"></ion-icon></a>
+</div>
+</div>
+<!-- MAIN CONTENT -->
+<div class="content">
+<article class="post">
+<header class="post-header">
+<h1>MFT Slack and Recovering Deleted Files</h1>
+<div class="post-meta" style="margin-bottom: 20px;">
+<div class="post-meta-item">
+<ion-icon name="calendar-outline"></ion-icon>
+<span>July 22, 2026</span>
+</div>
+<div class="post-meta-item">
+<ion-icon name="time-outline"></ion-icon>
+<span class="reading-time">Calculating...</span>
+</div>
+<div class="post-meta-item">
+<ion-icon name="bookmark-outline"></ion-icon>
+<span>Study Notes</span>
+</div>
+</div>
+<p class="post-description">Recovering deleted files requires more than simply scanning a disk for missing data — it requires understanding how NTFS manages file metadata. This article explores MFT record slack, what actually changes when a file is deleted, and how to manually recover resident, non-resident, and fragmented files from raw MFT records.</p>
+</header>
+
+<nav class="table-of-contents">
+<h2>Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#active-or-deleted">Active or Deleted? Checking the Record</a></li>
+<li><a href="#mft-slack">MFT Slack Space, in Close</a>
+<ol>
+<li><a href="#record-vs-attribute-slack">Record Slack vs Attribute Slack</a></li>
+</ol>
+</li>
+<li><a href="#what-changes">Deleted Files in NTFS — What Actually Changes</a>
+<ol>
+<li><a href="#when-deleted">When a File Is Deleted</a></li>
+<li><a href="#what-remains">What Can Remain in Slack</a></li>
+<li><a href="#after-reuse">After Record Reuse</a></li>
+</ol>
+</li>
+<li><a href="#recovering-deleted-files">Recovering Deleted Files</a>
+<ol>
+<li><a href="#recovering-resident">Recovering Resident Files</a></li>
+<li><a href="#recovering-non-resident">Recovering Non-Resident Files</a></li>
+<li><a href="#recovering-fragmented">Recovering Fragmented Files</a></li>
+</ol>
+</li>
+</ol>
+</nav>
+
+<div class="post-body">
+
+<h2 id="overview">Overview</h2>
+<p>Recovering deleted files requires more than simply scanning a disk for missing data — it requires understanding how NTFS manages file metadata. Every file stored on an NTFS volume leaves traces within the Master File Table (MFT), and even after deletion, portions of this metadata may remain intact. This article explores the internal structure of the MFT, the organization of its records and attributes, the file deletion process, and how MFT Slack can be analyzed to recover valuable forensic evidence.</p>
+
+<h2 id="active-or-deleted">Active or Deleted? Checking the Record</h2>
+<p>Before examining MFT Slack or attempting to recover deleted data, the first step is determining whether an MFT record is currently active or has been marked as deleted.</p>
+<p>This is the <strong>first check</strong> in any deleted-record scan: read 2 bytes at offset <code>0x16</code>.</p>
+<p>Offset <code>0x16</code> (2 bytes, little-endian)<br/>
+bit 0 (<code>0x0001</code>): 1 = record in use, 0 = record not in use (deleted)<br/>
+bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
+
+<table>
+<thead>
+<tr><th>Value</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>0x00</code></td><td>Deleted file</td></tr>
+<tr><td><code>0x01</code></td><td>Active file</td></tr>
+<tr><td><code>0x02</code></td><td>Deleted directory</td></tr>
+<tr><td><code>0x03</code></td><td>Active directory</td></tr>
+</tbody>
+</table>
+
+<p>When you look at offset <code>0x16</code>, you'll get it — in this case, this is an active file.</p>
+
+<figure>
+<img alt="MFT record flags at offset 0x16" src="../images/MFT slack and Recovering Deleted Files/image.png"/>
+</figure>
+
+<h2 id="mft-slack">MFT Slack Space, in Close</h2>
+<p>Although a deleted MFT record is marked as available for reuse, not every byte within the record is immediately overwritten. The unused portion of the record, known as <strong>MFT Slack</strong>, can retain remnants of previous metadata and, in some cases, fragments of file content. These residual artifacts make MFT Slack one of the most valuable areas examined during NTFS forensic analysis.</p>
+<p>It exists in two forms:</p>
+<ul>
+<li><strong>Record Slack</strong></li>
+<li><strong>Attribute Slack</strong></li>
+</ul>
+
+<h3 id="record-vs-attribute-slack">Record Slack vs Attribute Slack</h3>
+<p><mark><strong>Record Slack:</strong></mark> bytes between <code>UsedSize</code> (<code>0x18</code>) and <code>AllocatedSize</code> (<code>0x1C</code>, normally 1024) — at the <strong>end of the MFT record</strong>. <strong>Contains:</strong> leftover data from previous attributes or older versions of the record.</p>
+<ul>
+<li><code>FF FF FF FF</code> at <code>0x198</code> is the <code>$END</code> marker terminating the attribute list; everything after it up to <code>AllocatedSize</code> is slack.</li>
+<li>The non-zero run starting at <code>0x1A8</code> (<code>31 40 00 00</code>, <code>0C 00 00 00</code>, <code>B0 00 00 00</code>) reads like fragments of an older, larger attribute header — the value shapes line up with typical attribute length and content offset fields.</li>
+</ul>
+
+<figure>
+<img alt="Record slack bytes after the $END marker" src="../images/MFT slack and Recovering Deleted Files/image%201.png"/>
+</figure>
+
+<p><mark><strong>Attribute Slack:</strong></mark> unused bytes between the <strong>logical end of the attribute's content</strong> and the <strong>allocated space</strong> for that attribute — <strong>inside an attribute</strong>. <strong>Contains:</strong> leftover bytes from older content within the same attribute (a longer filename or resident DATA).</p>
+
+<hr/>
+
+<h2 id="what-changes">Deleted Files in NTFS — What Actually Changes</h2>
+<p>When a file is deleted, Windows does not immediately erase all traces of it. Instead, NTFS updates metadata while leaving portions of the original information intact until they are overwritten. These remnants can provide valuable forensic evidence during an investigation.</p>
+
+<h3 id="when-deleted">When a File Is Deleted</h3>
+<ul>
+<li>Leaves the remaining bytes unchanged.</li>
+<li><strong>$MFT Bitmap:</strong> the record's allocation bit is cleared (0 = unallocated), marking the slot available for reuse.</li>
+<li><strong>MFT record flags</strong> (<code>0x16</code>): bit 0 cleared → <code>0x00</code> or <code>0x02</code>.</li>
+<li>Updates <code>UsedSize</code> to reflect the new, smaller logical content.</li>
+<li><strong>Parent directory index</strong> (<code>$INDEX_ROOT</code>/<code>$INDEX_ALLOCATION</code>): the directory entry referencing the file is removed.</li>
+<li><strong>Link count</strong> (<code>0x12</code>): decremented; reaches 0 when the last hard link is deleted.</li>
+<li><strong>$LogFile:</strong> records the delete as a transactional log entry.</li>
+<li><strong>$UsnJrnl ($J):</strong> appends a <code>USN_RECORD</code> with <code>USN_REASON_FILE_DELETE</code>.</li>
+<li>Writes a new <code>$END</code> marker (<code>0xFFFFFFFF</code>) immediately after the last valid attribute.</li>
+</ul>
+<p><strong>These leftover bytes persist until they are overwritten.</strong></p>
+
+<h4 id="what-remains">What Can Remain in Slack</h4>
+<ul>
+<li>Entire <code>$FILE_NAME</code> attributes from before a rename</li>
+<li>Entire <code>$STANDARD_INFORMATION</code> blocks with pre-timestomp timestamps</li>
+<li>Resident <code>$DATA</code> content (small files) — potentially full file recovery from slack alone</li>
+<li><code>$OBJECT_ID</code> (GUIDs), <code>$SECURITY_DESCRIPTOR</code> residues, <code>$INDEX_ROOT</code> fragments from directories</li>
+<li>Fragments of <code>$ATTRIBUTE_LIST</code> entries referencing extension records</li>
+<li>Old sequence numbers, old link counts, old flag bytes — useful for timeline reconstruction</li>
+</ul>
+
+<h3 id="after-reuse">After Record Reuse</h3>
+<ul>
+<li><strong>Increments the Sequence Number</strong> (offset <code>0x10</code>) to invalidate stale file references.</li>
+<li><strong>Writes new attributes</strong> starting at the <strong>First Attribute Offset</strong>, overwriting only the bytes needed.</li>
+<li><strong>Leaves the remaining bytes unchanged</strong>, so older data can survive in the record slack if it is not overwritten.</li>
+</ul>
+
+<h2 id="recovering-deleted-files">Recovering Deleted Files</h2>
+<p>Knowing where the file data resides becomes particularly important when the file is deleted. NTFS treats resident and non-resident files differently, and understanding this behavior explains why certain deleted files can be partially or fully recovered.</p>
+<p>In the MFT we have two types of files:</p>
+<ul>
+<li><strong>Resident Files:</strong> for small files (roughly under 700 bytes), the actual file content is stored directly inside the MFT record itself.</li>
+<li><strong>Non-Resident Files:</strong> for larger files, the attribute holds pointers (data runs) directing to the external disk clusters where the data resides.</li>
+</ul>
+<p>Immediately after deletion, the MFT record is <strong>mostly unchanged</strong>. Only allocation metadata is updated, while the record's attributes remain intact. Recovery quality decreases only as the record is reused.</p>
+<p>We will explore how to recover each type of file in the MFT:</p>
+<ul>
+<li><mark><strong>Recovering Resident Files</strong></mark></li>
+<li><mark><strong>Recovering Non-Resident Files</strong></mark></li>
+<li><mark><strong>Recovering Fragmented Files</strong></mark></li>
+<li><mark><strong>Overwritten Records</strong></mark> (will recover the <strong>new file</strong>, not the deleted one)</li>
+<li><mark><strong>Partially Overwritten Records</strong></mark>
+<ul>
+<li>Bytes <code>[0 .. new_UsedSize)</code> belong to the new file.</li>
+<li>Bytes <code>[new_UsedSize .. old_UsedSize_of_prior_content)</code> may still contain <strong>fragments</strong> of the old file's later attributes (if <code>$STANDARD_INFORMATION</code> and <code>$FILE_NAME</code> were overwritten by the new file's own copies of those same attribute types, but the old <code>$DATA</code> attribute which came after them is still sitting untouched further into the record).</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="recovering-resident">Recovering Resident Files</h3>
+<p>For small files (roughly under 700 bytes), the actual file content is stored directly inside the MFT record itself.</p>
+<p>This is a <strong>deleted Resident MFT Record</strong>, with Flags = <code>0x0000</code> (deleted), and the <code>Zone.Identifier</code> ADS starts at <strong>0xDD58</strong>. This record contains a <strong>$DATA</strong> attribute:</p>
+<ol>
+<li><strong>Resident Alternate Data Stream (ADS)</strong></li>
+</ol>
+<p>├── $DATA (Named) <mark>Resident</mark><br/>
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type = <code>80 00 00 00</code><br/>
+│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name = Zone.Identifier</p>
+
+<table>
+<thead>
+<tr><th>Offset</th><th>Bytes</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>0xDCA8</code></td><td><code>80 00 00 00</code></td><td><code>$DATA</code> attribute</td></tr>
+<tr><td><code>0xDC16</code></td><td><code>00 00</code></td><td>Flags = <code>0x0000</code> (deleted)</td></tr>
+<tr><td><code>0xDC10</code></td><td><code>04 00</code></td><td>Sequence Number = <code>4</code> — this MFT entry has been allocated to four different files over its lifetime.</td></tr>
+<tr><td><code>0xDD58</code></td><td><code>80 00 00 00</code></td><td>Attribute Type = <code>$DATA</code> — Zone.Identifier ADS begins</td></tr>
+<tr><td><code>0xDD5C</code></td><td><code>98 00 00 00</code></td><td>Attribute Length = <code>152</code></td></tr>
+<tr><td><code>0xDD60</code></td><td><code>00</code></td><td>Resident: <code>0</code> = resident (content stored inline in this record), <code>1</code> = non-resident (content stored elsewhere on disk, referenced via data runs)</td></tr>
+<tr><td><code>0xDD62</code></td><td><code>18 00</code></td><td>Offset (from start of this attribute) where the name string begins, if Name Length &gt; 0 — used to read the stream name, <code>:Zone.Identifier</code></td></tr>
+</tbody>
+</table>
+
+<figure>
+<img alt="Resident $DATA attribute and Zone.Identifier ADS" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_134017.png"/>
+</figure>
+
+<hr/>
+
+<h3 id="recovering-non-resident">Recovering Non-Resident Files</h3>
+<p>For larger files (above 700 bytes), this attribute holds pointers (data runs) directing to the external disk clusters where the data resides.</p>
+<p>This is the <strong>deleted Non-Resident MFT</strong> (<code>Non-resident Flag = 0x01</code>), indicating that the file content is stored outside the MFT record. Rather than containing the file itself, the attribute stores a run list describing the physical disk location of the data.</p>
+<ul>
+<li>Let's walk through an example to understand it better.</li>
+</ul>
+
+<pre><code>- Now suppose the file is thrwt.txt, the MFT record does NOT
+contain it. Instead it contains something like:
+
+$DATA
+Run List
+
+LCN = 5309
+Length = 1 cluster
+
+That's all.
+Think of it as a note saying:
+
+"The file is over there."</code></pre>
+
+<p>So to find the non-resident data, Windows looks at <code>Run List Offset = 0x40</code>.</p>
+<p><code>0x40</code> (64) → abs <code>0xE908 + 0x40</code> = <code>0xE948</code></p>
+<p>So it jumps to <code>0xE948</code> where it finds <code>21 01 BD 14 00</code> — these five bytes are <strong>not file data</strong>, they are an <strong>address</strong>.</p>
+<p>Then decode the run list byte <code>21</code>.</p>
+<p>Split into nibbles: <code>2 | 1</code>, meaning:</p>
+<ul>
+<li>Length field = 1 byte. Run Length to next byte <code>01</code> means <code>1 cluster</code>.</li>
+</ul>
+<ul>
+<li>Offset field = 2 bytes. Run Offset to next two bytes <code>BD 14</code>, which in little-endian is <code>14 BD</code>, equal to <code>0x14BD</code> = <code>5309</code>. Since this is the first run, Starting LCN = <code>5309</code>.</li>
+</ul>
+<p>The final byte is the terminator <code>00</code>, marking the end of the run list.</p>
+<p>The decoded run list means:</p>
+
+<pre><code>Read 1 cluster
+starting at LCN 5309
+
+MFT Record
+│
+├── $DATA (Non-resident)
+│
+└── Run List
+      │
+      ▼
+LCN 5309
++----------------------+
+|                      |
+|   File Data          |
+|                      |
+|                      |
++----------------------+</code></pre>
+
+<figure>
+<img alt="Non-resident data run pointing to LCN 5309" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_165511.png"/>
+</figure>
+
+<hr/>
+
+<h3 id="recovering-fragmented">Recovering Fragmented Files</h3>
+<p>A fragmented file consists of <strong>multiple non-contiguous data runs</strong>.</p>
+<p>The MFT still does not contain the file. It contains a map telling Windows where each piece of the file is located.</p>
+
+<pre><code>Suppose the file is
+
+thrwt.exe
+
+The MFT record does NOT contain
+&lt;installer data&gt;
+
+Instead it contains something like:
+
+$DATA
+Run List, Run 1, Run 2, Run 3</code></pre>
+
+<p>First Windows locates the run list: <code>Run List Offset = 0x40</code>. The attribute begins at <code>0xC918 + 0x40 = 0xC958</code>.</p>
+<p>Where it finds:</p>
+<p><code>21 01 97 14</code><br/>
+<code>31 28 41 EB 0B</code><br/>
+<code>32 B5 3C BB 2D F4</code><br/>
+<code>00</code></p>
+<p>These bytes are <strong>not the file data</strong> — they are simply a <strong>map</strong> describing where each fragment of the file is stored.</p>
+
+<p><mark><strong>Decode Run #1</strong></mark> <strong>(same steps as a non-resident file, but with more runs)</strong></p>
+<p><code>21 01 97 14</code></p>
+<p>Decode the run list byte <code>21</code>. Split into nibbles: <code>2 | 1</code>, meaning:</p>
+<ul>
+<li>Length field = 1 byte. Run Length to next byte <code>01</code> means <code>1 cluster</code>.</li>
+</ul>
+<ul>
+<li>Offset field = 2 bytes. Run Offset to next two bytes <code>97 14</code>, which in little-endian is <code>14 97</code>, equal to <code>0x1497 = 5271</code>. Since this is the first run, Starting LCN = <code>5271</code>.</li>
+</ul>
+<p>Repeat the same steps for each data run and you'll <mark>recover the fragmented file</mark>.</p>
+
+<p><code>Run 1</code>  <code>21 01 97 14</code></p>
+<p>LCN = 5271<br/>Length = 1 cluster</p>
+
+<p><code><strong>Run 2</strong></code> <code>31 28 41 EB 0B</code></p>
+<p>LCN = 786392<br/>Length = 40 clusters</p>
+
+<p><code><strong>Run 3</strong></code> <code>32 B5 3C BB 2D F4</code></p>
+<p>LCN = 11667<br/>Length = 15541 clusters</p>
+
+<p>So: read <strong>1 cluster</strong> starting at <strong>LCN 5271</strong>, then <strong>40 clusters</strong> starting at <strong>LCN 786392</strong>, then <strong>15,541 clusters</strong> starting at <strong>LCN 11667</strong>, and concatenate them in this order to reconstruct <code>thrwt.exe</code> — and that's the end.</p>
+
+<figure>
+<img alt="Fragmented file data runs across three LCN ranges" src="../images/MFT slack and Recovering Deleted Files/Screenshot_2026-07-21_180150.png"/>
+</figure>
+
+<p><strong>Yeah — this is the story. You're the one able to recover data without any tool.</strong></p>
+<p>If you feel distracted, you can read this first: <a href="https://thrwt.ninja/NOTES/MFT.html">https://thrwt.ninja/NOTES/MFT.html</a></p>
+
+</div>
+
+<div style="margin-top: 40px;">
+<a href="../Notes.html" style="display: inline-block; padding: 12px 24px; background: #8ab4f8; color: #0e141b; text-decoration: none; border-radius: 8px; font-weight: 600;">
+← Back to Notes
+</a>
+</div>
+</article>
+</div>
+</div>
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</body>
+</html>

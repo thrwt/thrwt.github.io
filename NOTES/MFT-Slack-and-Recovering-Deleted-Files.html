@@ -182,7 +182,7 @@
 <div class="post-body">
 
 <h2 id="overview">Overview</h2>
-<p>Recovering deleted files requires more than simply scanning a disk for missing data — it requires understanding how NTFS manages file metadata. Every file stored on an NTFS volume leaves traces within the Master File Table (MFT), and even after deletion, portions of this metadata may remain intact. This article explores the internal structure of the MFT, the organization of its records and attributes, the file deletion process, and how MFT Slack can be analyzed to recover valuable forensic evidence.</p>
+<p> Every file stored on an NTFS volume leaves traces within the Master File Table (MFT), and even after deletion, portions of this metadata may remain intact. This article explores the internal structure of the MFT, the organization of its records and attributes, the file deletion process, and how MFT Slack can be analyzed to recover valuable forensic evidence.</p>
 
 <p>Before examining MFT Slack or attempting to recover deleted data, the first step is determining whether an MFT record is currently active or has been marked as deleted.</p>
 <p>This is the <strong>first check</strong> in any deleted-record scan: read 2 bytes at offset <code>0x16</code>.</p>

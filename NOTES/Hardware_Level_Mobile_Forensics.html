@@ -291,7 +291,6 @@
 <hr/>
 <p>eMMC equipped Qualcomm platforms are described as booting from <strong>Boot Partition 1</strong> (Boot ROM1)  with <code>Boot Config 0x0 / 0x38, Bus 0x0</code>.<br/>UFS equipped Qualcomm platforms boot from <strong>Boot A (LUN1)</strong>, which loads <strong>GPT, Xbl_config, and Xbl</strong>, with <strong>Boot B (LUN2)</strong> holding backup copies <strong>(Gpt, Xbl_configbak, Xblbak)</strong>, and later boot stages involving LUN3/LUN4.</p>
 <hr/>
-<hr/>
 <h3><strong>Samsung Exynos</strong></h3>
 <figure><a href="../images/JTAG and Chip-Off Forensics/fig-13.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-13.png" alt="Figure 13" loading="lazy"/></a></figure>
 <p>Best case: speed compatible, RPMB clean storage. <br/>Worst case: a non clean RPMB still boots the device but, on eMMC platforms, prevents unlocking the bootloader, on UFS platforms, the camera subsystem is reported to fail.<br/>Speed-incompatible replacement storage (installing an older-generation eMMC/UFS chip from a legacy device) will not function.</p>

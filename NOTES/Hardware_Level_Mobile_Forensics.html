@@ -1,0 +1,392 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JTAG and Chip-Off Forensics | thrwt</title>
+<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<script src="../js/main.js"></script>
+<style>
+/* Scoped styles for MFT Slack article content - complements site theme */
+.post-body {
+  color: inherit;
+  line-height: 1.7;
+}
+.post-body h2 {
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  color: #8ab4f8;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(138, 180, 248, 0.2);
+  padding-bottom: 0.4em;
+}
+.post-body h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  color: #8ab4f8;
+  font-size: 1.2rem;
+}
+.post-body h4 {
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+  color: #8ab4f8;
+  font-size: 1.05rem;
+}
+.post-body p {
+  margin: 0.9em 0;
+}
+.post-body ol, .post-body ul {
+  margin: 0.6em 0;
+  padding-left: 1.6em;
+}
+.post-body li {
+  margin: 0.4em 0;
+}
+.post-body code {
+  background: rgba(138, 180, 248, 0.12);
+  color: #8ab4f8;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+.post-body pre {
+  background: #0e141b;
+  border: 1px solid rgba(138, 180, 248, 0.2);
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  margin: 1.2em 0;
+}
+.post-body pre code {
+  background: none;
+  color: #d7e3f0;
+  padding: 0;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+.post-body mark {
+  background-color: rgba(138, 180, 248, 0.25);
+  color: inherit;
+  padding: 0.05em 0.2em;
+  border-radius: 3px;
+}
+.post-body hr {
+  border: none;
+  border-top: 1px solid rgba(138, 180, 248, 0.2);
+  margin: 2.2em 0;
+}
+.post-body figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+.post-body figure img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 180, 248, 0.2);
+}
+.post-body .table-wrapper,
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.92em;
+  display: block;
+  overflow-x: auto;
+}
+.post-body th, .post-body td {
+  border: 1px solid rgba(138, 180, 248, 0.15);
+  padding: 0.5em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+.post-body th {
+  background: rgba(138, 180, 248, 0.1);
+  color: #8ab4f8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.post-body strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+/* Cover image styling for post header */
+.post-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 1em 0;
+    border: 1px solid rgba(138, 180, 248, 0.2);
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo"><a href="../index.html">THRWT</a></div>
+<div>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+</div>
+</div>
+<div class="container">
+<!-- LEFT SIDEBAR -->
+<div class="sidebar">
+<img alt="Profile" src="../images/Image .jpg"/>
+<h2>thrwt</h2>
+<p>OMG</p>
+<div class="icons">
+<a href="https://www.linkedin.com/in/mohamed-tharwat1/"><ion-icon name="logo-linkedin"></ion-icon></a>
+<a href="https://medium.com/@mohamedtharwat_67874"><ion-icon name="logo-medium"></ion-icon></a>
+<a href="https://discord.com/users/1210726491088887838"><ion-icon name="logo-discord"></ion-icon></a>
+</div>
+</div>
+<!-- MAIN CONTENT -->
+<div class="content">
+<article class="post">
+<header class="post-header">
+<h1>JTAG and Chip-Off Forensics</h1>
+  <img alt="cover" class="post-cover" src="../images/JTAG and Chip-Off Forensics/cover.png"/>
+<div class="post-meta" style="margin-bottom: 20px;">
+<div class="post-meta-item">
+<ion-icon name="calendar-outline"></ion-icon>
+<span>October 23, 2026</span>
+</div>
+<div class="post-meta-item">
+<ion-icon name="time-outline"></ion-icon>
+<span class="reading-time">Calculating...</span>
+</div>
+<div class="post-meta-item">
+<ion-icon name="bookmark-outline"></ion-icon>
+<span>Research</span>
+</div>
+</div>
+<p class="post-description">What do you do when the screen is dark, the USB port is corroded and the phone is water damaged? This research goes from the ground up: firmware and bootloaders, eMMC and UFS memory, partition indexing and RPMB, then JTAG, ISP and chip-off acquisition across MediaTek, Qualcomm, Exynos and HiSilicon/Kirin, with a real acquisition example.</p>
+</header>
+
+<nav class="table-of-contents">
+<h2>Contents</h2>
+<ol>
+<li><a href="#mobile-software-firmware-architectures">Mobile Software &amp; Firmware Architectures</a>
+</li>
+<li><a href="#mobile-storage-technologies">Mobile Storage Technologies</a>
+</li>
+<li><a href="#emmc-architecture">eMMC Architecture</a>
+</li>
+<li><a href="#ufs-architecture">UFS Architecture</a>
+</li>
+<li><a href="#jtag-vs-isp-vs-chip-off">JTAG vs. ISP vs. Chip-Off</a>
+</li>
+</ol>
+</nav>
+
+<div class="post-body">
+<p>In mobile forensics u will face some problems like ummm</p>
+<p>What happen if the The screen is dark, the USB port corroded and the Water damage the mobile and mobile like a piece of iron, there is the story has been ended?. This is the point at which digital forensics stops being a software problem and becomes a hardware problem.</p>
+<p>Somewhere inside a mainboard black chip soldered to the is the only surviving copy of the victim's last messages, location history, and photographs. The investigator cannot simply plug in a cable and press extract. The operating system that would normally mediate that request is gone, along with the screen that would let anyone unlock it in the first place.</p>
+<p>In this research i will explore from the ground up. It begins where the original source course material for mobile repair technicians begins with firmware, bootloaders, the raw geometry of eMMC and UFS memory, carries that foundation into the domain of mobile forensics. Explore Direct hardware extraction vectors specifically Joint Test Action Group (JTAG), In-System Programming (ISP), Chip Off forensics, the encryption layers that now stand between an investigator and the raw bytes on the chip. so let’s have fun with hardware.</p>
+<p>Modern smartphones are, at the hardware level, small embedded computers built around a System-on-Chip (SoC), a package of non volatile flash storage, and a firmware chain that authenticates and loads each stage of software in sequence.</p>
+<p>Mobile forensic examiners rarely need to think about this stack when a device is powered on, unlocked, and commercial tools such as Cellebrite UFED, Magnet AXIOM handle acquisition through supported logical  interfaces. But a meaningful share of real casework involves devices that are locked, damaged, water exposed, or simply unsupported by any commercial extraction profile. In those cases, the examiner must fall back to hardware level acquisition, reading the flash memory directly, bypassing the operating system.</p>
+<h4><strong>This research is organized in two halves that mirror how a forensic examiner should actually think about a device.</strong></h4>
+<p>The first half covers the underlying hardware and software architecture, firmware and bootloaders, the two dominant families of embedded flash memory (eMMC and UFS), partition indexing via GPT, and storage particularities of the four SoC vendors most commonly encountered in the field MediaTek, Qualcomm, Exynos, and HiSilicon/Kirin.</p>
+<p>The second half covers the forensic and security layer built on top of that hardware, the RPMB secure partition, JTAG, ISP hardware access and chip off extraction acquisition methodologies. But here’s the surprise! with real example acquisition method, keep reading &lt;:)</p>
+<h2 id="mobile-software-firmware-architectures"><mark><strong>Mobile Software &amp; Firmware Architectures</strong></mark></h2>
+<p>At the lowest level of an Android device sits the firmware is fixed low level code responsible for bringing the SoC out of reset and initiating the boot chain, commonly referred to in the repair trade as the "first logo" stage. In forensic and firmware literature this stage is generally called the <mark><strong>Bootloader</strong></mark>, but its concrete name and structure differ by SoC vendor because each vendor implements its own proprietary boot ROM and secondary program loader :")</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-01.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-01.png" alt="Figure 1" loading="lazy"/></a></figure>
+<table><tr><th>SoC Vendor</th><th>Primary Program Loader Implementation</th></tr><tr><td><strong>MediaTek (MTK)</strong></td><td>Preloader</td></tr><tr><td><strong>Qualcomm (QLM)</strong></td><td>Aboot, XBL (eXtensible Boot Loader)</td></tr><tr><td><strong>Spreadtrum / Unisoc (SPD)</strong></td><td>SPL (Secondary Program Loader)</td></tr><tr><td><strong>Samsung Exynos</strong></td><td>Sboot, CM (Core Module)</td></tr><tr><td><strong>HiSilicon (Kirin)</strong></td><td>Xloader, Fastboot</td></tr></table>
+<p>The firmware operates as a gatekeeper. it initializes the primary memory controller, stages volatile DRAM, verifies cryptographic signatures on verified-boot platforms, and passes execution control downstream. If any of these software components fails an integrity or presence check, the boot process halts and the device typically becomes stuck at its manufacturer logo screen</p>
+<p>Everything above the firmware layer the kernel, the recovery image, and the Android userspace is generally referred to as software.</p>
+<h2 id="mobile-storage-technologies"><mark><strong>Mobile Storage Technologies</strong></mark></h2>
+<p>Non volatile memory has evolved from ROM and PROM to EPROM, EEPROM, and then flash memory. NOR flash is mainly used for running code, while NAND flash is denser, cheaper, and better for storing large amounts of data. MMC added a controller to manage NAND flash, and eMMC integrated this technology into a package designed for mobile devices. Later, UFS replaced the older MMC interface with a faster serial connection, providing higher performance and more SSD-like storage capabilities for modern smartphones.</p>
+<p><strong>ROM → PROM → EPROM → EEPROM → NOR → NAND → MMC/SDCARD → eMMC/EMCP → UFS/EUFS</strong></p>
+<p>In research i will focus on MMC and UFS cuz is the most popular mobile storage in market</p>
+<h3>EMMC vs EMCP, UFS vs EUFS</h3>
+<ul><li><strong>eMMC</strong> →NAND storage with <strong>no integrated</strong>DRAM, packaged exclusively as <strong>BGA153</strong>.</li></ul>
+<ul><li><strong>EMCP</strong> (embedded Multi-Chip Package) → eMMC combined with integrated DRAM in the same package, found in <strong>BGA221 / BGA162 / BGA254</strong> packages.</li></ul>
+<ul><li><strong>UFS</strong> →NAND storage with <strong>no</strong> integrated DRAM, packaged exclusively as <strong>BGA153</strong>.</li></ul>
+<ul><li><strong>EUFS</strong> → UFS combined with integrated DRAM, found in <strong>BGA254 / BGA297</strong> packages.</li></ul>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-02.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-02.png" alt="Figure 2" loading="lazy"/></a></figure>
+<h2 id="emmc-architecture"><strong>eMMC Architecture</strong></h2>
+<p>eMMC uses a parallel data bus, and its performance improved with newer versions. eMMC 4.5 supports up to 200 MB/s, while eMMC 5.0 and 5.1 can reach up to 400 MB/s. eMMC 5.1 also introduced Command Queuing (CQ), which improves performance when handling multiple read and write operations</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-03.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-03.jpg" alt="Figure 3" loading="lazy"/></a></figure>
+<p>eMMC packages contain an integrated controller that abstracts the underlying flash into distinct hardware level partitions</p>
+<table><tr><th>Hardware Block Alias</th><th>Standard JEDEC Partition</th><th>Technical Forensic Function</th></tr><tr><td><strong>ROM1</strong></td><td>User Data Area</td><td>Primary storage; contains the partition index (GPT) and all OS/user volumes.</td></tr><tr><td><strong>ROM2</strong></td><td>Boot Partition 1 (<code>BOOT1</code>)</td><td>Dedicated non-volatile boot mirror; holds primary bootloader images.</td></tr><tr><td><strong>ROM3</strong></td><td>Boot Partition 2 (<code>BOOT2</code>)</td><td>Secondary boot mirror for redundancy and fallback.</td></tr></table>
+<h4>Vendor-Specific Boot Partition Routing</h4>
+<p>In standard embedded designs, the host SoC directs its primary boot fetch to the dedicated hardware boot partitions (<code>BOOT1</code> or <code>BOOT2</code>)</p>
+<ul><li><strong>IN MediaTek, Exynos, and Kirin :</strong> Platforms default to reading boot stages from the physical <code>BOOT1</code> / <code>BOOT2</code> partitions.</li></ul>
+<ul><li><strong>IN Qualcomm :</strong> Qualcomm application processors deviate from this convention by fetching primary boot routines directly from the <strong>User Data Area (ROM1)</strong>. <mark><strong>Misidentifying</strong></mark>this behavior during physical ISP extraction will lead an examiner to mischaracterize a device's boot.</li></ul>
+<h4>Pinouts</h4>
+<p><strong>eMMC (legacy MMC-derived parallel bus):</strong><code>CMD</code> (command line), <code>CLK</code> (clock), <code>DAT0</code>–<code>DAT7</code> (up to 8 parallel data lines, depending on bus width configuration ), <code>VCC</code> (core supply), <code>VCCQ</code> (I/O supply).</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-04.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-04.jpg" alt="Figure 4" loading="lazy"/></a></figure>
+<h2 id="ufs-architecture">UFS Architecture</h2>
+<p>UFS uses a newer full-duplex serial interface instead of the older parallel MMC bus. <br/>It uses M-PHY and UniPro technologies with SCSI-based commands, providing much higher performance. UFS speeds increased from about 1.2–2.9 Gbps in UFS 1.x to 23.2 Gbps per lane in UFS 4.x. However, these are theoretical interface speeds. <br/><mark><strong>The actual performance</strong></mark> is lower because it depends on the NAND flash, controller, number of memory channels, temperature, and caching.</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-05.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-05.png" alt="Figure 5" loading="lazy"/></a></figure>
+<table><tr><th>UFS Version</th><th>Physical Link Gear</th><th>Approx. Speed per Lane</th></tr><tr><td><strong>UFS 1.x</strong></td><td>HS-G1 / HS-G2</td><td>1.2–2.9 Gbps</td></tr><tr><td><strong>UFS 2.0 / 2.1 / 2.2</strong></td><td>HS-G3</td><td>5.8 Gbps</td></tr><tr><td><strong>UFS 3.0 / 3.1</strong></td><td>HS-G4</td><td>11.6 Gbps</td></tr><tr><td><strong>UFS 4.0 / 4.1</strong></td><td>HS-G5</td><td>23.2 Gbps (~46.4 Gbps across dual lanes)</td></tr></table>
+<p>UFS replaces physical hardware partitions with SCSI Logical Units (LUNs). Dedicated boot LUNs typically designated Boot LUN A and Boot LUN B hold redundant stages of the initial bootloader.</p>
+<h4>SoC LUN Allocation</h4>
+<p>UFS organizes storage using <strong>Logical Units (LUNs)</strong> instead of the traditional physical partitions used by eMMC. Dedicated boot LUNs, usually <strong>Boot A and Boot B</strong>, store separate copies of the bootloader to provide redundancy. The exact LUN used for each boot stage depends on the <strong>SoC manufacturer and its Boot ROM configuration</strong></p>
+<table><tr><th>SoC Vendor</th><th>eMMC Boot Source</th><th>UFS Boot Source</th></tr><tr><td><strong>Samsung Exynos</strong></td><td><code>BOOT1</code> / <code>BOOT2</code></td><td>Boot A (LUN1) / Boot B (LUN2)</td></tr><tr><td><strong>MediaTek</strong></td><td><code>BOOT1</code> / <code>BOOT2</code></td><td>Boot A (LUN0) / Boot B (LUN1)</td></tr><tr><td><strong>HiSilicon (Kirin)</strong></td><td><code>BOOT1</code> / <code>BOOT2</code></td><td>Boot A (LUN0, Xloader) / Boot B (LUN1, Fastboot)</td></tr><tr><td><strong>Qualcomm</strong></td><td>User Area (ROM1)</td><td>Boot A (LUN1: Primary GPT, XBL), Boot B (LUN2: Secondary GPT/Backup)</td></tr></table>
+<p>UFS communications operate across two M-PHY physical signaling profiles:</p>
+<ul><li><strong>PWM-Gear (Pulse Width Modulation):</strong> Low-speed, low-power modes (PWM-G1 through PWM-G7) with throughputs ranging from 3 to 9 Mbps. PWM is used during link initialization, power-state negotiations, and recovery modes.</li></ul>
+<ul><li><strong>HS-Gear (High Speed):</strong> Multi-gigabit modes (HS-G1 through HS-G5) designed for system execution, app loading, and active read/write operations.</li></ul>
+<p>During forensic hardware diagnostics, forcing a UFS memory link back to its base PWM operating mode allows examiners to verify the electrical and signal integrity of the storage bus when higher-speed HS handshakes fail due to line noise or physical board damage</p>
+<h4><strong>Pinouts</strong></h4>
+<p><strong>UFS (serial, differential, UniPro/M-PHY-based): <br/></strong>TX0P / TX0N (differential transmit pair, DIN0_T / DIN0_C),<br/>RX0P / RX0N (differential receive pair, DOUT0_T / DOUT0_C), <br/>CLK (reference clock), RESET, VCC (core supply), VCCQ1 and VCCQ2 (separate I/O supply rails, reflecting UFS's dual-voltage-domain design).</p>
+<hr/>
+<h3>Storage Indexing &amp; Android Volumes</h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-06.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-06.png" alt="Figure 6" loading="lazy"/></a></figure>
+<p>Once a storage device initializes, the host processor interprets the data block layout via a partition table located at the head of the user data address space</p>
+<table><tr><th>SoC Manufacturer</th><th>Partition Indexing Format</th></tr><tr><td><strong>MediaTek (MTK)</strong></td><td>Scatter file (<code>scatter.txt</code>)</td></tr><tr><td><strong>Qualcomm (QLM)</strong></td><td><code>rawprogram.xml</code> and <code>patch.xml</code></td></tr><tr><td><strong>Spreadtrum / Unisoc</strong></td><td>Standard GUID Partition Table (GPT)</td></tr><tr><td><strong>Samsung Exynos</strong></td><td>Partition Information Table (<code>.PIT</code>)</td></tr><tr><td><strong>HiSilicon</strong></td><td>Standard GUID Partition Table (GPT)</td></tr></table>
+<h3>Structural of Android Storage Volumes</h3>
+<ul><li><strong>Discrete Partition Architecture (Pre-Android 10):</strong> Independent EXT4 partitions allocated directly on flash (<code>/system</code>, <code>/vendor</code>, <code>/boot</code>, <code>/recovery</code>, <code>/data</code>, <code>/efs</code>). <br/>EFS holds cryptographic radio calibration data and the baseband IMEI.</li></ul>
+<ul><li><strong>Dynamic Partitions (</strong><code><strong>super</strong></code><strong>partition, Android 10+):</strong> Consolidates runtime OS images (<code>system</code>, <code>vendor</code>, <code>product</code>, <code>odm</code>) into a single raw container partition designated <code>super</code>. <br/>This design improves storage allocation flexibility, but requires forensic carving tools to parse custom Device-Mapper-Linear metadata structures.</li></ul>
+<hr/>
+<h3><strong>RPMB Binding Constraints</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-07.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-07.png" alt="Figure 7" loading="lazy"/></a></figure>
+<p>RPMB is a protected area in eMMC and UFS storage used to store important security information, such as anti-rollback counters and secure-boot data. It uses a secret authentication key and a write counter to make sure data is trusted and cannot be replayed or replaced with an older version. Unlike normal user storage, RPMB is designed to keep this security state even after a factory reset or re-flashing the device.</p>
+<h3><strong>Mechanism</strong></h3>
+<p><strong>Authentication key<br/></strong> A 256-bit symmetric key is programmed into the storage device once, at manufacturing time, in a controlled/secure environment.</p>
+<p><strong>Write authentication</strong><br/>Every RPMB write must include a Message Authentication Code (MAC), typically HMAC-SHA-256, computed over the write frame and the shared authentication key. Reads are unauthenticated by default but return data whose authenticity can be checked the same way.</p>
+<p><strong>Replay protection<br/></strong> A monotonically increasing <strong>write counter</strong>, maintained by the storage device itself, is included in the MAC computation for every write. <br/>Because the counter always increases, a captured (write request, MAC) pair cannot be successfully replayed later  the counter value would no longer match, and the MAC would fail to verify.</p>
+<hr/>
+<p>JTAG acquisition is mainly used when a device <strong>cannot boot normally</strong>, USB debugging is unavailable, or the bootloader prevents other acquisition methods. It also requires the board to expose accessible <strong>JTAG/TAP test points</strong>. However, JTAG is usually not the first choice because it is <strong>more invasive, slower, and carries some risk of damaging the board</strong>. If logical, file-system, or standard physical acquisition works, those methods are generally preferred.</p>
+<h2 id="jtag-vs-isp-vs-chip-off"><strong>JTAG vs. ISP vs. Chip-Off</strong></h2>
+<h3><strong>JTAG (Joint Test Action Group)</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-08.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-08.png" alt="Figure 8" loading="lazy"/></a></figure>
+<p>JTAG leverages the IEEE 1149.1 boundary scan interface originally designed for circuit integrity verification.<br/>By soldering leads to the Test Access Port (TAP) comprising <code>TDI</code> (Data In), <code>TDO</code> (Data Out), <code>TCK</code> (Clock), and <code>TMS</code> (Mode Select) an examiner instructs the SoC's debug engine to halt execution and dump memory contents across the internal bus.</p>
+<p>The <strong>TAP Controller</strong> is a 16-state system controlled by <strong>TCK (clock)</strong> and <strong>TMS (control)</strong>. It decides whether the chip is reading, shifting, or updating data. The <strong>Instruction Register (IR)</strong> selects what operation the chip should perform, such as <code>IDCODE</code>, <code>EXTEST</code>, <code>SAMPLE/PRELOAD</code>, or <code>BYPASS</code>. After selecting an instruction, the corresponding <strong>Data Register (DR)</strong> is used to send or receive data through <strong>TDI/TDO</strong>. The <strong>Boundary-Scan Register (BSR)</strong> contains cells connected to the chip's I/O pins, allowing a tester to <strong>read or control the signals on the pins</strong> without directly accessing each pin individually.</p>
+<h4><strong>Advantages, Limitations, Risks</strong></h4>
+<p>JTAG forensic acquisition generally involves <strong>connecting directly to test points on the device's board</strong> using a JTAG adapter. The tool communicates with the SoC through its debug interface to access the device's memory without relying on the normal OS or bootloader. The acquired data is then saved as a <strong>raw image</strong>, immediately hashed (such as with SHA-256), and documented for chain of custody. Finally, the image is checked to make sure the expected partitions and filesystem structures are present before analysis.</p>
+<p>limitations<br/>JTAG has several limitations. It is <strong>not a universal way to bypass Android security</strong> and cannot automatically decrypt FBE/FDE-protected data. Some devices disable JTAG completely, while finding the correct test points can be difficult and may risk damaging the board. JTAG also only provides access to what the SoC and its current firmware state allow, so it does not guarantee a complete dump. Finally, JTAG procedures are often <strong>specific to the exact device and board revision</strong>, meaning a method that works on one version may not work on another.</p>
+<hr/>
+<h3><strong>ISP (In-System Programming)</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-09.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-09.png" alt="Figure 9" loading="lazy"/></a></figure>
+<p>ISP refers to directly interfacing with the storage chip's native protocol (the eMMC/MMC command bus, or the UFS UniPro/M-PHY link) <strong>while the chip remains soldered on the board.</strong></p>
+<p>ISP extraction reads the storage <strong>directly from the motherboard without using the phone's SoC</strong>. Very thin wires are soldered to test points connected to the memory's communication lines, such as <strong>DAT0, CMD, and CLK</strong>, along with power and ground. The memory chip stays on the board, while an external programming tool communicates with it and extracts the data.</p>
+<h4>eMMC ISP vs. UFS ISP</h4>
+<ul><li><strong>eMMC ISP</strong> connects to the CMD/CLK/DAT lines and issues standard eMMC bus commands directly, reading the User Data Area, Boot Partitions, and RPMB.</li></ul>
+<ul><li><strong>UFS ISP</strong> is more difficult than eMMC ISP because <strong>UFS uses a high-speed differential serial connection</strong> instead of simple parallel data lines. The examiner must correctly handle things like <strong>clocking, reset, and communication speed (gear) negotiation</strong>. If the external tool and UFS device do not use compatible settings, the storage may <strong>not be detected at all</strong>.</li></ul>
+<h4>Advantages, Limitations, Risks</h4>
+<p><strong>Advantages:</strong> does not require desoldering the chip, can work on devices where JTAG test points are unavailable or fused off, generally faster to set up than chip off once test points are identified.</p>
+<p>ISP also has some limitations. It requires <strong>accurate identification of test points</strong>, which are often undocumented, and poor soldering or too much heat can damage the board or storage chip. <strong>UFS ISP is especially complex</strong> compared with eMMC ISP. <br/>Also, the extracted raw image may still be <strong>encrypted</strong>, and ISP does not automatically provide access to <strong>RPMB</strong>, since RPMB requires its authentication key</p>
+<hr/>
+<h3><strong>Chip-Off</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-10.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-10.png" alt="Figure 10" loading="lazy"/></a></figure>
+<p>Chip-off acquisition physically <strong>desolders the NAND flash package (eMMC/UFS/EMCP/EUFS) from the PCB</strong> and reads it directly in a compatible chip reader/adapter, bypassing the SoC, bootloader, and OS entirely.</p>
+<p>Chip-off acquisition involves <strong>removing the storage chip from the motherboard</strong> using controlled heating, then cleaning and sometimes re-balling the chip before placing it in a compatible reader or adapter. The reader then extracts the <strong>raw storage image</strong>. With eMMC, this can include the User Data Area and sometimes the Boot Partitions. For UFS, a <strong>UFS-capable reader</strong> is required because it uses the UniPro/M-PHY protocol, making UFS chip-off more specialized than eMMC.<br/><br/><br/>Chip-off has several advantages. It can work even when the <strong>motherboard is severely damaged</strong>, as long as the storage chip is still intact. It also <strong>bypasses SoC-level restrictions</strong>, so things like a locked bootloader or disabled JTAG no longer matter. In addition, it can usually provide <strong>access to most or all readable NAND storage blocks</strong>, making it one of the most comprehensive physical acquisition methods.<br/><br/><br/>Chip-off also has important disadvantages. It is <strong>destructive</strong> because the storage chip must be removed from the board, and the device may no longer be practical to restore. It requires <strong>specialized adapters</strong> that match the exact chip package.</p>
+<p>The storage controller also performs <strong>wear leveling and address mapping</strong>, so the raw data must be correctly interpreted by the reader software. Finally, even a complete raw image may still contain <strong>encrypted data (FBE/FDE)</strong> that cannot be directly read without the required keys.</p>
+<hr/>
+<p>This section reorganizes "best case / worst case" for  repair guidance</p>
+<p><strong>This entire section reflects field repair industry knowledge</strong></p>
+<h3><strong>SoC-Specific Vendors</strong></h3>
+<h3><strong>MediaTek</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-11.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-11.png" alt="Figure 11" loading="lazy"/></a></figure>
+<p><strong>Best case:</strong> a storage device that is <strong>speed compatible</strong> with the target board and has a "clean" RPMB   region.<br/>Boot path: eMMC boots from Boot Partition 2/3. UFS-based MediaTek platforms boot from Boot A (LUN0) / Boot B (LUN1)</p>
+<p><strong>Worst case:</strong>a non clean RPMB still allows the device to boot but can produce app level failures, speed incompatible replacement storage will not function, such as the <strong>camera</strong>, may stop working.<br/>An incorrectly configured boot path or corrupted firmware write will prevent boot.</p>
+<h3>Qualcomm</h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-12.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-12.png" alt="Figure 12" loading="lazy"/></a></figure>
+<p><strong>Best case:</strong> speed compatible, RPMB-clean storage<br/>RPMB replaceability is described as chipset generation dependent: <br/>Qualcomm chips at or below the Snapdragon 425 tier, the chipset itself can (re)generate clean RPMB keys, above that tier (450 and up), RPMB keys must be extracted from the original chip (if accessible) using specialized hardware ( "F64 box," a repair industry chip-reader tool)</p>
+<p>If the device uses UFS, replacing the storage may not be possible because the RPMB sector is encrypted and cannot be directly extracted or transferred.</p>
+<hr/>
+<p>eMMC equipped Qualcomm platforms are described as booting from <strong>Boot Partition 1</strong> (Boot ROM1)  with <code>Boot Config 0x0 / 0x38, Bus 0x0</code>.<br/>UFS equipped Qualcomm platforms boot from <strong>Boot A (LUN1)</strong>, which loads <strong>GPT, Xbl_config, and Xbl</strong>, with <strong>Boot B (LUN2)</strong> holding backup copies <strong>(Gpt, Xbl_configbak, Xblbak)</strong>, and later boot stages involving LUN3/LUN4.</p>
+<hr/>
+<hr/>
+<h3><strong>Samsung Exynos</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-13.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-13.png" alt="Figure 13" loading="lazy"/></a></figure>
+<p>Best case: speed compatible, RPMB clean storage. <br/>Worst case: a non clean RPMB still boots the device but, on eMMC platforms, prevents unlocking the bootloader, on UFS platforms, the camera subsystem is reported to fail.<br/>Speed-incompatible replacement storage (installing an older-generation eMMC/UFS chip from a legacy device) will not function.</p>
+<h3><strong>HiSilicon (Kirin)</strong></h3>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-14.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-14.png" alt="Figure 14" loading="lazy"/></a></figure>
+<p>Best case: speed compatible, RPMB-clean storage.</p>
+<p>RPMB replaceability is again described as chipset generation dependent: <br/><strong>Kirin 659 and below</strong> reportedly allow normal eMMC replacement because the chip can generate clean RPMB keys itself.<br/><strong>Kirin 710 and above</strong> reportedly cannot, requiring RPMB key extraction from the original chip via a specialized reader ("F64 box") if available.<br/>UFS-based HiSilicon devices are described as not supporting RPMB replacement at all due to RPMB sector encryption.</p>
+<hr/>
+<p><strong><br/>U think this is the end bruhhh no i have a surprised</strong></p>
+<p>I didn’t want to keep this research purely theoretical, so I decided to take it a step further and turn one of the techniques I studied into a real world practical experiment.</p>
+<p>In mobile forensics, we often study acquisition methods through technical papers, training materials, and demonstrations. We learn about JTAG, ISP, and Chip-Off, understand how they work in theory, and explore the tools used to access device memory.</p>
+<p>But understanding a technique on paper is one thing. Watching it happen on a real device is something entirely different.</p>
+<p>I wanted to move beyond the theoretical side of mobile forensics and see what happens when these techniques meet real hardware, a real motherboard, tiny connection points, specialized equipment.</p>
+<p>So, I decided to visit a mobile repair shop and turn the research into a practical experience</p>
+<p>The main objectives were to:</p>
+<ul><li>Understand the physical structure of the target device and identify the relevant hardware components.</li></ul>
+<ul><li>Explore connection using ISP acquisition approach</li></ul>
+<ul><li>Observe how specialized equipment is connected to a smartphone motherboard.</li></ul>
+<ul><li>Understand the technical and evidential limitations that remain after a memory read attempt.</li></ul>
+<p>so,  let’s go</p>
+<p>Before attempting any hardware level acquisition, the first step is to understand the target device</p>
+<p>its processor, RAM, internal storage, and the way these components interact</p>
+<p>For this research, the target was an <strong>HONOR X7d 4G</strong>, identified during the practical session as model <strong>LGN-LX3</strong>.</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-15.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-15.png" alt="Figure 15" loading="lazy"/></a></figure>
+<p>Just open the <a href="http://gsmarena.com/">http://gsmarena.com/</a> then search with mobile model</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-16.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-16.png" alt="Figure 16" loading="lazy"/></a></figure>
+<p>Main part in this research</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-17.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-17.png" alt="Figure 17" loading="lazy"/></a></figure>
+<p>The HONOR X7d 4G is an Android smartphone built around a Qualcomm Snapdragon platform Public specification listings associate this variant with the Snapdragon 685 processor, LPDDR4X RAM, and UFS 2.2 internal storage.</p>
+<p>In this mobile the technician decide to using ISP by Flash64 Box. In this guide, we will also guide you on how to connect the ISP pinout to Flash64 Box</p>
+<p>Also by using this box, you can easily restore the stock ROM, bypass FRP lock, remove MDM Lock, repair a Dead Boot, or reset user data on your device</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-18.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-18.png" alt="Figure 18" loading="lazy"/></a></figure>
+<p>The F64 box is a translator it sits between your laptop and the phone's storage chip, and it talks to the chip through a few thin wires. Only six things matter on those wires: power, ground, a clock, a command line and a data line.</p>
+<p>So here we go, The first step was to open the back of the phone</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-19.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-19.png" alt="Figure 19" loading="lazy"/></a></figure>
+<p>During this stage, care was required to avoid unnecessary pressure on the display, frame, and internal components, as physical damage could affect the device condition.</p>
+<p>After opening the mobile, Disconnecting the battery is an important preparation step during many hardware level procedures because it reduces the risk of accidental electrical shorts while working around exposed connectors and motherboard components</p>
+<p>Then the technician decide to take the motherboard completely out of the housing to drill in processor under the microscope</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-20.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-20.png" alt="Figure 20" loading="lazy"/></a></figure>
+<p>The reason it’s valuable is the ISP pinout. This process needs to drill into the CPU layers to access data lines, as the required lines are visible on the PCB layer</p>
+<p>Then the technician take the motherboard under the microscope and scrape off the protective coating or remove a small part of the metal shield or EMI shielding to reach them.</p>
+<p><strong>IF you remember we talked above about UFS communication, and this in the lines in the motherboard after drilling , should connect the pins out of the F64box on it</strong></p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-21.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-21.png" alt="Figure 21" loading="lazy"/></a></figure>
+<h4><strong>Pinouts</strong></h4>
+<p><strong>RST:</strong>Hardware reset pin</p>
+<p><strong>TX0_P:</strong> Transmit positive signal</p>
+<p><strong>TX0_N:</strong>Transmit negative signal</p>
+<p><strong>RX0_P:</strong> Receive positive signal</p>
+<p><strong>RX0_N</strong>: Receive negative signal</p>
+<p><strong>GND :</strong> Connect to any ground point</p>
+<p><strong>VCC:</strong> Main power supply (typically 2.5V or 3.3V)</p>
+<p><strong>VCCQ2</strong>: I/O power supply (typically 1.8V)</p>
+<p>Each data direction uses a differential pair consisting of two signals, The two pairs serve different directions</p>
+<ul><li><strong>TX pair:</strong> Transmits data from one interface endpoint to the other.</li></ul>
+<ul><li><strong>RX pair:</strong> Receives data from the opposite direction</li></ul>
+<p>Then he started taking the 0.1 mm jumper out of the F64 box to connect it and taped the jumper down to stay in place and not move, which could otherwise damage the lines</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-22.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-22.png" alt="Figure 22" loading="lazy"/></a></figure>
+<p>Connect jumper wires to Rst, Txop, Txon, Rxop, and Rxon points with care using solder.</p>
+<p>then doublecheck each wire using a multimeter to ensure there are no shorts</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-23.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-23.png" alt="Figure 23" loading="lazy"/></a></figure>
+<p>This is a close up image under a microscope</p>
+<p>After identifying the intended connection points on the PCB, fine wires were soldered to the selected points under a microscope. These wires were then connected to the F64 box using the appropriate connection interface</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-24.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-24.jpg" alt="Figure 24" loading="lazy"/></a></figure>
+<p>As U see the mobile connected directly with box</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-25.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-25.jpg" alt="Figure 25" loading="lazy"/></a></figure>
+<p>Once the hardware connections were established, the F64 box was connected to its associated software application</p>
+<p>That’s great, we have finished 90% of the mission, the next step is connect the box between the software of the box and chip.</p>
+<p>Once the connection is established and the all connection is right (btw this step is so hard, takes a lot of time (^o^) to Fine tuning it<strong></strong>)</p>
+<p>So, let’s goo</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-26.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-26.png" alt="Figure 26" loading="lazy"/></a></figure>
+<p>After connecting the hardware setup to the associated software, the UFS Tools interface was examined to review the available configuration parameters. The interface displays several parameters related to UFS communication, including the VCC voltage, gear, rate, and reference clock (R.CLOCK)</p>
+<p>The UFS communication parameters must be selected according to the target storage chip specification, including its manufacturer, model, and supported UFS version</p>
+<p>After set the configuration, then connect, finnnalllyy the chip connected successfully</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-27.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-27.jpg" alt="Figure 27" loading="lazy"/></a></figure>
+<p>After that all device information related to phone will appear</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-28.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-28.png" alt="Figure 28" loading="lazy"/></a></figure>
+<p>bruhhhh, we gottttt it</p>
+<p>The F64 Ultra Suite interface displayed a list of identified storage partitions. These included partitions such as , <code>userdata</code>, <code>vendor</code>, <code>misc</code>, <code>metadata</code>, <code>keystore</code>, and among others. The interface also displayed partition related information, including reported sizes and filesystem labels where available.</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-29.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-29.jpg" alt="Figure 29" loading="lazy"/></a></figure>
+<p><strong>User data</strong>, including application data and other user related information also showed a Linux EXT4 filesystem label for this partition.</p>
+<figure><a href="../images/JTAG and Chip-Off Forensics/fig-30.jpg" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-30.jpg" alt="Figure 30" loading="lazy"/></a></figure>
+<p>At this stage, an important limitation became apparent</p>
+<p>Android devices comonly use file-based encryption, with encryption keys and access conditions tied to the device's security architecture. Consequently, even when a forensic tool can read storage sectors or identify the <code>userdata</code> partition, the underlying content may remain encrypted. Without the appropriate keys and the necessary conditions for decryption, the acquired bytes may not reveal readable application files, messages, photographs, or other user content</p>
+<p>This highlights one of the major challenges in hardware based mobile forensics. And the experiment demonstrated both the capabilities and the limitations of acquisition</p>
+</div>
+
+<div style="margin-top: 40px;">
+<a href="../Notes.html" style="display: inline-block; padding: 12px 24px; background: #8ab4f8; color: #0e141b; text-decoration: none; border-radius: 8px; font-weight: 600;">
+← Back to Notes
+</a>
+</div>
+</article>
+</div>
+</div>
+<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</body>
+</html>

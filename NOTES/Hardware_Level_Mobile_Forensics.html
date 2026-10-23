@@ -279,8 +279,8 @@
 <p>Chip-off acquisition involves <strong>removing the storage chip from the motherboard</strong> using controlled heating, then cleaning and sometimes re-balling the chip before placing it in a compatible reader or adapter. The reader then extracts the <strong>raw storage image</strong>. With eMMC, this can include the User Data Area and sometimes the Boot Partitions. For UFS, a <strong>UFS-capable reader</strong> is required because it uses the UniPro/M-PHY protocol, making UFS chip-off more specialized than eMMC.<br/><br/><br/>Chip-off has several advantages. It can work even when the <strong>motherboard is severely damaged</strong>, as long as the storage chip is still intact. It also <strong>bypasses SoC-level restrictions</strong>, so things like a locked bootloader or disabled JTAG no longer matter. In addition, it can usually provide <strong>access to most or all readable NAND storage blocks</strong>, making it one of the most comprehensive physical acquisition methods.<br/><br/><br/>Chip-off also has important disadvantages. It is <strong>destructive</strong> because the storage chip must be removed from the board, and the device may no longer be practical to restore. It requires <strong>specialized adapters</strong> that match the exact chip package.</p>
 <p>The storage controller also performs <strong>wear leveling and address mapping</strong>, so the raw data must be correctly interpreted by the reader software. Finally, even a complete raw image may still contain <strong>encrypted data (FBE/FDE)</strong> that cannot be directly read without the required keys.</p>
 <hr/>
-<p>This section reorganizes "best case / worst case" for  repair guidance</p>
-<p><strong>This entire section reflects field repair industry knowledge</strong></p>
+<p>This section reorganizes "best case / worst case" for repair guidance.<strong>And reflects field repair industry knowledge based on a real world hardware cases</strong></p>
+<p> </p>
 <h3><strong>SoC-Specific Vendors</strong></h3>
 <h3><strong>MediaTek</strong></h3>
 <figure><a href="../images/JTAG and Chip-Off Forensics/fig-11.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-11.png" alt="Figure 11" loading="lazy"/></a></figure>
@@ -290,8 +290,6 @@
 <figure><a href="../images/JTAG and Chip-Off Forensics/fig-12.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-12.png" alt="Figure 12" loading="lazy"/></a></figure>
 <p><strong>Best case:</strong> speed compatible, RPMB-clean storage<br/>RPMB replaceability is described as chipset generation dependent: <br/>Qualcomm chips at or below the Snapdragon 425 tier, the chipset itself can (re)generate clean RPMB keys, above that tier (450 and up), RPMB keys must be extracted from the original chip (if accessible) using specialized hardware ( "F64 box," a repair industry chip-reader tool)</p>
 <p>If the device uses UFS, replacing the storage may not be possible because the RPMB sector is encrypted and cannot be directly extracted or transferred.</p>
-<hr/>
-<p>eMMC equipped Qualcomm platforms are described as booting from <strong>Boot Partition 1</strong> (Boot ROM1)  with <code>Boot Config 0x0 / 0x38, Bus 0x0</code>.<br/>UFS equipped Qualcomm platforms boot from <strong>Boot A (LUN1)</strong>, which loads <strong>GPT, Xbl_config, and Xbl</strong>, with <strong>Boot B (LUN2)</strong> holding backup copies <strong>(Gpt, Xbl_configbak, Xblbak)</strong>, and later boot stages involving LUN3/LUN4.</p>
 <hr/>
 <h3><strong>Samsung Exynos</strong></h3>
 <figure><a href="../images/JTAG and Chip-Off Forensics/fig-13.png" target="_blank" rel="noopener"><img src="../images/JTAG and Chip-Off Forensics/fig-13.png" alt="Figure 13" loading="lazy"/></a></figure>

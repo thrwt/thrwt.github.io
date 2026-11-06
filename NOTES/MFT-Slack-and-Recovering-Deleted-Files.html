@@ -163,7 +163,7 @@
 <span>Study Notes</span>
 </div>
 </div>
-<p class="post-description">Recovering deleted files requires more than simply scanning a disk for missing data — it requires understanding how NTFS manages file metadata. This article explores MFT record slack, what actually changes when a file is deleted, and how to manually recover resident, non-resident, and fragmented files from raw MFT records.</p>
+<p class="post-description">Recovering deleted files requires more than simply scanning a disk for missing data. it requires understanding how NTFS manages file metadata. This article explores MFT record slack, what actually changes when a file is deleted, and how to manually recover resident, non-resident, and fragmented files from raw MFT records.</p>
 </header>
 
 <nav class="table-of-contents">
@@ -172,7 +172,7 @@
 
 <li><a href="#mft-slack">MFT Slack Space, in Close</a>
 </li>
-<li><a href="#what-changes">Deleted Files in NTFS — What Actually Changes</a>
+<li><a href="#what-changes">Deleted Files in NTFS. What Actually Changes</a>
 </li>
 <li><a href="#recovering-deleted-files">Recovering Deleted Files</a>
 </li>
@@ -202,7 +202,7 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 </tbody>
 </table>
 
-<p>When you look at offset <code>0x16</code>, you'll get it — in this case, this is an active file.</p>
+<p>When you look at offset <code>0x16</code>, you'll get it. in this case, this is an active file.</p>
 
 <figure>
 <img alt="MFT record flags at offset 0x16" src="../images/MFT slack and Recovering Deleted Files/state-deleted-vs-active.png"/>
@@ -217,21 +217,21 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 </ul>
 
 <h3 id="record-vs-attribute-slack">Record Slack vs Attribute Slack</h3>
-<p><mark><strong>Record Slack:</strong></mark> bytes between <code>UsedSize</code> (<code>0x18</code>) and <code>AllocatedSize</code> (<code>0x1C</code>, normally 1024) — at the <strong>end of the MFT record</strong>. <strong>Contains:</strong> leftover data from previous attributes or older versions of the record.</p>
+<p><mark><strong>Record Slack:</strong></mark> bytes between <code>UsedSize</code> (<code>0x18</code>) and <code>AllocatedSize</code> (<code>0x1C</code>, normally 1024). at the <strong>end of the MFT record</strong>. <strong>Contains:</strong> leftover data from previous attributes or older versions of the record.</p>
 <ul>
 <li><code>FF FF FF FF</code> at <code>0x198</code> is the <code>$END</code> marker terminating the attribute list; everything after it up to <code>AllocatedSize</code> is slack.</li>
-<li>The non-zero run starting at <code>0x1A8</code> (<code>31 40 00 00</code>, <code>0C 00 00 00</code>, <code>B0 00 00 00</code>) reads like fragments of an older, larger attribute header — the value shapes line up with typical attribute length and content offset fields.</li>
+<li>The non-zero run starting at <code>0x1A8</code> (<code>31 40 00 00</code>, <code>0C 00 00 00</code>, <code>B0 00 00 00</code>) reads like fragments of an older, larger attribute header. the value shapes line up with typical attribute length and content offset fields.</li>
 </ul>
 
 <figure>
 <img alt="Record slack bytes after the $END marker" src="../images/MFT slack and Recovering Deleted Files/record-slack-hex.png"/>
 </figure>
 
-<p><mark><strong>Attribute Slack:</strong></mark> unused bytes between the <strong>logical end of the attribute's content</strong> and the <strong>allocated space</strong> for that attribute — <strong>inside an attribute</strong>. <strong>Contains:</strong> leftover bytes from older content within the same attribute (a longer filename or resident DATA).</p>
+<p><mark><strong>Attribute Slack:</strong></mark> unused bytes between the <strong>logical end of the attribute's content</strong> and the <strong>allocated space</strong> for that attribute. <strong>inside an attribute</strong>. <strong>Contains:</strong> leftover bytes from older content within the same attribute (a longer filename or resident DATA).</p>
 
 <hr/>
 
-<h2 id="what-changes">Deleted Files in NTFS — What Actually Changes</h2>
+<h2 id="what-changes">Deleted Files in NTFS. What Actually Changes</h2>
 <p>When a file is deleted, Windows does not immediately erase all traces of it. Instead, NTFS updates metadata while leaving portions of the original information intact until they are overwritten. These remnants can provide valuable forensic evidence during an investigation.</p>
 
 <h3 id="when-deleted">When a File Is Deleted</h3>
@@ -252,10 +252,10 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 <ul>
 <li>Entire <code>$FILE_NAME</code> attributes from before a rename</li>
 <li>Entire <code>$STANDARD_INFORMATION</code> blocks with pre-timestomp timestamps</li>
-<li>Resident <code>$DATA</code> content (small files) — potentially full file recovery from slack alone</li>
+<li>Resident <code>$DATA</code> content (small files) . potentially full file recovery from slack alone</li>
 <li><code>$OBJECT_ID</code> (GUIDs), <code>$SECURITY_DESCRIPTOR</code> residues, <code>$INDEX_ROOT</code> fragments from directories</li>
 <li>Fragments of <code>$ATTRIBUTE_LIST</code> entries referencing extension records</li>
-<li>Old sequence numbers, old link counts, old flag bytes — useful for timeline reconstruction</li>
+<li>Old sequence numbers, old link counts, old flag bytes. useful for timeline reconstruction</li>
 </ul>
 
 <h3 id="after-reuse">After Record Reuse</h3>
@@ -304,11 +304,11 @@ bit 1 (<code>0x0002</code>): 1 = directory, 0 = file</p>
 <tbody>
 <tr><td><code>0xDCA8</code></td><td><code>80 00 00 00</code></td><td><code>$DATA</code> attribute</td></tr>
 <tr><td><code>0xDC16</code></td><td><code>00 00</code></td><td>Flags = <code>0x0000</code> (deleted)</td></tr>
-<tr><td><code>0xDC10</code></td><td><code>04 00</code></td><td>Sequence Number = <code>4</code> — this MFT entry has been allocated to four different files over its lifetime.</td></tr>
-<tr><td><code>0xDD58</code></td><td><code>80 00 00 00</code></td><td>Attribute Type = <code>$DATA</code> — Zone.Identifier ADS begins</td></tr>
+<tr><td><code>0xDC10</code></td><td><code>04 00</code></td><td>Sequence Number = <code>4</code>  this MFT entry has been allocated to four different files over its lifetime.</td></tr>
+<tr><td><code>0xDD58</code></td><td><code>80 00 00 00</code></td><td>Attribute Type = <code>$DATA</code>  Zone.Identifier ADS begins</td></tr>
 <tr><td><code>0xDD5C</code></td><td><code>98 00 00 00</code></td><td>Attribute Length = <code>152</code></td></tr>
 <tr><td><code>0xDD60</code></td><td><code>00</code></td><td>Resident: <code>0</code> = resident (content stored inline in this record), <code>1</code> = non-resident (content stored elsewhere on disk, referenced via data runs)</td></tr>
-<tr><td><code>0xDD62</code></td><td><code>18 00</code></td><td>Offset (from start of this attribute) where the name string begins, if Name Length &gt; 0 — used to read the stream name, <code>:Zone.Identifier</code></td></tr>
+<tr><td><code>0xDD62</code></td><td><code>18 00</code></td><td>Offset (from start of this attribute) where the name string begins, if Name Length &gt; 0 - used to read the stream name, <code>:Zone.Identifier</code></td></tr>
 </tbody>
 </table>
 
@@ -341,7 +341,7 @@ Think of it as a note saying:
 
 <p>So to find the non-resident data, Windows looks at <code>Run List Offset = 0x40</code>.</p>
 <p><code>0x40</code> (64) → abs <code>0xE908 + 0x40</code> = <code>0xE948</code></p>
-<p>So it jumps to <code>0xE948</code> where it finds <code>21 01 BD 14 00</code> — these five bytes are <strong>not file data</strong>, they are an <strong>address</strong>.</p>
+<p>So it jumps to <code>0xE948</code> where it finds <code>21 01 BD 14 00</code> - these five bytes are <strong>not file data</strong>, they are an <strong>address</strong>.</p>
 <p>Then decode the run list byte <code>21</code>.</p>
 <p>Split into nibbles: <code>2 | 1</code>, meaning:</p>
 <ul>
@@ -399,7 +399,7 @@ Run List, Run 1, Run 2, Run 3</code></pre>
 <code>31 28 41 EB 0B</code><br/>
 <code>32 B5 3C BB 2D F4</code><br/>
 <code>00</code></p>
-<p>These bytes are <strong>not the file data</strong> — they are simply a <strong>map</strong> describing where each fragment of the file is stored.</p>
+<p>These bytes are <strong>not the file data</strong> - they are simply a <strong>map</strong> describing where each fragment of the file is stored.</p>
 
 <p><mark><strong>Decode Run #1</strong></mark> <strong>(same steps as a non-resident file, but with more runs)</strong></p>
 <p><code>21 01 97 14</code></p>
@@ -421,13 +421,13 @@ Run List, Run 1, Run 2, Run 3</code></pre>
 <p><code><strong>Run 3</strong></code> <code>32 B5 3C BB 2D F4</code></p>
 <p>LCN = 11667<br/>Length = 15541 clusters</p>
 
-<p>So: read <strong>1 cluster</strong> starting at <strong>LCN 5271</strong>, then <strong>40 clusters</strong> starting at <strong>LCN 786392</strong>, then <strong>15,541 clusters</strong> starting at <strong>LCN 11667</strong>, and concatenate them in this order to reconstruct <code>thrwt.exe</code> — and that's the end.</p>
+<p>So: read <strong>1 cluster</strong> starting at <strong>LCN 5271</strong>, then <strong>40 clusters</strong> starting at <strong>LCN 786392</strong>, then <strong>15,541 clusters</strong> starting at <strong>LCN 11667</strong>, and concatenate them in this order to reconstruct <code>thrwt.exe</code> . and that's the end.</p>
 
 <figure>
 <img alt="Fragmented file data runs across three LCN ranges" src="../images/MFT slack and Recovering Deleted Files/fragmented-runlist.png"/>
 </figure>
 
-<p><strong>Yeah — this is the story. You're the one able to recover data without any tool.</strong></p>
+<p><strong>Yeah. this is the story. You're the one able to recover data without any tool.</strong></p>
 <p>If you feel distracted, you can read this first: <a href="https://thrwt.ninja/NOTES/MFT.html" target="_blank">  MFT </a></p>
   <p>Thx for reading geeks </p>
   <section class="references">
